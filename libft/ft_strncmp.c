@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 16:15:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/26 17:04:35 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/12/03 11:37:57 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/08/26 14:22:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef TOKEN_H
-# define TOKEN_H
+#include "../include/minishell.h"
 
-typedef enum e_token_type
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	TOKEN_WORD,
-	TOKEN_PIPE,
-	TOKEN_DPIPE,
-	TOKEN_AND,
-	TOKEN_DAND,
-	TOKEN_GREAT,
-	TOKEN_DGREAT,
-	TOKEN_LESS,
-	TOKEN_DLESS,
-	TOKEN_EQUAL,
-	TOKEN_UNCLOSE_TOKEN,
-	TOKEN_EOF
-}t_token_type;
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-typedef struct s_token
-{
-	t_token_type	type;
-	char			*value;
-}t_token;
-
-t_token	*init_token(int type, char *value);
-
-#	endif
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
