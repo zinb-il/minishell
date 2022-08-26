@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:55:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/25 19:43:38 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:37:58 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ char	*lexer_collect_single_quote(t_lexer *lexer)
 	str = ft_strdup(lexer->content);
 	if (!check_close_quote(str, '\'', lexer->i))
 	{
-		lexer_advance(&lexer);
-		return (ft_strjoin("Unclosed quote near ", str));
+		free(lexer);
+		printf ("Unclosed quote near %s \n", str);
+		exit (1);
 	}
 	s = lexer->i;
 	while (lexer->c != '\0' && lexer->c != '\'')

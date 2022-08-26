@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:14 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/25 18:35:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/08/26 21:35:41 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_lexer	*init_lexer(char	*content)
 
 	lexer = (t_lexer *)malloc(sizeof(t_lexer));
 	if (!lexer)
-		return (NULL);
+		return (0);
 	lexer->i = 0;
 	lexer->c = content[lexer->i];
 	lexer->content = ft_strdup(content);
