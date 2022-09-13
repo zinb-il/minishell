@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/26 17:04:35 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:06:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef enum e_token_type
 	TOKEN_DLESS,
 	TOKEN_EQUAL,
 	TOKEN_UNCLOSE_TOKEN,
-	TOKEN_EOF
+	TOKEN_EOF,
+	TOKEN_ERR
 }t_token_type;
 
 typedef struct s_token

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:14 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/26 21:35:41 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:05:41 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ t_token	*lexer_get_next_token(t_lexer *lexer)
 			return (lexer_collect_great(lexer));
 		if (lexer->c == '<')
 			return (lexer_collect_less(lexer));
-		/*if (lexer->c == '(')
-			return (lexer_collect_minishell(lexer));*/
 		else
 			return (lexer_collect_id(lexer));
 	}

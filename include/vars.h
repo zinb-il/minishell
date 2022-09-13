@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/26 14:14:34 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:07:41 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define PS1 "\033[0;32m minishell:~$\033[0;37m "
 # define PS2 "> "
 
+//Special characters
+# define SPCL "<>=$&|\') \"\t"
 //Elements
 typedef struct s_env
 {
@@ -36,6 +38,7 @@ typedef struct s_vars
 {
 	int			exit_code;
 	pid_t		process_pid;
+	pid_t		child_process_pid;
 	t_env		*env;
 	t_local_var	*local_var;
 }t_vars;

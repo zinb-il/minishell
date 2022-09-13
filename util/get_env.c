@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:34:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/26 21:34:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:12:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env	*ft_getlast_env(t_env *lst)
 {
 	t_env	*last;
 
-	last = NULL;
+	last = 0;
 	while (lst)
 	{
 		last = lst;
@@ -45,18 +45,29 @@ t_env	*get_env_elmnt(char *line)
 
 	elm = (t_env *)malloc(sizeof(t_env));
 	if (!elm)
-		return (NULL);
+		return (0);
 	str = ft_split(line, '=');
 	if (!str)
-		return (NULL);
-	elm->env_att = NULL;
-	elm->env_val = NULL;
-	elm->next = NULL;
+		return (0);
+	elm->env_att = 0;
+	elm->env_val = 0;
+	elm->next = 0;
 	if (str[0])
 		elm->env_att = str[0];
 	if (str[1])
 		elm->env_val = str[1];
 	return (elm);
+}
+
+char	*get_env_val(t_env *env, char *var)
+{
+	while (env)
+	{
+		if (!ft_strcmp(env->env_att, var))
+			return (env->env_val);
+		env = env->next;
+	}
+	return (ft_strdup(""));
 }
 
 void	get_env(char **env)
@@ -65,7 +76,7 @@ void	get_env(char **env)
 	t_env	*elm;
 
 	i = 0;
-	g_vars.env = NULL;
+	g_vars.env = 0;
 	if (!env || !*env)
 		return ;
 	while (env[i])
@@ -77,4 +88,7 @@ void	get_env(char **env)
 			g_vars.env = elm;
 		i++;
 	}
+	g_vars.exit_code = 0;
+	g_vars.process_pid = 0;
+	g_vars.child_process_pid = 0;
 }
