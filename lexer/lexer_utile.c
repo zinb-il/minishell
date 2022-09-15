@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:14 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/13 15:05:41 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:08:44 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_lexer	*init_lexer(char	*content)
 	if (!lexer)
 		return (0);
 	lexer->i = 0;
-	lexer->c = content[lexer->i];
 	lexer->content = ft_strdup(content);
+	lexer->c = content[lexer->i];
 	return (lexer);
 }
 
@@ -55,7 +55,7 @@ t_token	*lexer_get_next_token(t_lexer *lexer)
 	{
 		lexer_skipe_space(lexer);
 		if (lexer->c == '=')
-			return (advs_token(lexer, init_token(TOKEN_EQUAL, "=")));
+			return (advs_token(lexer, init_token(TOKEN_EQUAL, ft_strdup("="))));
 		if (lexer->c == '|')
 			return (lexer_collect_pipe(lexer));
 		if (lexer->c == '&')
@@ -67,6 +67,5 @@ t_token	*lexer_get_next_token(t_lexer *lexer)
 		else
 			return (lexer_collect_id(lexer));
 	}
-	return (init_token(TOKEN_EOF, "end_of_cmd"));
+	return (init_token(TOKEN_EOF, ft_strdup("end_of_cmd")));
 }
-t_token	*lexer_collect_string(t_lexer *lexer);

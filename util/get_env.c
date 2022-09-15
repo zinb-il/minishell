@@ -6,11 +6,22 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:34:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/13 22:12:56 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:27:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+char	*get_env_val(t_env *env, char *var)
+{
+	while (env)
+	{
+		if (!ft_strcmp(env->env_att, var))
+			return (ft_strdup(env->env_val));
+		env = env->next;
+	}
+	return (ft_strdup(""));
+}
 
 t_env	*ft_getlast_env(t_env *lst)
 {
@@ -53,21 +64,11 @@ t_env	*get_env_elmnt(char *line)
 	elm->env_val = 0;
 	elm->next = 0;
 	if (str[0])
-		elm->env_att = str[0];
+		elm->env_att = ft_strdup(str[0]);
 	if (str[1])
-		elm->env_val = str[1];
+		elm->env_val = ft_strdup(str[1]);
+	free_dstr(str);
 	return (elm);
-}
-
-char	*get_env_val(t_env *env, char *var)
-{
-	while (env)
-	{
-		if (!ft_strcmp(env->env_att, var))
-			return (env->env_val);
-		env = env->next;
-	}
-	return (ft_strdup(""));
 }
 
 void	get_env(char **env)

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:02:44 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/25 18:35:38 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:06:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,19 @@ void	lexer(char *str)
 	if (!lex)
 		return ;
 	token = lexer_get_next_token(lex);
-	while (token->type != TOKEN_EOF)
+	while (token->type != TOKEN_EOF && token->type != TOKEN_ERR)
 	{
-		printf("type %d val %s\n", token->type, token->value);
+		printf("type %d val {{%s}}\n", token->type, token->value);
+		free(token->value);
+		free(token);
 		token = lexer_get_next_token(lex);
 	}
+	if (token->type == TOKEN_ERR)
+		printf("%s \n", token->value);
+	if (token->type == TOKEN_EOF)
+		printf("%s \n", token->value);
+	free(token->value);
+	free(token);
+	free(lex->content);
+	free(lex);
 }

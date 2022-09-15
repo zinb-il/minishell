@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_collect_id.c                                 :+:      :+:    :+:   */
+/*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 15:55:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 19:16:05 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/15 15:48:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_token	*lexer_collect_id(t_lexer *lexer)
+void	init_minishell(char **env)
 {
-	if (lexer->c == '$')
-		return (lexer_collect_env(lexer));
-	else if (lexer->c == '\'')
-		return (lexer_collect_single_quote(lexer));
-	else if (lexer->c == '"')
-		return (lexer_collect_double_quote(lexer));
-	else
-		return (lexer_simple_caraters(lexer));
-	return (init_token(TOKEN_EOF, "\n"));
+	get_env(env);
+	//signals(0);
+}
+
+int	str_redline(char *str)
+{
+	if (!str)
+	{
+		printf("exit\n");
+		return (0);
+	}
+	if (!*str)
+		return (1);
+	return (2);
 }

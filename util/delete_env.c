@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_collect_id.c                                 :+:      :+:    :+:   */
+/*   delete_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 15:55:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 19:16:05 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/14 19:57:50 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/15 14:04:08 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_token	*lexer_collect_id(t_lexer *lexer)
+void	free_dstr(char	**str)
 {
-	if (lexer->c == '$')
-		return (lexer_collect_env(lexer));
-	else if (lexer->c == '\'')
-		return (lexer_collect_single_quote(lexer));
-	else if (lexer->c == '"')
-		return (lexer_collect_double_quote(lexer));
-	else
-		return (lexer_simple_caraters(lexer));
-	return (init_token(TOKEN_EOF, "\n"));
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	free_env(t_env *env)
+{
+	t_env	*tmp;
+
+	while (env)
+	{
+		tmp = env;
+		free(tmp->env_att);
+		free(tmp->env_val);
+		free(tmp);
+		env = env->next;
+	}
 }
