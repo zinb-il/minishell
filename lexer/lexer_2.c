@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:02:44 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 16:06:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/17 22:41:57 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ void	lexer(char *str)
 		printf("%s \n", token->value);
 	free(token->value);
 	free(token);
-	free(lex->content);
-	free(lex);
+	free_lexer(lex);
 }

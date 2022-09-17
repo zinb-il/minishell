@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 21:44:52 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:53:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*lexer_collect_double_quote_env(t_lexer *lexer)
 	return (lexer_collect_env_val(lexer));
 }
 
-char	*lexer_collect_double_quote_char(t_lexer *lexer, char c)
+char	*lexer_collect_double_quote_char(t_lexer *lexer, char *c)
 {
 	char	*str1;
 
-	str1 = ft_strdup(&c);
+	str1 = ft_strdup(c);
 	lexer_advance(&lexer);
 	return (str1);
 }
@@ -65,13 +65,13 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer)
 		if (lexer->c == '$' && lexer->content[lexer->i - 1] != '\\')
 			str1 = lexer_collect_double_quote_env(lexer);
 		else
-			str1 = lexer_collect_double_quote_char(lexer, lexer->c);
+			str1 = lexer_collect_double_quote_char(lexer, &lexer->c);
 		str2 = ft_strjoin(str2, str1);
 		free(str3);
 		free(str1);
 	}
 	lexer_advance(&lexer);
-	/*if (lexer->c == '$' || !check_spcl_char(SPCL, lexer->c) || lexer->c == '\'')
-		return (lexer_collect_double_quote_after(lexer, str1, lexer->c));*/
+	if (lexer->c == '$' || lexer->c == '\'' || !check_spcl_char(SPCL, lexer->c))
+		return (lexer_collect_double_quote_after(lexer, str1, lexer->c));
 	return (init_token(TOKEN_WORD, str2));
 }

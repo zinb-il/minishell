@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.c                                            :+:      :+:    :+:   */
+/*   lexer_utile_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 17:17:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 13:28:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/08/25 16:05:47 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/15 14:31:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_token	*init_token(int type, char *value)
+int	check_close_quote(char *str, char c, int i)
 {
-	t_token	*token;
-
-	token = (t_token *)malloc(1 * sizeof(t_token));
-	if (!token)
+	if (str[i] == '\0')
 		return (0);
-	token->type = type;
-	token->value = value;
-	token->next = 0;
-	token->prev = 0;
-	return (token);
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_spcl_char(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

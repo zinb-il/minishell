@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Thu Sep 15 20:12:10 2022
+# Make data base, printed on Sat Sep 17 20:45:56 2022
 
 # Variables
 
@@ -23,7 +22,6 @@ CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
- 
 @F = $(notdir $@)
 # makefile
 CURDIR := /Users/ziloughm/Desktop/minishell
@@ -40,11 +38,11 @@ MAKEFILE_LIST :=  Makefile
 # makefile (from `Makefile', line 7)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/ziloughm
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.1cNWDIhONM/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.WIjbGpeUEK/Render
 # environment
-PATH = /Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/ziloughm/.brown/bin:/goinfre//.brew/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -54,7 +52,7 @@ LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.LPwLI1fBVT/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.s9Lotv6pkF/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -81,14 +79,16 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
+# environment
+LC_TERMINAL = iTerm2
 # makefile (from `Makefile', line 1)
 SRCS = main.c signal/signal.c libft/*.c util/*.c lexer/*.c 
 # environment
-SHLVL = 1
+SHLVL = 2
 # makefile (from `Makefile', line 9)
 CC = gcc
 # default
@@ -97,6 +97,10 @@ MAKE_VERSION := 3.81
 USER = ziloughm
 # makefile
 .DEFAULT_GOAL := minishell
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:31089D1C-627D-4AC8-983F-D7B91768EF04
 # makefile (from `Makefile', line 19)
 NAME = minishell
 # environment
@@ -105,6 +109,8 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -122,21 +128,35 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.4728
+TERM_PROGRAM_VERSION = 3.4.16
+# environment
+XPC_SERVICE_NAME = com.microsoft.VSCode.4244.939D2B06-CE8B-4D99-AC76-707A17A973BF
+# environment
+LC_TERMINAL_VERSION = 3.4.16
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
+ITERM_SESSION_ID = w0t0p0:31089D1C-627D-4AC8-983F-D7B91768EF04
+# environment
+COLORFGBG = 7;0
+# environment
 __CF_USER_TEXT_ENCODING = 0x1175:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
+ITERM_PROFILE = Default
+# environment
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 1870f
 # automatic
 ^F = $(notdir $^)
 # default
@@ -148,9 +168,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5506
+TERM = xterm-256color
+# environment
+VSCODE_PID = 19228
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=2/94=2%
+# Load=80/1024=8%, Rehash=0, Collisions=5/106=5%
 
 # Pattern-specific Variable Values
 
@@ -198,7 +220,7 @@ Makefile:
 
 minishell:
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-15 19:05:04
+#  Last modified 2022-09-17 20:42:27
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 22):
@@ -252,6 +274,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Sep 15 20:12:10 2022
+# Finished Make data base on Sat Sep 17 20:45:56 2022
 
  

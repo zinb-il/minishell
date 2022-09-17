@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.c                                            :+:      :+:    :+:   */
+/*   lexer_token_ast_free.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 17:17:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 13:28:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/17 22:41:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-t_token	*init_token(int type, char *value)
+void	free_tokens(t_token *token)
 {
-	t_token	*token;
+	t_token	*tmp;
 
-	token = (t_token *)malloc(1 * sizeof(t_token));
-	if (!token)
-		return (0);
-	token->type = type;
-	token->value = value;
-	token->next = 0;
-	token->prev = 0;
-	return (token);
+	while (token)
+	{
+		tmp = token;
+		free(tmp->value);
+		free(tmp);
+		token = token->next;
+	}
+}
+
+void	free_lexer(t_lexer *lex)
+{
+	free(lex->content);
+	free(lex);
 }

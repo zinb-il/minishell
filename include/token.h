@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/13 15:06:46 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/17 13:27:59 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_token
 {
 	t_token_type	type;
 	char			*value;
+	struct s_token	*next;
+	struct s_token	*prev;
 }t_token;
 
 t_token	*init_token(int type, char *value);

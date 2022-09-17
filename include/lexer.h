@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 21:39:22 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:48:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_token	*lexer_collect_single_quote_env_smp(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_double_quote(t_lexer *lexer);
 char	*lexer_collect_double_quote_env(t_lexer *lexer);
 t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c);
-char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
+char	*lexer_collect_double_quote_char(t_lexer *lexer, char *c);
 
 //GET expanded word
 t_token	*lexer_collect_env(t_lexer *lexer);
@@ -56,6 +56,10 @@ t_token	*lexer_collect_env_str(t_lexer *lexer);
 //GET simple Word
 t_token	*lexer_simple_caraters(t_lexer *lexer);
 t_token	*lexer_simple_caraters_env_quote(t_lexer *lexer, char *str, char c);
+
+//Free the Lexer , Tokens , AST
+void	free_tokens(t_token *token);
+void	free_lexer(t_lexer *lex);
 
 void	lexer(char *str);
 #		endif
