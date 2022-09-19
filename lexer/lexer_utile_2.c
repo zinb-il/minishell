@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_utile_1.c                                    :+:      :+:    :+:   */
+/*   lexer_utile_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:05:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 14:31:03 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 23:55:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,52 @@ int	check_close_quote(char *str, char c, int i)
 	return (0);
 }
 
+void	get_new_str(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\'' || str[i] == '"')
+		{
+			if (!j)
+				j++;
+			else
+				j--;
+			i++;
+			continue ;
+		}
+		if (j && (str[i] == ')' || str[i] == '('))
+			str[i] = 'A';
+		i++;
+	}
+}
+
+int	check_close_parenthesis(char *str)
+{
+	int		j;
+	int		i;
+	char	*str1;
+
+	j = 0;
+	i = 0;
+	str1 = ft_strdup(str);
+	get_new_str(str1);
+	while (str1[i] != '\0')
+	{
+		if (str1[i] == '(')
+			j++;
+		if (str1[i] == ')')
+			j--;
+		i++;
+	}
+	free(str1);
+	return (j);
+}
+
 int	check_spcl_char(char *str, char c)
 {
 	int	i;
@@ -37,4 +83,17 @@ int	check_spcl_char(char *str, char c)
 		i++;
 	}
 	return (0);
+}
+
+char	*add_dollar_or_not(char *str, int i)
+{
+	char	*s;
+
+	if (!i)
+	{
+		s = str;
+		str = ft_strjoin("$", str);
+		free(s);
+	}
+	return (str);
 }

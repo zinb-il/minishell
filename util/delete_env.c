@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:57:50 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 14:04:08 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 17:27:00 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ void	free_env(t_env *env)
 {
 	t_env	*tmp;
 
-	while (env)
+	if (env)
 	{
-		tmp = env;
-		free(tmp->env_att);
-		free(tmp->env_val);
-		free(tmp);
-		env = env->next;
+		while (env)
+		{
+			tmp = env;
+			free(tmp->env_att);
+			free(tmp->env_val);
+			free(tmp);
+			env = env->next;
+		}
 	}
 }

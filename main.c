@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 15:49:48 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 23:02:27 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	print_env(t_env *env)
 int	main(int ac, char **av, char **env)
 {
 	char	*str;
+	int		i;
 
 	(void)ac;
 	(void)av;
@@ -31,16 +32,16 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		str = readline(PS1);
-		if (!str_redline(str) || str_redline(str) == 1)
+		i = str_redline(str);
+		if (!i || i == 1)
 			free(str);
-		if (!str_redline(str))
+		if (!i)
 			break ;
-		if (str_redline(str) == 1)
+		if (i == 1)
 			continue ;
 		add_history(str);
 		lexer(str);
 		free(str);
 	}
-	free_env(g_vars.env);
 	return (0);
 }

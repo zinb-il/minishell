@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:30:15 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 21:44:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 23:16:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_token	*lexer_collect_single_quote_env_smp(t_lexer *lexer, char *str, char c)
 		token = lexer_collect_env(lexer);
 	else if (c == '"')
 		token = lexer_collect_double_quote(lexer);
+	else if (c == '\'')
+		token = lexer_collect_single_quote(lexer);
 	else
 		token = lexer_simple_caraters(lexer);
 	if (token->type != TOKEN_ERR)
@@ -47,7 +49,8 @@ t_token	*lexer_collect_single_quote(t_lexer *lexer)
 		lexer_advance(&lexer);
 	str1 = ft_substr(lexer->content, start, lexer->i - start);
 	lexer_advance(&lexer);
-	if (lexer->c == '$' || !check_spcl_char(SPCL, lexer->c) || lexer->c == '"')
+	if (lexer->c == '$' || !check_spcl_char(SPCL, lexer->c) || lexer->c == '"' \
+	|| lexer->c == '\'')
 		return (lexer_collect_single_quote_env_smp(lexer, str1, lexer->c));
 	return (init_token(TOKEN_WORD, str1));
 }

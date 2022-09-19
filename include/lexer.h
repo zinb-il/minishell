@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 20:48:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 23:55:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	lexer_skipe_space(t_lexer *lexer);
 char	*lexer_char_to_string(t_lexer *lexer);
 t_token	*advs_token(t_lexer *lexer, t_token *token);
 int		check_close_quote(char *str, char c, int i);
+void	get_new_str(char *str);
+int		check_close_parenthesis(char *str);
 int		check_spcl_char(char *str, char c);
 t_token	*lexer_get_next_token(t_lexer *lexer);
 
@@ -46,16 +48,21 @@ t_token	*lexer_collect_single_quote_env_smp(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_double_quote(t_lexer *lexer);
 char	*lexer_collect_double_quote_env(t_lexer *lexer);
 t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c);
-char	*lexer_collect_double_quote_char(t_lexer *lexer, char *c);
+char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
 
 //GET expanded word
+char	*add_dollar_or_not(char *str, int i);
 t_token	*lexer_collect_env(t_lexer *lexer);
-t_token	*lexer_collect_env_str_quote(t_lexer *lexer, char *str, char c);
+char	*lexer_collect_double_quote_env_dollar(t_lexer *lexer);
+t_token	*lexer_collect_env_str_quote(t_lexer *lexer, char *str, char c, int i);
 t_token	*lexer_collect_env_str(t_lexer *lexer);
 
 //GET simple Word
 t_token	*lexer_simple_caraters(t_lexer *lexer);
 t_token	*lexer_simple_caraters_env_quote(t_lexer *lexer, char *str, char c);
+
+//GET parenthesis
+t_token	*lexer_collect_parenthesis(t_lexer *lexer);
 
 //Free the Lexer , Tokens , AST
 void	free_tokens(t_token *token);

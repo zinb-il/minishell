@@ -1,7 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/ziloughm/Desktop/minishell'
-gcc -Wall -Wextra -Werror -g -lreadline -L /goinfre/ziloughm/.brew/opt/readline/lib -I /goinfre/ziloughm/.brew/opt/readline/include -o minishell main.c signal/signal.c libft/*.c util/*.c lexer/*.c 
-stty -echoctl
-echo "\033[0;32m the library is perfectly constructed\033[0;37m"
-make: Leaving directory `/Users/ziloughm/Desktop/minishell'
- 

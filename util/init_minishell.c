@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 15:48:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/19 17:29:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_minishell(char **env)
 {
 	get_env(env);
-	//signals(0);
+	signals(0);
 }
 
 int	str_redline(char *str)
