@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 21:26:26 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/19 23:29:27 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:36:17 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_token	*lexer_collect_parenthesis(t_lexer *lexer)
 {
-	//lexer_advance(&lexer);
 	if (check_close_parenthesis(lexer->content))
 		return (init_token(TOKEN_ERR, ft_strjoin("Unclosed parenthe near ", \
 		lexer->content)));

@@ -6,22 +6,22 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 22:41:29 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:33:07 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	free_tokens(t_token *token)
+void	free_tokens(t_token *tokens)
 {
 	t_token	*tmp;
 
-	while (token)
+	while (tokens)
 	{
-		tmp = token;
+		tmp = tokens;
 		free(tmp->value);
+		tokens = tokens->next;
 		free(tmp);
-		token = token->next;
 	}
 }
 

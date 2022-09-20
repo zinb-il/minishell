@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/19 17:21:27 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:58:30 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_token	*lexer_collect_dollar(t_lexer *lexer)
 		str = ft_itoa(g_vars.child_process_pid);
 	lexer_advance(&lexer);
 	if ((lexer->c == '\'' || lexer->c == '"' || lexer->c == '$' \
-	|| !check_spcl_char(SPCL, lexer->c)) && lexer->c != '\0')
+	|| !check_spcl_char(SPCL1, lexer->c)) && lexer->c != '\0')
 		return (lexer_collect_env_str_quote(lexer, str, \
 		lexer->c, (int)ft_strlen(str)));
 	return (init_token(TOKEN_WORD, str));
@@ -81,7 +81,7 @@ t_token	*lexer_collect_env_str(t_lexer *lexer)
 	if (!(int)ft_strlen(str) && !ft_isalnum(c) && c != '_')
 		i = 0;
 	if ((lexer->c == '\'' || lexer->c == '"' || lexer->c == '$' \
-	|| !check_spcl_char(SPCL, lexer->c)) && lexer->c != '\0')
+	|| !check_spcl_char(SPCL1, lexer->c)) && lexer->c != '\0')
 		return (lexer_collect_env_str_quote(lexer, str, lexer->c, i));
 	return (init_token(TOKEN_WORD, str));
 }
@@ -91,6 +91,8 @@ t_token	*lexer_collect_env(t_lexer *lexer)
 	lexer_advance(&lexer);
 	if (lexer->c == '?' || lexer->c == '$')
 		return (lexer_collect_dollar(lexer));
+	else if (lexer->c == ' ' || lexer->c == '\t')
+		return (advs_token(lexer, init_token(TOKEN_WORD, ft_strdup("$"))));
 	else if (lexer->c != '\0')
 		return (lexer_collect_env_str(lexer));
 	else

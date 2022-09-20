@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/19 23:55:19 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:32:35 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ t_token	*lexer_simple_caraters_env_quote(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_parenthesis(t_lexer *lexer);
 
 //Free the Lexer , Tokens , AST
-void	free_tokens(t_token *token);
 void	free_lexer(t_lexer *lex);
+
+//Create list of tokens 
+t_token	*get_tokens(t_lexer lexer);
 
 void	lexer(char *str);
 #		endif
