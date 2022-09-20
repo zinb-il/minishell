@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   new_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 17:38:36 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/20 17:23:27 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/20 17:39:24 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_minishell(char **env)
+void	get_new_promt(char *str)
 {
-	get_env(env);
-	signals(0);
-}
-
-int	str_redline(char *str)
-{
-	if (!str)
+	if (!rl_on_new_line())
 	{
-		printf("\rexit\n");
-		return (0);
+		rl_replace_line("", 1);
+		rl_redisplay();
+		printf("%s\n", str);
 	}
-	if (!*str)
-		return (1);
-	return (2);
 }

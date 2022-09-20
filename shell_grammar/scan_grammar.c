@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   scan_grammar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 17:38:36 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/20 23:01:31 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/20 23:08:59 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_minishell(char **env)
+void	print_tokens(t_token *tokens)
 {
-	get_env(env);
-	signals(0);
+	t_token	*tmp;
+
+	tmp = tokens;
+	while (tmp)
+	{
+		printf("type %d val {{%s}}\n", tmp->type, tmp->value);
+		tmp = tmp->next;
+	}
 }
 
-int	str_redline(char *str)
+int	scann_grammar(t_token *tokens)
 {
-	if (!str)
-	{
-		printf("\rexit\n");
-		return (0);
-	}
-	if (!*str)
-		return (1);
-	return (2);
+	t_token	*tmp;
+
+	tmp = tokens;
+	print_tokens(tmp);
+	free_tokens(tokens);
+	return (1);
 }

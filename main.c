@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/19 23:02:27 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:50:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av, char **env)
 		if (i == 1)
 			continue ;
 		add_history(str);
-		lexer(str);
+		first_part(str);
 		free(str);
 	}
 	return (0);

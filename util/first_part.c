@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   first_part.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 17:38:36 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/20 23:08:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_minishell(char **env)
+void	first_part(char *s)
 {
-	get_env(env);
-	signals(0);
-}
+	t_token	*token;
 
-int	str_redline(char *str)
-{
-	if (!str)
+	token = lexer(s);
+	if (!token || !scann_grammar(token))
 	{
-		printf("\rexit\n");
-		return (0);
+		free (token);
+		return ;
 	}
-	if (!*str)
-		return (1);
-	return (2);
 }

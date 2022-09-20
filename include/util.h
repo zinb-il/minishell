@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:35:53 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 13:36:34 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:45:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,11 @@ void	init_minishell(char **env);
 
 //Readline function
 int		str_redline(char *str);
+
+//Display new prompt
+void	get_new_promt(char *str);
+
+//Call Lexer Parser Expander Executor
+void	first_part(char *s);
 
 #	endif

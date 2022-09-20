@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:17:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 15:33:04 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:37:16 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_token	*init_token(int type, char *value)
 		return (0);
 	token->type = type;
 	token->value = value;
-	token->next = 0;
-	token->prev = 0;
+	token->next = (void *)0;
+	token->prev = (void *)0;
 	return (token);
 }
 

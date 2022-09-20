@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 15:32:35 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 22:50:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void	free_lexer(t_lexer *lex);
 //Create list of tokens 
 t_token	*get_tokens(t_lexer lexer);
 
-void	lexer(char *str);
+//Lexer function
+t_token	*lexer(char *str);
+
 #		endif
