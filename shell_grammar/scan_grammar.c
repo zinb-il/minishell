@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:01:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 23:08:59 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/20 23:11:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	scann_grammar(t_token *tokens)
 	t_token	*tmp;
 
 	tmp = tokens;
-	print_tokens(tmp);
-	free_tokens(tokens);
+	print_tokens(tokens);
 	return (1);
 }
