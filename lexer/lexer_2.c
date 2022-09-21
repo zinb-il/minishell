@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:02:44 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 23:04:49 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:43:09 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	*lexer(char *str)
 	}
 	if (tmp->type == TOKEN_ERR)
 	{
-		get_new_promt(tmp->value);
+		get_new_promt(ft_strdup(tmp->value));
 		free_tokens(tmp);
 		free_lexer(lex);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 15:32:06 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:10:58 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 typedef enum e_token_type
 {
 	TOKEN_WORD,
+	TOKEN_WORD_EX,
 	TOKEN_PIPE,
 	TOKEN_DPIPE,
-	TOKEN_AND,
 	TOKEN_DAND,
 	TOKEN_GREAT,
 	TOKEN_DGREAT,

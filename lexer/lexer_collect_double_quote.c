@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/19 23:19:14 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:13:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c)
 	if (token->type != TOKEN_ERR)
 	{
 		s = token->value;
+		token->type = TOKEN_WORD_EX;
 		token->value = ft_strjoin(str, token->value);
 		free(s);
 	}
@@ -115,5 +116,5 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer)
 	if (lexer->c != '\0' && (lexer->c == '$' || lexer->c == '\'' || \
 	!check_spcl_char(SPCL, lexer->c) || lexer->c == '"'))
 		return (lexer_collect_double_quote_after(lexer, str2, lexer->c));
-	return (init_token(TOKEN_WORD, str2));
+	return (init_token(TOKEN_WORD_EX, str2));
 }
