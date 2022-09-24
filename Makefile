@@ -4,6 +4,7 @@ SRCS = main.c \
 	   util/*.c \
 	   lexer/*.c \
 	   shell_grammar/*.c \
+	   parsing/*.c \
 
 OBJS = $(SRCS:.c=.o)
 

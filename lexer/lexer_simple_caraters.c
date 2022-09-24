@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:21:42 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 21:42:19 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:56:54 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_token	*lexer_simple_caraters(t_lexer *lexer)
 		lexer_advance(&lexer);
 	str1 = ft_substr(str, s, lexer->i - s);
 	free (str);
+	if (lexer->c == '&' && lexer->content[lexer->i + 1] != '&')
+		str1 = lexer_after_single_and(lexer, str1);
 	if (lexer->c == '$' || lexer->c == '\'' || lexer->c == '"')
 		return (lexer_simple_caraters_env_quote(lexer, str1, lexer->c));
 	return (init_token(TOKEN_WORD, str1));

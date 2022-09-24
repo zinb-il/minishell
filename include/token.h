@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/21 12:10:58 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:14:08 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_token
 t_token	*init_token(int type, char *value);
 t_token	*get_last_token(t_token *token);
 void	add_last_token(t_token **tokens, t_token *token);
+void	print_tokens(t_token *tokens);
 void	free_tokens(t_token *tokens);
 
 #	endif

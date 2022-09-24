@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 22:50:06 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:44:10 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		check_close_quote(char *str, char c, int i);
 void	get_new_str(char *str);
 int		check_close_parenthesis(char *str);
 int		check_spcl_char(char *str, char c);
+char	*lexer_after_single_and(t_lexer *lexer, char *str1);
 t_token	*lexer_get_next_token(t_lexer *lexer);
 
 t_token	*lexer_collect_pipe(t_lexer *lexer);
@@ -48,6 +49,7 @@ t_token	*lexer_collect_single_quote_env_smp(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_double_quote(t_lexer *lexer);
 char	*lexer_collect_double_quote_env(t_lexer *lexer);
 t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c);
+t_token	*lexer_collect_double_quote_fafter(t_lexer *lexer, char *str2);
 char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
 
 //GET expanded word

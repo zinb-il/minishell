@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_collect_double_quote.c                       :+:      :+:    :+:   */
+/*   lexer_collect_double_quote_1.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/21 12:13:03 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:44:15 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,5 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer)
 		free(str1);
 	}
 	lexer_advance(&lexer);
-	if (lexer->c != '\0' && (lexer->c == '$' || lexer->c == '\'' || \
-	!check_spcl_char(SPCL, lexer->c) || lexer->c == '"'))
-		return (lexer_collect_double_quote_after(lexer, str2, lexer->c));
-	return (init_token(TOKEN_WORD_EX, str2));
+	return (lexer_collect_double_quote_fafter(lexer, str2));
 }

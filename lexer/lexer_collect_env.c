@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 12:58:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:51:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_token	*lexer_collect_dollar(t_lexer *lexer)
 	if (lexer->c == '$')
 		str = ft_itoa(g_vars.child_process_pid);
 	lexer_advance(&lexer);
+	if (lexer->c == '&' && lexer->content[lexer->i + 1] != '&')
+		str = lexer_after_single_and(lexer, str);
 	if ((lexer->c == '\'' || lexer->c == '"' || lexer->c == '$' \
 	|| !check_spcl_char(SPCL1, lexer->c)) && lexer->c != '\0')
 		return (lexer_collect_env_str_quote(lexer, str, \
@@ -91,7 +93,7 @@ t_token	*lexer_collect_env(t_lexer *lexer)
 	lexer_advance(&lexer);
 	if (lexer->c == '?' || lexer->c == '$')
 		return (lexer_collect_dollar(lexer));
-	else if (lexer->c == ' ' || lexer->c == '\t')
+	else if (check_spcl_char(SPCL, lexer->c))
 		return (advs_token(lexer, init_token(TOKEN_WORD, ft_strdup("$"))));
 	else if (lexer->c != '\0')
 		return (lexer_collect_env_str(lexer));

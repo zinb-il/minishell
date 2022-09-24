@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:17:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 22:37:16 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:33:37 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,25 @@ t_token	*get_last_token(t_token *token)
 {
 	t_token	*lst;
 
-	lst = NULL;
+	lst = 0;
 	while (token)
 	{
 		lst = token;
 		token = token->next;
 	}
 	return (lst);
+}
+
+void	print_tokens(t_token *tokens)
+{
+	t_token	*tmp;
+
+	tmp = tokens;
+	while (tmp)
+	{
+		printf("type %d val {{%s}}\n", tmp->type, tmp->value);
+		tmp = tmp->next;
+	}
 }
 
 void	add_last_token(t_token **tokens, t_token *token)

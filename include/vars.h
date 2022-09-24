@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/21 12:55:43 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:56:12 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 //Prompt String
 # define PS1 "\033[0;32m minishell:~$\033[0;37m "
 # define PS2 "> "
-# define ERR_SYN "syntax error near unexpected token "
+# define ERR_SYN "syntax error near unexpected token near "
 
 //Special characters
-# define SPCL "<>=$|\' ()\"\t"
+# define SPCL "&<>=$|\' ()\"\t"
 # define SPCL1 "<>=$|\' \"\t"
 //Elements
 typedef struct s_env
