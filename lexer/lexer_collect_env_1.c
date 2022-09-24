@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_collect_env.c                                :+:      :+:    :+:   */
+/*   lexer_collect_env_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/23 18:51:53 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:18:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,13 @@ t_token	*lexer_collect_env(t_lexer *lexer)
 	lexer_advance(&lexer);
 	if (lexer->c == '?' || lexer->c == '$')
 		return (lexer_collect_dollar(lexer));
+	else if (lexer->c == '&' && (!lexer->content[lexer->i + 1] || \
+	lexer->content[lexer->i + 1] != '&'))
+		return (lexer_collect_env_and(lexer));
+	else if (lexer->c == '(')
+		return (lexer_collect_env_parenth(lexer));
 	else if (check_spcl_char(SPCL, lexer->c))
-		return (advs_token(lexer, init_token(TOKEN_WORD, ft_strdup("$"))));
+		return (init_token(TOKEN_WORD, ft_strdup("$")));
 	else if (lexer->c != '\0')
 		return (lexer_collect_env_str(lexer));
 	else

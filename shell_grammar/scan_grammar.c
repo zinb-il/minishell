@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:01:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/23 22:38:29 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:45:47 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	scann_op(t_token *token, t_token *tokens)
 		i++;
 	else
 		i = 0;
-	if (i && (token->next->type == TOKEN_WORD_EX \
-	|| token->next->type == TOKEN_WORD \
-	|| token->next->type == TOKEN_LPARENTH || token->next->type == TOKEN_GREAT \
-	|| token->next->type == TOKEN_LESS || token->next->type == TOKEN_DGREAT \
-	|| token->next->type == TOKEN_DLESS))
-		i++;
+	if (i && (token->next->type != TOKEN_WORD_EX \
+	&& token->next->type != TOKEN_WORD \
+	&& token->next->type != TOKEN_LPARENTH && token->next->type != TOKEN_GREAT \
+	&& token->next->type != TOKEN_LESS && token->next->type != TOKEN_DGREAT \
+	&& token->next->type != TOKEN_DLESS))
+		i = 0;
 	if (!i)
 	{
 		get_new_promt(ft_strjoin(ERR_SYN, token->value));
@@ -132,7 +132,6 @@ int	scann_grammar(t_token *tokens)
 			return (0);
 		tmp = tmp->next;
 	}
-	//print_tokens(tokens);
-	free_tokens(tokens);
+	print_tokens(tokens);
 	return (1);
 }
