@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:15:14 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/17 22:44:55 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/25 16:01:02 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ t_token	*lexer_get_next_token(t_lexer *lexer)
 	while (lexer->c != '\0' && lexer->i < (int)ft_strlen(lexer->content))
 	{
 		lexer_skipe_space(lexer);
-		if (lexer->c == '=')
-			return (advs_token(lexer, init_token(TOKEN_EQUAL, ft_strdup("="))));
 		if (lexer->c == '|')
 			return (lexer_collect_pipe(lexer));
 		if (lexer->c == '&')

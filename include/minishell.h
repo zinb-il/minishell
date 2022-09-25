@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/20 22:56:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/25 16:29:15 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # include "token.h"
 # include "lexer.h"
 # include "scan_grammar.h"
+# include "node.h"
 
 #	endif
