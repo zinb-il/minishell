@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:38:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 14:15:27 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:42:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,33 @@ t_token	*lexer_collect_double_quote_fafter(t_lexer *lexer, char *str2)
 	return (init_token(TOKEN_WORD_EX, str2));
 }
 
-t_token	*lexer_collect_double_quote_herdoc_double(t_lexer *lexer)
+t_token	*lexer_collect_quote_herdoc_quotes(t_lexer *lexer, char c)
 {
 	t_token	*token;
 
-	lexer_advance(&lexer);
-	if (!check_close_quote(lexer->content, '"', lexer->i))
+	if (!check_close_quote(lexer->content, c, lexer->i + 1))
 		token = init_token(TOKEN_ERR, ft_strjoin("Unclosed quote near ", \
-		lexer->content + lexer->i - 1));
+		lexer->content + lexer->i));
 	else
-		token = lexer_collect_double_quote_herdoc(lexer);
+		token = lexer_collect_quotes_herdoc(lexer, c);
 	return (token);
 }
 
-t_token	*lexer_collect_double_quote_herdoc(t_lexer *lexer)
+t_token	*lexer_collect_quotes_herdoc(t_lexer *lexer, char c)
 {
 	t_token	*token;
 	char	*str;
 	char	*str1;
 
-	str = get_herdoc_str(lexer);
+	str = get_herdoc_str(lexer, c);
 	if (lexer->c == '$')
-		token = lexer_collect_env_herdoc(lexer);
+		token = lexer_collect_env_herdoc(lexer, "$");
 	else if (lexer->c == '"')
-		token = lexer_collect_double_quote_herdoc_double(lexer);
+		token = lexer_collect_quote_herdoc_quotes(lexer, '"');
+	else if (lexer->c == '\'')
+		token = lexer_collect_quote_herdoc_quotes(lexer, '\'');
+	else if (!check_spcl_char(SPCL, lexer->c))
+		token = lexer_collect_env_herdoc(lexer, "");
 	else
 		token = init_token(TOKEN_WORD_EX, ft_strdup(""));
 	if (token->type != TOKEN_ERR)

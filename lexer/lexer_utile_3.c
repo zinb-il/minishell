@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:37:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 14:13:24 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:23:58 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	check_herdoc(t_lexer *lexer)
 	return (0);
 }
 
-char	*get_herdoc_str(t_lexer *lexer)
+char	*get_herdoc_str(t_lexer *lexer, char c)
 {
 	char	*str;
 	int		start;
 
 	lexer_advance(&lexer);
 	start = lexer->i;
-	while (lexer->c != '\0' && lexer->c != '"')
+	while (lexer->c != '\0' && lexer->c != c)
 		lexer_advance(&lexer);
 	str = ft_substr(lexer->content, start, lexer->i - start);
 	lexer_advance(&lexer);

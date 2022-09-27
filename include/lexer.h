@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 14:16:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:03:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	get_new_str(char *str);
 int		check_close_parenthesis(char *str);
 int		check_spcl_char(char *str, char c);
 int		check_herdoc(t_lexer *lexer);
-char	*get_herdoc_str(t_lexer *lexer);
+char	*get_herdoc_str(t_lexer *lexer, char c);
 char	*lexer_after_single_and(t_lexer *lexer, char *str1);
 int		check_herdoc(t_lexer *lexer);
 t_token	*lexer_get_next_token(t_lexer *lexer);
@@ -53,8 +53,8 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer);
 char	*lexer_collect_double_quote_env(t_lexer *lexer);
 t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_double_quote_fafter(t_lexer *lexer, char *str2);
-t_token	*lexer_collect_double_quote_herdoc_double(t_lexer *lexer);
-t_token	*lexer_collect_double_quote_herdoc(t_lexer *lexer);
+t_token	*lexer_collect_quote_herdoc_quotes(t_lexer *lexer, char c);
+t_token	*lexer_collect_quotes_herdoc(t_lexer *lexer, char c);
 char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
 
 //GET expanded word
@@ -64,7 +64,7 @@ t_token	*lexer_collect_env_str_quote(t_lexer *lexer, char *str, char c, int i);
 t_token	*lexer_collect_env_str(t_lexer *lexer);
 t_token	*lexer_collect_env_and(t_lexer *lexer);
 t_token	*lexer_collect_env_parenth(t_lexer *lexer);
-t_token	*lexer_collect_env_herdoc(t_lexer *lexer);
+t_token	*lexer_collect_env_herdoc(t_lexer *lexer, char *str);
 t_token	*lexer_collect_env(t_lexer *lexer);
 
 //GET simple Word

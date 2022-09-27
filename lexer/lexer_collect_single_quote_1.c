@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_collect_single_quote.c                       :+:      :+:    :+:   */
+/*   lexer_collect_single_quote_1.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:30:15 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/26 23:36:07 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:18:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ t_token	*lexer_collect_single_quote(t_lexer *lexer)
 	char	*str1;
 	int		start;
 
-	lexer_advance(&lexer);
-	if (!check_close_quote(lexer->content, '\'', lexer->i))
+	if (!check_close_quote(lexer->content, '\'', lexer->i + 1))
 		return (init_token(TOKEN_ERR, ft_strjoin("Unclosed quote near ", \
-		lexer->content + lexer->i - 1)));
+		lexer->content + lexer->i)));
+	if (check_herdoc(lexer))
+		return (lexer_collect_quotes_herdoc(lexer, '\''));
+	lexer_advance(&lexer);
 	start = lexer->i;
 	while (lexer->c != '\0' && lexer->c != '\'')
 		lexer_advance(&lexer);

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:21:42 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/26 23:36:13 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:47:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_token	*lexer_simple_caraters(t_lexer *lexer)
 	char	*str1;
 	int		s;
 
+	if (check_herdoc(lexer))
+		return (lexer_collect_env_herdoc(lexer, ""));
 	str = ft_strdup(lexer->content);
 	s = lexer->i;
 	while (lexer->c != '\0' && !check_spcl_char(SPCL, lexer->c))

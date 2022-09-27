@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/26 20:40:08 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:53:44 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define SPCL "&<>$|\' ()\"\t"
 # define SPCL1 "<>$|\' \"\t"
 # define SPCL2 "&<>$|\' \"\t"
-# define SPCL3 "()<>|\' \"\t"
+# define SPCL3 "$()<>|\' \"\t"
 //Elements
 typedef struct s_env
 {
