@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 16:31:13 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/25 18:10:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_nodes(t_node *nodes)
 		tmp = nodes;
 		nodes = nodes->next;
 		free(tmp->value);
+		free_dstr(tmp->param);
 		free(tmp);
 	}
 }

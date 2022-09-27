@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:06:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/15 13:58:55 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/25 18:04:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ char	**ft_split(char const *s, char c)
 	char	**p;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	i = 0;
 	position = 0;
 	wordlen = 0;
 	size = ft_total_word(s, c);
 	p = (char **)ft_calloc((size + 1), sizeof(char *));
 	if (!p)
-		return (NULL);
+		return (0);
 	while (i < size)
 	{
 		wordlen = ft_word_len(s, c, position);

@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   visitor.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/26 00:02:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/26 00:02:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef MINISHELL_H
-# define MINISHELL_H
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <string.h>
-# include <signal.h>
-
-# include "libft.h"
-# include "signal.h"
-# include "vars.h"
-# include "util.h"
-# include "token.h"
-# include "lexer.h"
-# include "scan_grammar.h"
-# include "node.h"
-# include "visitor.h"
+#	ifndef VISITOR_H
+# define VISITOR_H
 
 #	endif

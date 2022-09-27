@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node.c                                             :+:      :+:    :+:   */
+/*   node_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:11:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 16:43:36 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:11:24 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_node	*init_node(int type, char *value)
 		return (0);
 	node->type = type;
 	node->value = value;
+	node->param = (char **)malloc(sizeof(char *));
+	node->param[0] = 0;
 	node->next = (void *)0;
 	node->prev = (void *)0;
 	return (node);
@@ -39,18 +41,6 @@ t_node	*get_last_node(t_node *node)
 	return (last);
 }
 
-void	print_nodes(t_node *nodes)
-{
-	t_node	*tmp;
-
-	tmp = nodes;
-	while (tmp)
-	{
-		printf("type %d val {{%s}}\n", tmp->type, tmp->value);
-		tmp = tmp->next;
-	}
-}
-
 void	add_last_node(t_node **nodes, t_node *node)
 {
 	t_node	*tmp;
@@ -65,16 +55,22 @@ void	add_last_node(t_node **nodes, t_node *node)
 		*nodes = node;
 }
 
-t_node	*get_nodes(t_token *token)
+void	print_nodess(t_node *nodes)
 {
-	t_token	*tmp;
-	t_node	*nodes;
+	t_node	*tmp;
+	int		i;
 
-	tmp = token;
-	nodes = init_node(tmp->)
+	tmp = nodes;
 	while (tmp)
 	{
-		printf("type %d val {{%s}}\n", tmp->type, tmp->value);
+		printf("node type %d val {{%s}}\n", tmp->type, tmp->value);
+		i = 0;
+		while (tmp->param && tmp->param[i])
+		{
+			printf("param  %s ", tmp->param[i]);
+			i++;
+		}
+		printf("\n");
 		tmp = tmp->next;
 	}
 }

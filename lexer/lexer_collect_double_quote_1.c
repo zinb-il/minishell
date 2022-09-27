@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/23 18:44:15 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 13:55:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,12 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer)
 	char	*str3;
 	char	*str1;
 
-	lexer_advance(&lexer);
-	if (!check_close_quote(lexer->content, '"', lexer->i))
+	if (!check_close_quote(lexer->content, '"', lexer->i + 1))
 		return (init_token(TOKEN_ERR, ft_strjoin("Unclosed quote near ", \
-		lexer->content + lexer->i - 1)));
+		lexer->content + lexer->i)));
+	if (check_herdoc(lexer))
+		return (lexer_collect_double_quote_herdoc(lexer));
+	lexer_advance(&lexer);
 	str2 = ft_strdup("");
 	while (lexer->c != '\0' && lexer->c != '"')
 	{
