@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:38:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 17:42:53 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:08:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_token	*lexer_collect_quotes_herdoc(t_lexer *lexer, char c)
 		token->type = TOKEN_WORD_EX;
 		token->value = ft_strjoin(str, token->value);
 		free(str1);
-		free(str);
 	}
+	free(str);
 	return (token);
 }

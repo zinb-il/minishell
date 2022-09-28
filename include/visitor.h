@@ -6,11 +6,13 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/26 00:02:04 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:11:18 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef VISITOR_H
 # define VISITOR_H
+
+void	open_heredoc_files(t_node *node);
 
 #	endif

@@ -11,13 +11,13 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -lreadline -fsanitize=address -g
+#CFLAGS = -Wall -Wextra -Werror -lreadline -fsanitize=address -g
 
 LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
 
 CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
 
-#CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = minishell
 

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:24:56 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 23:52:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 22:26:09 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ t_node	*get_nodes(t_token *token)
 		tmpn = get_next_node(&token);
 		add_last_node(&nodes, tmpn);
 	}
-	print_nodess(nodes);
+	//print_nodess(nodes);
 	return (nodes);
 }

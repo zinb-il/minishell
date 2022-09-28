@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:31:51 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 18:01:56 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:13:55 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ t_token	*lexer_collect_env_herdoc_quotes(t_lexer *lexer, char *str, char c)
 	if (c == '$')
 		token = lexer_collect_env_herdoc(lexer, "$");
 	else
-		token = lexer_collect_quotes_herdoc(lexer, lexer->c);
+	{
+		if (!check_close_quote(lexer->content, c, lexer->i + 1))
+			token = init_token(TOKEN_ERR, ft_strjoin("Unclosed quote near ", \
+			lexer->content + lexer->i));
+		else
+			token = lexer_collect_quotes_herdoc(lexer, lexer->c);
+	}
 	if (token->type != TOKEN_ERR)
 	{
 		str1 = token->value;
