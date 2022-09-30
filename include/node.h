@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:54:19 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 23:42:23 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:56:24 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_node
 	t_node_type		type;
 	char			*value;
 	char			**param;
+	char			**exd_p;
 	struct s_node	*prev;
 	struct s_node	*next;
 }t_node;

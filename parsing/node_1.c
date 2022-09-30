@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:11:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 21:11:24 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:28:35 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ t_node	*init_node(int type, char *value)
 	node->type = type;
 	node->value = value;
 	node->param = (char **)malloc(sizeof(char *));
+	node->exd_p = (char **)malloc(sizeof(char *));
 	node->param[0] = 0;
+	node->exd_p[0] = 0;
 	node->next = (void *)0;
 	node->prev = (void *)0;
 	return (node);
@@ -67,7 +69,7 @@ void	print_nodess(t_node *nodes)
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{
-			printf("param  %s ", tmp->param[i]);
+			printf("param  %s %s ", tmp->param[i], tmp->exd_p[i]);
 			i++;
 		}
 		printf("\n");

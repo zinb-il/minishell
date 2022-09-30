@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 21:35:54 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/28 23:08:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <readline/history.h>
 # include <string.h>
 # include <signal.h>
+# include <dirent.h>
 
 # include "libft.h"
 # include "signal.h"

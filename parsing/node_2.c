@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:08:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 23:52:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:26:32 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,27 @@ void	get_node_param(t_node **node, t_token *token)
 
 void	check_if_expand(t_node **node, t_token *token)
 {
-	char	**param;
+	char	**exd_p;
 	int		i;
 	int		j;
 
 	if (!token || token->type == TOKEN_EOF)
 		return ;
-	i = (int)ft_strsize((*node)->param) + 1;
-	param = (char **)malloc(sizeof(char *) * (i + 1));
+	i = (int)ft_strsize((*node)->exd_p) + 1;
+	exd_p = (char **)malloc(sizeof(char *) * (i + 1));
 	j = 0;
-	while ((*node)->param && (*node)->param[j])
+	while ((*node)->exd_p && (*node)->exd_p[j])
 	{
-		param[j] = ft_strdup((*node)->param[j]);
+		exd_p[j] = ft_strdup((*node)->exd_p[j]);
 		j++;
 	}
-	free_dstr((*node)->param);
+	free_dstr((*node)->exd_p);
+	if (token->type == TOKEN_WORD_EX)
+		exd_p[j] = ft_strdup("0");
 	if (token->type == TOKEN_WORD)
-		param[j] = ft_strdup("1");
-	else
-		param[j] = ft_strdup("0");
-	param[j + 1] = 0;
-	(*node)->param = param;
+		exd_p[j] = ft_strdup("1");
+	exd_p[j + 1] = 0;
+	(*node)->exd_p = exd_p;
 }
 
 t_node	*advs_node(t_token **token, t_node *node)
@@ -75,6 +75,7 @@ t_node	*get_node_wored_cmd(t_token **token)
 	while ((*token)->type == TOKEN_WORD || (*token)->type == TOKEN_WORD_EX)
 	{
 		get_node_param(&node, *token);
+		check_if_expand(&node, *token);
 		(*token) = (*token)->next;
 	}
 	return (node);

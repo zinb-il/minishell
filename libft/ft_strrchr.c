@@ -1,47 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_token_ast_free.c                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/29 22:27:14 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/12/02 20:29:13 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/29 23:03:13 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	free_tokens(t_token *tokens)
+char	*ft_strrchr(const char *str, int c)
 {
-	t_token	*tmp;
+	int		i;
+	char	*p;
 
-	while (tokens)
+	p = (char *)str;
+	c = (char)c;
+	i = ft_strlen(p);
+	while (i >= 0)
 	{
-		tmp = tokens;
-		tokens = tokens->next;
-		free(tmp->value);
-		free(tmp);
+		if (p[i] == c)
+			return (p + i);
+		i--;
 	}
-}
-
-void	free_nodes(t_node *nodes)
-{
-	t_node	*tmp;
-
-	while (nodes)
-	{
-		tmp = nodes;
-		nodes = nodes->next;
-		free(tmp->value);
-		free_dstr(tmp->param);
-		free_dstr(tmp->exd_p);
-		free(tmp);
-	}
-}
-
-void	free_lexer(t_lexer *lex)
-{
-	free(lex->content);
-	free(lex);
+	return (0);
 }
