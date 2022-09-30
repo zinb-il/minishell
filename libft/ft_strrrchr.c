@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:32:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/30 10:49:56 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/30 11:44:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ char	*ft_strrrchr(const char *str, int c)
 			return (ft_substr(str, 0, i + 1));
 		i--;
 	}
-	return ("");
+	return (ft_strdup(""));
 }

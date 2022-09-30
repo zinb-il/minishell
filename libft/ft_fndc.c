@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_part.c                                       :+:      :+:    :+:   */
+/*   ft_fndc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/30 13:54:22 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/30 11:26:11 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/30 11:30:14 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	first_part(char *s)
+int	ft_fndc(char *str, char c)
 {
-	t_token	*token;
-	t_node	*node;
+	int	i;
 
-	token = lexer(s);
-	if (!token || !scann_grammar(token))
-		return ;
-	node = get_nodes(token);
-	open_heredoc_files(node);
-	wild_card(node);
-	//print_nodess(node);
-	free_nodes(node);
-	free_tokens(token);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
