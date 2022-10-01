@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/30 13:54:22 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:32:34 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	first_part(char *s)
 	open_heredoc_files(node);
 	wild_card(node);
 	//print_nodess(node);
+	//print_tokens(token);
 	free_nodes(node);
 	free_tokens(token);
 }
