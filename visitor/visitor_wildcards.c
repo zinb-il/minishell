@@ -6,52 +6,65 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/30 17:47:34 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:03:33 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	wild_card_matching(char *str, char *patern)
+int	wild_card_matching(char *patern, char *str, int n, int m)
 {
-	int	**mat;
-	int	m;
-	int	n;
-	int	i;
-	int	j;
+	int		**mat;
+	int		i;
+	int		j;
 
-	m = (int)ft_strlen(str) + 1;
-	n = (int)ft_strlen(patern) + 1;
-	mat = (int **)ft_calloc(sizeof(int), m * n);
+	mat = init_matrix(m, n);
 	i = 0;
-	while (i < m)
+	while (++i < (n + 1))
+		if (patern[i - 1] == '*')
+			mat[0][i] = mat[0][i - 1];
+	i = 0;
+	while (++i < (m + 1))
 	{
 		j = 0;
-		while (j < n)
+		while (++j < (n + 1))
 		{
-			printf("%d ", mat[i][j]);
-			j++;
+			if (patern[j - 1] == '*')
+				mat[i][j] = (mat[i][j - 1] || mat[i - 1][j]);
+			if (patern[j - 1] == str[i - 1])
+				mat[i][j] = mat[i - 1][j - 1];
 		}
-		i++;
 	}
-	return (0);
+	i = mat[i - 1][j - 1];
+	free_mat(mat, m + 1);
+	return (i);
 }
 
-void	ft_opendir(t_node **node, char *s, int i)
+void	ft_opendir(t_node **node, char *s, int i, char **list)
 {
 	DIR				*dp;
 	struct dirent	*dirp;
+	char			*patern;
 
 	dp = opendir(s);
+	if (dp == NULL)
+	{
+		printf("Cannot open directory '%s'\n", s);
+		return ;
+	}
 	dirp = readdir(dp);
-	(void)node;
-	(void)i;
+	patern = find_patern((*node)->param[i]);
 	while (dirp != 0)
 	{
 		if (dirp->d_name[0] != '.')
-			wild_card_matching((*node)->param[i], dirp->d_name);
+		{
+			if (wild_card_matching(patern, dirp->d_name, \
+			ft_strlen(patern), ft_strlen(dirp->d_name)))
+				new_expand_param(list, dirp->d_name);
+		}
 		dirp = readdir(dp);
 	}
+	free(patern);
 	closedir(dp);
 }
 
@@ -80,6 +93,7 @@ void	expand_wildcards(t_node **node)
 	int				i;
 	char			*s;
 	char			*s1;
+	char			**list;
 
 	i = 0;
 	while ((*node)->param[i] != 0)
@@ -87,8 +101,13 @@ void	expand_wildcards(t_node **node)
 		if ((*node)->exd_p[i][0] == '1' && ft_fndc((*node)->param[i], '*'))
 		{
 			s1 = ft_strrrchr((*node)->param[i], '/');
+			if (ft_fndc(s1, '*'))
+			{
+				free(s1);
+				return ;
+			}
 			s = ft_strjoin("./", s1);
-			ft_opendir(node, s, i);
+			ft_opendir(node, s, i, list);
 			free(s);
 			free(s1);
 		}

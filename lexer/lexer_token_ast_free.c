@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/29 22:27:14 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:31:34 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,17 @@ void	free_lexer(t_lexer *lex)
 {
 	free(lex->content);
 	free(lex);
+}
+
+void	free_mat(int **mat, int m)
+{
+	int	i;
+
+	i = 0;
+	while (i < m)
+	{
+		free(mat[i]);
+		i++;
+	}
+	free(mat);
 }
