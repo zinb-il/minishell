@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:31:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/01 23:55:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:46:14 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,20 @@ char	*find_patern(char *param)
 char	**new_expand_param(char **param, char *str)
 {
 	int		s;
-	int		i;
+	int		j;
 	char	**new;
 
 	s = (int)ft_strsize(param) + 1;
 	new = (char **)malloc(sizeof(char *) * (s + 1));
-	i = 0;
+	j = 0;
 	while (param && param[j])
 	{
 		new[j] = ft_strdup(param[j]);
 		j++;
 	}
-	free_dstr(param);
-	new[j] = ft_strdup(token->value);
+	if (param)
+		free_dstr(param);
+	new[j] = ft_strdup(str);
 	new[j + 1] = 0;
 	return (new);
 }

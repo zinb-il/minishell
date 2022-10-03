@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_env.c                                       :+:      :+:    :+:   */
+/*   lexer_token_ast_free_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 19:57:50 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 00:40:26 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/03 00:44:28 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/03 00:45:38 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	free_dstr(char	**str)
+void	free_cmd(t_cmd *cmd)
 {
-	int	i;
+	t_cmd	*tmp;
 
-	i = 0;
-	while (str && str[i])
+	while (cmd)
 	{
-		free(str[i]);
-		i++;
+		tmp = cmd;
+		cmd = cmd->next;
+		free(tmp->value);
+		free(tmp->input);
+		free(tmp->output);
+		free(tmp->append);
+		free_dstr(tmp->param);
+		free(tmp);
 	}
-	free(str);
 }
 
-void	free_env(t_env *env)
+void	free_ast(t_ast *ast)
 {
-	t_env	*tmp;
+	t_ast	*tmp;
 
-	if (env)
+	while (ast)
 	{
-		while (env)
-		{
-			tmp = env;
-			free(tmp->env_att);
-			free(tmp->env_val);
-			env = env->next;
-			free(tmp);
-		}
+		tmp = ast;
+		ast = ast->next;
+		free_cmd(ast->line_cmd);
+		free(tmp);
 	}
 }

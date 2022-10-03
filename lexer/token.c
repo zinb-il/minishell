@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:17:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/23 22:33:37 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 00:08:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	add_last_token(t_token **tokens, t_token *token)
 {
 	t_token	*lst;
 
-	if (tokens || *tokens)
+	if (tokens && *tokens)
 	{
 		lst = get_last_token(*tokens);
 		lst->next = token;

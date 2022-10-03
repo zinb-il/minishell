@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visito_herdoc.c                                    :+:      :+:    :+:   */
+/*   visitor_herdoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/29 22:36:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 01:38:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	write_inside_heredoc(t_node *node)
 	}
 	close(fd);
 	free(str);
-	free(name);
+	free(node->param[0]);
+	node->param[0] = name;
 }
 
 void	open_heredoc_files(t_node *node)

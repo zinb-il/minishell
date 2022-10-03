@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:11:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/29 22:28:35 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 00:08:35 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	add_last_node(t_node **nodes, t_node *node)
 {
 	t_node	*tmp;
 
-	if (nodes || *nodes)
+	if (nodes && *nodes)
 	{
 		tmp = get_last_node(*nodes);
 		tmp->next = node;
@@ -69,7 +69,7 @@ void	print_nodess(t_node *nodes)
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{
-			printf("param  %s %s ", tmp->param[i], tmp->exd_p[i]);
+			printf("param  %s \n", tmp->param[i]);
 			i++;
 		}
 		printf("\n");

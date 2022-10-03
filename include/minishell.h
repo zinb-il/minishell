@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/28 23:08:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/02 23:59:51 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # include "scan_grammar.h"
 # include "node.h"
 # include "visitor.h"
+# include "ast.h"
 
 #	endif
