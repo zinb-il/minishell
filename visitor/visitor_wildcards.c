@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/02 21:50:31 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:53:11 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ char	**expand_wildcards(t_node **node)
 				ft_opendir(node, s, i, &list);
 				free(s);
 			}
+			else
+				list = new_expand_param(list, (*node)->param[i]);
 			free(s1);
 		}
 		else

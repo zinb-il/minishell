@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 21:03:56 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:47:11 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ t_cmd	*get_cmd_line(t_node **node)
 			(*node) = (*node)->next;
 		tmp = get_next_cmd(node);
 		add_cmd(&cmd_line, tmp);
-		if ((*node)->next)
-			(*node) = (*node)->next;
+		/*if ((*node)->next)
+			(*node) = (*node)->next;*/
 	}
 	return (cmd_line);
 }
