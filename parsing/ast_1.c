@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:24:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 22:57:18 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:59:09 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_ast(t_ast *ast)
 	{
 		printf("type %d\n", tmp->type);
 		print_cmd(tmp->line_cmd);
-		printf("----------------------------------\n");
+		printf("-----------------------------\n");
 		tmp = tmp->next;
 	}
 }
