@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:24:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 14:56:03 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:07:13 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ast	*init_ast(int type, t_cmd *cmd)
 	ast = (t_ast *)malloc(1 * sizeof(t_ast));
 	ast->type = type;
 	ast->line_cmd = cmd;
-	ast->next = NULL;
+	ast->next = 0;
 	return (ast);
 }
 

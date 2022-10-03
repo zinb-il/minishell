@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 19:23:25 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:03:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_cmd	*get_next_cmd(t_node **node)
 		if ((*node)->type == NODE_CMD)
 		{
 			tmp->value = ft_strdup((*node)->value);
+			if (tmp->param)
+				free_dstr(tmp->param);
 			tmp->param = ft_strdup_d((*node)->param);
 		}
 		if ((*node)->type == NODE_RED_IN || (*node)->type == NODE_HEREDOC)

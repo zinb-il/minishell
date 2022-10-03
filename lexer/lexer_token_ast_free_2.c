@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:44:28 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 00:45:38 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:33:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ void	free_cmd(t_cmd *cmd)
 	{
 		tmp = cmd;
 		cmd = cmd->next;
-		free(tmp->value);
-		free(tmp->input);
-		free(tmp->output);
-		free(tmp->append);
-		free_dstr(tmp->param);
+		if (tmp->value)
+			free(tmp->value);
+		if (tmp->input)
+			free(tmp->input);
+		if (tmp->output)
+			free(tmp->output);
+		if (tmp->append)
+			free(tmp->append);
+		if (tmp->param)
+			free_dstr(tmp->param);
 		free(tmp);
 	}
 }
@@ -37,7 +42,8 @@ void	free_ast(t_ast *ast)
 	{
 		tmp = ast;
 		ast = ast->next;
-		free_cmd(ast->line_cmd);
+		if (tmp->line_cmd)
+			free_cmd(tmp->line_cmd);
 		free(tmp);
 	}
 }
