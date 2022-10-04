@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:50:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 16:48:05 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:11:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_cmd	*init_cmd(void)
 	cmd->value = (void *)0;
 	cmd->input = (void *)0;
 	cmd->output = (void *)0;
-	cmd->append = (void *)0;
+	cmd->append = 0;
 	cmd->param = (char **)malloc(sizeof(char *));
 	cmd->param[0] = 0;
 	cmd->next = (void *)0;
@@ -61,7 +61,7 @@ void	print_cmd(t_cmd *cmd)
 	tmp = cmd;
 	while (tmp)
 	{
-		printf("val: %s input:%s output:%s append:%s\n", tmp->value, \
+		printf("val: %s input:%s output:%s append:%d\n", tmp->value, \
 		tmp->input, tmp->output, tmp->append);
 		i = 0;
 		while (tmp->param && tmp->param[i])

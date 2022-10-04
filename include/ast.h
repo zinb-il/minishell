@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 22:23:05 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:12:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_cmd
 	char			**param;
 	char			*input;
 	char			*output;
-	char			*append;
+	int				append;
 	struct s_cmd	*next;
 }t_cmd;
 

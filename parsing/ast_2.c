@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 22:47:11 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:11:36 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	not_other_ast(t_node **node)
 	return (0);
 }
 
+void	free_oldin_out(char	**str1, char *str2)
+{
+	if (str1 && *str1 && ft_strlen(*str1) > 0)
+		free(*str1);
+	*str1 = ft_strdup(str2);
+}
+
 t_cmd	*get_next_cmd(t_node **node)
 {
 	t_cmd	*tmp;
@@ -56,11 +63,13 @@ t_cmd	*get_next_cmd(t_node **node)
 			tmp->param = ft_strdup_d((*node)->param);
 		}
 		if ((*node)->type == NODE_RED_IN || (*node)->type == NODE_HEREDOC)
-			tmp->input = ft_strdup((*node)->param[0]);
+			free_oldin_out(&(tmp->input), (*node)->param[0]);
+		if ((*node)->type == NODE_RED_OUT || (*node)->type == NODE_RED_AOUT)
+			free_oldin_out(&(tmp->output), (*node)->param[0]);
 		if ((*node)->type == NODE_RED_OUT)
-			tmp->output = ft_strdup((*node)->param[0]);
+			tmp->append = 0;
 		if ((*node)->type == NODE_RED_AOUT)
-			tmp->append = ft_strdup((*node)->param[0]);
+			tmp->append = 1;
 		(*node) = (*node)->next;
 	}
 	return (tmp);
@@ -79,8 +88,6 @@ t_cmd	*get_cmd_line(t_node **node)
 			(*node) = (*node)->next;
 		tmp = get_next_cmd(node);
 		add_cmd(&cmd_line, tmp);
-		/*if ((*node)->next)
-			(*node) = (*node)->next;*/
 	}
 	return (cmd_line);
 }

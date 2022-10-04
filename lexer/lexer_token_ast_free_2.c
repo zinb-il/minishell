@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:44:28 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 19:33:01 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:12:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	free_cmd(t_cmd *cmd)
 			free(tmp->input);
 		if (tmp->output)
 			free(tmp->output);
-		if (tmp->append)
-			free(tmp->append);
 		if (tmp->param)
 			free_dstr(tmp->param);
 		free(tmp);
