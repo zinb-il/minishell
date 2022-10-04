@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 22:59:11 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:07:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,17 @@ char	**expand_wildcards(t_node **node)
 	list = 0;
 	while ((*node)->param[i] != 0)
 	{
-		if ((*node)->exd_p[i][0] == '1' && ft_fndc((*node)->param[i], '*'))
+		s1 = ft_strrrchr((*node)->param[i], '/');
+		if ((*node)->exd_p[i][0] == '1' && ft_fndc((*node)->param[i], '*') \
+		&& !ft_fndc(s1, '*'))
 		{
-			s1 = ft_strrrchr((*node)->param[i], '/');
-			if (!ft_fndc(s1, '*'))
-			{
-				s = ft_strjoin("./", s1);
-				ft_opendir(node, s, i, &list);
-				free(s);
-			}
-			else
-				list = new_expand_param(list, (*node)->param[i]);
-			free(s1);
+			s = ft_strjoin("./", s1);
+			ft_opendir(node, s, i, &list);
+			free(s);
 		}
 		else
 			list = new_expand_param(list, (*node)->param[i]);
+		free(s1);
 		i++;
 	}
 	return (list);

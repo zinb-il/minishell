@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 22:59:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:59:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	first_part(char *s)
 	print_ast(ast);
 	free_nodes(node);
 	free_tokens(token);
-	//free_ast(ast);
+	free_ast(ast);
 }
