@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 20:12:19 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:03:24 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	free_ast(t_ast *ast);
 void	print_ast(t_ast *ast);
 t_ast	*advs_ast(t_node **node, t_ast *ast);
 t_ast	*get_next_ast(t_node **node);
+char	**ft_strdup_d(char	**param);
+int		not_other_ast(t_node **node);
+void	free_oldin_out(char	**str1, char *str2);
+t_cmd	*get_next_cmd(t_node **node);
 t_cmd	*get_cmd_line(t_node **node);
 t_ast	*get_ast(t_node *node);
 

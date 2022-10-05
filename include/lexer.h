@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 18:03:45 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:13:10 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ char	*get_herdoc_str(t_lexer *lexer, char c);
 char	*lexer_after_single_and(t_lexer *lexer, char *str1);
 int		check_herdoc(t_lexer *lexer);
 t_token	*lexer_get_next_token(t_lexer *lexer);
-
 t_token	*lexer_collect_pipe(t_lexer *lexer);
 t_token	*lexer_collect_and(t_lexer *lexer);
 t_token	*lexer_collect_great(t_lexer *lexer);
 t_token	*lexer_collect_less(t_lexer *lexer);
 t_token	*lexer_collect_minishell(t_lexer *lexer);
-
 t_token	*lexer_collect_id(t_lexer *lexer);
 
 //GET word inside single quote

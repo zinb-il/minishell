@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_part.c                                       :+:      :+:    :+:   */
+/*   visitor_creat_output_file.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 21:28:00 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/04 21:22:33 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/04 21:29:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	first_part(char *s)
+void	creat_output_files(t_node *node)
 {
-	t_token	*token;
-	t_node	*node;
-	t_ast	*ast;
+	t_node	*tmp;
 
-	token = lexer(s);
-	if (!token || !scann_grammar(token))
+	tmp = node;
+	while (tmp && tmp->type != NODE_EOF)
 	{
-		g_vars.exit_code = 258;
-		return ;
+		if (tmp->type == NODE_RED_OUT)
+			open(tmp->param[0], O_CREAT | O_RDWR | O_TRUNC, 0644);
+		if (tmp->type == NODE_RED_AOUT)
+			open(tmp->param[0], O_CREAT | O_RDWR | O_APPEND, 0644);
+		tmp = tmp->next;
 	}
-	node = get_nodes(token);
-	open_heredoc_files(node);
-	wild_card(node);
-	creat_output_files(node);
-	ast = get_ast(node);
-	print_ast(ast);
-	free_nodes(node);
-	free_tokens(token);
-	free_ast(ast);
 }

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:01:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 19:01:49 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/05 10:36:20 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,14 @@ int	scann_rparenth(t_token *token, t_token *tokens)
 	if (!token->prev)
 		i = 0;
 	if (!!token->prev && (token->prev->type == TOKEN_WORD \
-	|| token->prev->type == TOKEN_WORD_EX))
+	|| token->prev->type == TOKEN_WORD_EX || \
+	token->prev->type == TOKEN_RPARENTH))
 		i++;
 	else
 		i = 0;
 	if (token->next->type != TOKEN_PIPE && token->next->type != TOKEN_DPIPE \
 	&& token->next->type != TOKEN_DAND && token->next->type != TOKEN_LPARENTH \
-	&& token->next->type != TOKEN_EOF)
+	&& token->next->type != TOKEN_RPARENTH && token->next->type != TOKEN_EOF)
 		i = 0;
 	if (!i)
 	{
