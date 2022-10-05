@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 22:13:10 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/05 10:55:58 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
 char	*add_dollar_or_not(char *str, int i);
 char	*lexer_collect_double_quote_env_dollar(t_lexer *lexer);
 t_token	*lexer_collect_env_str_quote(t_lexer *lexer, char *str, char c, int i);
+t_token	*lexer_collect_dollar(t_lexer *lexer);
 t_token	*lexer_collect_env_str(t_lexer *lexer);
+t_token	*lexer_collect_env_herdoc_quotes(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_env_and(t_lexer *lexer);
 t_token	*lexer_collect_env_parenth(t_lexer *lexer);
-t_token	*lexer_collect_env_herdoc(t_lexer *lexer, char *str);
+t_token	*lexer_collect_env_herdoc(t_lexer *lexer, char	*s);
 t_token	*lexer_collect_env(t_lexer *lexer);
 
 //GET simple Word
