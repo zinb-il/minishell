@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visitor_wildcards.c                                :+:      :+:    :+:   */
+/*   visitor_wildcards_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 16:20:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:49:32 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	ft_opendir(t_node **node, char *s, int i, char ***list)
 
 	dp = opendir(s);
 	if (dp == 0)
-	{
-		printf("Cannot open directory '%s'\n", s);
 		return ;
-	}
 	dirp = readdir(dp);
 	patern = find_patern((*node)->param[i]);
 	while (dirp != 0)
@@ -60,7 +57,8 @@ void	ft_opendir(t_node **node, char *s, int i, char ***list)
 		{
 			if (wild_card_matching(patern, dirp->d_name, \
 			ft_strlen(patern), ft_strlen(dirp->d_name)))
-				(*list) = new_expand_param((*list), dirp->d_name);
+				(*list) = new_expand_param((*list), dirp->d_name, \
+				ft_strrrchr((*node)->param[i], '/'));
 		}
 		dirp = readdir(dp);
 	}
@@ -76,7 +74,7 @@ int	check_inlist_expand(t_node *node)
 	if (!str)
 		str = ft_strdup(node->value);
 	else
-		str++;
+		str = ft_substr(node->value, 1, ft_strlen(node->value) - 1);
 	if (!ft_strcmp(str, "cd") || !ft_strcmp(str, "pwd") \
 	|| !ft_strcmp(str, "unset") || !ft_strcmp(str, "env") \
 	|| !ft_strcmp(str, "export") || !ft_strcmp(str, "exit"))
@@ -108,7 +106,7 @@ char	**expand_wildcards(t_node **node)
 			free(s);
 		}
 		else
-			list = new_expand_param(list, (*node)->param[i]);
+			list = new_expand_param(list, (*node)->param[i], ft_strdup(""));
 		free(s1);
 		i++;
 	}

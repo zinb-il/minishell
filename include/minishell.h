@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/02 23:59:51 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:16:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <signal.h>
 # include <dirent.h>
+# include <errno.h>
 
 # include "libft.h"
 # include "signal.h"
@@ -33,5 +34,6 @@
 # include "node.h"
 # include "visitor.h"
 # include "ast.h"
+# include "execution.h"
 
 #	endif

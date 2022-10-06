@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 21:43:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:51:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	free_mat(int **mat, int m);
 int		**init_matrix(int m, int n);
 char	*find_patern(char *param);
-char	**new_expand_param(char **param, char *str);
+char	**new_expand_param(char **param, char *str, char *str1);
 int		wild_card_matching(char *patern, char *str, int n, int m);
 void	ft_opendir(t_node **node, char *s, int i, char ***list);
 int		check_inlist_expand(t_node *node);

@@ -5,7 +5,8 @@ SRCS = main.c \
 	   lexer/*.c \
 	   shell_grammar/*.c \
 	   parsing/*.c \
-	   visitor/*.c
+	   visitor/*.c \
+	   execution/*.c
 
 OBJS = $(SRCS:.c=.o)
 
