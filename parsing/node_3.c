@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:24:56 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/28 16:11:54 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:05:28 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_node	*get_next_node_wored(t_token **token)
 		node = init_node(NODE_RED_IN, ft_strdup("<"));
 	if ((*token)->type == TOKEN_DLESS)
 		return (get_node_wored_herdoc(token));
-	if ((*token)->type == TOKEN_WORD)
+	if ((*token)->type == TOKEN_WORD || (*token)->type == TOKEN_WORD_EX)
 		return (get_node_wored_cmd(token));
 	(*token) = (*token)->next;
 	get_node_param(&node, (*token));
@@ -56,9 +56,9 @@ t_node	*get_nodes(t_token *token)
 	t_node	*nodes;
 	t_node	*tmpn;
 
-	tmpn = get_next_node(&token);
-	nodes = tmpn;
-	while (tmpn->type != NODE_EOF)
+	nodes = get_next_node(&token);
+	tmpn = nodes;
+	while (tmpn && tmpn->type != NODE_EOF)
 	{
 		tmpn = get_next_node(&token);
 		add_last_node(&nodes, tmpn);

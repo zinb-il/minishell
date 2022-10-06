@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 11:05:14 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:15:12 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,27 @@ int	check_execute_builtin(t_ast *ast)
 	return (1);
 }
 
+void	start_execute_cmd_line(t_ast **ast)
+{
+	if (!ast || !*ast)
+		return ;
+	while (*ast && (*ast)->type != AST_EOF)
+	{
+		if ((*ast)->type == AST_EOF || \
+		(g_vars.exit_code && (*ast)->type == AST_DAND) \
+		|| (!g_vars.exit_code && (*ast)->type == AST_DOR))
+			break ;
+		if ((*ast)->type == AST_CMDLINE)
+			ft_execute_cmd_line((*ast)->line_cmd);
+		(*ast) = (*ast)->next;
+	}
+}
+
 void	second_part(t_ast *ast)
 {
 	if (!ast)
 		return ;
 	if (!check_execute_builtin(ast))
 		return ;
-	while (ast && ast->type != AST_EOF)
-	{
-		if (ast->type == AST_EOF || (g_vars.exit_code && ast->type == AST_DAND) \
-		|| (!g_vars.exit_code && ast->type == AST_DOR))
-			break ;
-		if (ast->type == AST_LPARENTH)
-		{
-			ast = ast->next;
-			second_part(ast);
-		}
-		if (ast->type == AST_CMDLINE)
-			ft_execute_cmd_line(ast->line_cmd);
-		ast = ast->next;
-	}
+	start_execute_cmd_line(&ast);
 }

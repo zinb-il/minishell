@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 10:39:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:14:44 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	first_part(char *s)
 	wild_card(node);
 	creat_output_files(node);
 	ast = get_ast(node);
-	//print_nodess(node);
 	free_nodes(node);
 	free_tokens(token);
 	second_part(ast);
