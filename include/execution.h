@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:11:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 18:55:53 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 22:26:31 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXECUTION_H
 
 //Util function
+int		ft_lstsize(t_cmd *lst);
 void	ft_error(char *msg, int i);
 int		check_inlist_builtin(char *s);
 int		ft_chekc_inputfile(char *str);

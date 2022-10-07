@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 12:15:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:05:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	start_execute_cmd_line(t_ast **ast)
 	{
 		if ((*ast)->type == AST_EOF || \
 		(g_vars.exit_code && (*ast)->type == AST_DAND) \
-		|| (!g_vars.exit_code && (*ast)->type == AST_DOR))
+		|| (g_vars.exit_code == 0 && (*ast)->type == AST_DOR))
 			break ;
 		if ((*ast)->type == AST_CMDLINE)
 			ft_execute_cmd_line((*ast)->line_cmd);

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:14:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/25 21:06:57 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:11:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strsize(char **str)
 	i = 0;
 	if (!str)
 		return (i);
-	while (str[i] != '\0')
+	while (str[i])
 		i++;
 	return (i);
 }

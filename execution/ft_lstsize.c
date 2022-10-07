@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 18:01:32 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/12/07 13:59:22 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/06 22:26:15 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_minishell(char **env)
+int	ft_lstsize(t_cmd *lst)
 {
-	get_env(env);
-	signals(g_vars.sign);
-}
+	int		i;
 
-int	str_redline(char *str)
-{
-	if (!str)
+	i = 0;
+	while (lst)
 	{
-		printf("\rexit\n");
-		return (0);
+		++i;
+		lst = lst->next;
 	}
-	if (!*str)
-		return (1);
-	return (2);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 01:38:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:00:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	write_inside_heredoc(t_node *node)
 
 	name = ft_strjoin(TMP_FILE, node->param[0]);
 	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	add_herdo_name(name);
 	str = readline(PS2);
+	g_vars.sign = 3;
 	while (str && ft_strcmp(str, node->param[0]))
 	{
 		if (!ft_strcmp(node->exd_p[0], "1"))
@@ -88,6 +90,7 @@ void	write_inside_heredoc(t_node *node)
 		free(str);
 		str = readline(PS2);
 	}
+	g_vars.sign = 0;
 	close(fd);
 	free(str);
 	free(node->param[0]);

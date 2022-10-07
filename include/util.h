@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:35:53 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 11:07:04 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:30:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ int		str_redline(char *str);
 
 //Display new prompt
 void	get_new_promt(char *str);
+
+//Heredoc functions
+void	add_herdo_name(char	*str);
+void	unlik_herdo_name(void);
 
 #	endif

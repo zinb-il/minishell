@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:23:27 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 11:29:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 22:45:37 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	get_new_promt(char *str)
 {
-	if (!rl_on_new_line())
-	{
-		rl_replace_line("", 1);
-		rl_redisplay();
-		printf("%s\n", str);
-		free(str);
-	}
+	ft_putstr_fd(ERR_EXEC, 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	free(str);
 }

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:24:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 18:01:32 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/12/06 18:38:17 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/06 22:16:14 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	init_minishell(char **env)
+void	ft_putstr_fd(char *s, int fd)
 {
-	get_env(env);
-	signals(g_vars.sign);
-}
+	size_t	i;
 
-int	str_redline(char *str)
-{
-	if (!str)
+	i = 0;
+	if (s)
 	{
-		printf("\rexit\n");
-		return (0);
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			++i;
+		}
 	}
-	if (!*str)
-		return (1);
-	return (2);
 }

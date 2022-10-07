@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:20:51 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/30 11:30:10 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/06 22:25:10 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int		ft_isalnum(int c);
 char	*ft_itoa(int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 size_t	ft_strsize(char **str);
