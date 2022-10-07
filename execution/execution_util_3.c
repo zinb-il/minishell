@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_util_3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 15:48:42 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:51:55 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,5 @@ void	ft_execute_cmd(t_cmd *cmd)
 	ft_execute_cmd_join(cmd, path, env);
 	free_dstr(path);
 	free_dstr(env);
-	while (1)
-		;
 	ft_error(ft_strjoin(cmd->value, ": command not found"), 127);
 }
