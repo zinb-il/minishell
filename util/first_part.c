@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_part.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:19:14 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:46:35 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	first_part(char *s)
 	wild_card(node);
 	creat_output_files(node);
 	ast = get_ast(node);
-	print_tokens(token);
-	print_nodess(node);
 	free_nodes(node);
 	free_tokens(token);
 	second_part(ast);

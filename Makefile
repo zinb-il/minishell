@@ -15,9 +15,7 @@ CC = gcc
 
 #CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
-#LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
-
-#CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
+LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
 
 CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
 
