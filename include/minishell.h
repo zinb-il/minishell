@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:29:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 15:16:49 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:58:16 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@
 # include "visitor.h"
 # include "ast.h"
 # include "execution.h"
+# include "builtins.h"
 
 #	endif
