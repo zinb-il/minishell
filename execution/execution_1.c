@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 14:05:04 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/09 21:05:52 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	check_execute_builtin(t_ast *ast)
 	if (tmp->type == AST_CMDLINE && !check_inlist_builtin(tmp->line_cmd->value) \
 	&& !tmp->line_cmd->next)
 	{
-		printf("execute bultin in main\n");
+		execute_builtin(check_builtin(tmp->line_cmd->value), \
+						tmp->line_cmd->param);
 		return (0);
 	}
 	return (1);

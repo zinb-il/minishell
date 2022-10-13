@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 14:34:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:51:08 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	int	statut;
 	int	s;
 
-	s = (int)ft_lstsize(line_cmd);
+	s = (int)ft_lstsize_tcmd(line_cmd);
 	if (!line_cmd->next)
 		ft_execute_single_cmd(line_cmd);
 	else

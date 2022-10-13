@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 11:01:41 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:20:23 by ibentour         ###   ########.fr       */
+/*   Created: 2022/10/06 11:36:26 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 11:56:12 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#	ifndef BUILTINS_H
+# define BUILTINS_H
 
-size_t	ft_strlen(const char *str)
+typedef struct s_builtins
 {
-	int	i;
+	int		a;
+	int		b;
+	int		i;
+	int		j;
+	int		ac;
+	int		n_line;
 
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
-}
+}	t_builtins;
+
+int			ft_echo(char **args);
+void		ft_export(char	**arg);
+int			ft_env(void);
+void		ft_pwd(void);
+
+#	endif
