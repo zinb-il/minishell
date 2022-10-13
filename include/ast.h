@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/09 20:59:41 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/06 10:35:16 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ t_ast	*get_ast(t_node *node);
 
 //Call Lexer Parser Expander Executor
 void	first_part(char *s);
-int		ft_lstsize_tcmd(t_cmd *lst);
 
 #	endif

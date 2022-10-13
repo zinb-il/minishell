@@ -65,7 +65,7 @@ void	ft_cd(char **args, t_env *env_list)
 		ft_putstr(2, "Minishell: cd: ");
 		ft_putstr(2, args[1]);
 		ft_putstr(2, ": No such file or directory\n");
-		g_vars.exit_code[1] = 1;
+		g_vars.exit_code = 1;
 	}
 	pwd = getcwd(pwd, 0);
 	searchch("PWD", pwd, env_list);

@@ -7,7 +7,11 @@ SRCS = main.c \
 	   parsing/*.c \
 	   visitor/*.c \
 	   execution/*.c \
-	   builtins/export.c builtins/echo.c	builtins/env.c builtins/pwd.c
+	   builtins/export.c \
+	   builtins/export_util.c \
+	   builtins/pwd.c \
+	   builtins/env.c \
+	   builtins/echo.c
 
 OBJS = $(SRCS:.c=.o)
 

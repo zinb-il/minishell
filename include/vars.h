@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vars.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/09 20:58:05 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:14:54 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,5 @@ typedef struct s_vars
 }t_vars;
 
 t_vars	g_vars;
-
-t_env	*ft_lstnew(char *name, char *value);
-int		ft_lstsize(t_env *lst);
-void	ft_lstadd_back(t_env **lst, t_env *new);
-void	ft_lstadd_front(t_env **lst, t_env *new);
-t_env	*ft_lstlast(t_env *lst);
 
 #	endif

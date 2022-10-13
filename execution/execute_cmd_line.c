@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:49:42 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/08 00:41:02 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int fdo)
 		dup2(end[1], STDOUT_FILENO);
 		close(end[0]);
 		if (!check_inlist_builtin(line_cmd->value))
-			printf("execute bultin in child\n");
+			execute_builtin(check_builtin(line_cmd->value), line_cmd->param);
 		ft_execute_cmd(line_cmd);
 	}
 	if (fdi != 0)
@@ -87,7 +87,7 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	int	statut;
 	int	s;
 
-	s = (int)ft_lstsize_tcmd(line_cmd);
+	s = (int)ft_lstsizecmd(line_cmd);
 	if (!line_cmd->next)
 		ft_execute_single_cmd(line_cmd);
 	else
