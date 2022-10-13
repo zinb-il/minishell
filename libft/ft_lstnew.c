@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 11:01:41 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:20:23 by ibentour         ###   ########.fr       */
+/*   Created: 2021/11/23 16:09:19 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/07 22:45:03 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-size_t	ft_strlen(const char *str)
+t_env	*ft_lstnew(char *name, char *value)
 {
-	int	i;
+	t_env	*newlst;
 
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
+	newlst = (t_env *) malloc(sizeof(t_env));
+	if (!newlst)
+		return (NULL);
+	newlst->env_att = name;
+	newlst->env_val = value;
+	newlst->next = NULL;
+	return (newlst);
 }

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 11:01:41 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:20:23 by ibentour         ###   ########.fr       */
+/*   Created: 2022/09/28 13:49:36 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/09 22:26:15 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_unset(char *arg)
 {
-	int	i;
-
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
+	return (0);
 }

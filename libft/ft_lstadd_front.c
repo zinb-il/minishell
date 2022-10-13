@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 11:01:41 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 22:20:23 by ibentour         ###   ########.fr       */
+/*   Created: 2021/11/23 17:19:01 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 17:11:56 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstadd_front(t_env **lst, t_env *new)
 {
-	int	i;
-
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
+	if (!lst || !new)
+		return ;
+	new -> next = *lst;
+	*lst = new;
 }
