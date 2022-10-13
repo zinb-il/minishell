@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 14:34:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/08 00:41:02 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,8 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int fdo)
 	int	pid;
 	int	end[2];
 
-	if (pipe(end) != 0)
-		ft_error(ft_strdup(strerror(errno)), 1);
+	pipe(end);
 	pid = fork();
-	if (pid == -1)
-		ft_error(ft_strdup(strerror(errno)), 1);
 	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
@@ -54,10 +51,13 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int fdo)
 			end[1] = 1;
 		dup2(fdi, STDIN_FILENO);
 		dup2(end[1], STDOUT_FILENO);
+		close(end[0]);
 		if (!check_inlist_builtin(line_cmd->value))
 			printf("execute bultin in child\n");
 		ft_execute_cmd(line_cmd);
 	}
+	if (fdi != 0)
+		close(fdi);
 	close(end[1]);
 	fdi = end[0];
 	return (fdi);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:19:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 21:57:29 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:11:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,14 @@ void	signals(int pro)
 {
 	if (!pro)
 	{
-		printf("parent\n");
 		signal(SIGINT, handler_sigint_parent);
 		signal(SIGQUIT, SIG_IGN);
+	}
+	else if (pro == 2)
+	{
+		printf("herdoc\n");
+		signal(SIGINT, handler_sigint_child);
+		signal(SIGQUIT, handler_sigquit_child);
 	}
 	else
 	{
