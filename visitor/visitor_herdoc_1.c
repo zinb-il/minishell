@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 21:39:25 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:43:41 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	write_inside_heredoc(t_node *node)
 	add_herdo_name(name);
 	fork_for_herdoc(fd, node);
 	waitpid(-1, NULL, 0);
-	g_vars.sign = 0;
 	close(fd);
 	free(node->param[0]);
 	node->param[0] = name;
