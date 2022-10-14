@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:36:26 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/14 00:29:42 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:05:13 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 typedef struct s_builtins
 {
-	int		a;
-	int		b;
-	int		i;
-	int		j;
-	int		ac;
-	int		n_line;
+	int			a;
+	int			b;
+	int			i;
+	int			j;
+	int			ac;
+	t_env		*tmp;
+	char		*val_p;
+	int			n_line;
 
 }	t_builtins;
 
@@ -29,7 +31,7 @@ int			ft_echo(char **args);
 
 //Export functions
 int			check_chars(char *arg);
-char		**find_first_ecl(char *arg, char ecl);
+char		**find_first_ecl(char *arg);
 int			env_exists(char *arg);
 void		print_export(void);
 void		export_values(char *arg);
