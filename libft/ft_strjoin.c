@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:11:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/28 21:36:37 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:25:04 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	i;
-	size_t	j;
 	char	*p;
 
 	if (!s2 || !s1)
@@ -25,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!p)
 		return (0);
 	*p = 0;
-	j = ft_strlcat(p, s1, i);
-	j = ft_strlcat(p, s2, i);
+	ft_strlcat(p, s1, i);
+	ft_strlcat(p, s2, i);
 	return (p);
 }

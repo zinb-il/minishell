@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visitor_herdoc.c                                   :+:      :+:    :+:   */
+/*   visitor_herdoc_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 16:27:56 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:39:25 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,16 @@ void	expand_heredoc_variable(char *str, int fd)
 
 void	write_inside_heredoc(t_node *node)
 {
-	char	*str;
 	char	*name;
 	int		fd;
 
 	name = ft_strjoin(TMP_FILE, node->param[0]);
 	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	add_herdo_name(name);
-	str = readline(PS2);
-	while (str && ft_strcmp(str, node->param[0]))
-	{
-		if (!ft_strcmp(node->exd_p[0], "1"))
-			expand_heredoc_variable(str, fd);
-		else
-			write(fd, str, ft_strlen(str));
-		write(fd, "\n", 1);
-		free(str);
-		str = readline(PS2);
-	}
+	fork_for_herdoc(fd, node);
+	waitpid(-1, NULL, 0);
+	g_vars.sign = 0;
 	close(fd);
-	free(str);
 	free(node->param[0]);
 	node->param[0] = name;
 }

@@ -24,9 +24,10 @@
 # include <dirent.h>
 # include <errno.h>
 
-# include "libft.h"
+
 # include "signal.h"
 # include "vars.h"
+# include "libft.h"
 # include "util.h"
 # include "token.h"
 # include "lexer.h"
@@ -35,5 +36,6 @@
 # include "visitor.h"
 # include "ast.h"
 # include "execution.h"
+# include "builtins.h"
 
 #	endif

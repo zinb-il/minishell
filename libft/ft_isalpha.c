@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 13:59:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 22:26:15 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/11/03 12:38:45 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/08 09:28:56 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include"../include/minishell.h"
 
-int	ft_lstsizecmd(t_cmd *lst)
+int	ft_isalpha(int x)
 {
-	int		i;
-
-	i = 0;
-	while (lst)
-	{
-		++i;
-		lst = lst->next;
-	}
-	return (i);
+	if ((x <= 'z' && x >= 'a') || (x <= 'Z' && x >= 'A'))
+		return (1);
+	else
+		return (0);
 }

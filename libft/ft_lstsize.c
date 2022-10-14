@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/11/23 19:57:57 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 17:22:54 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+int	ft_lstsize(t_env *lst)
 {
-	size_t	i;
-	char	*p;
+	int		x;
+	t_env	*temp;
 
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
+	if (!lst)
+		return (0);
+	temp = lst;
+	x = 0;
+	while (temp != NULL)
 	{
-		p[i] = s[i];
-		i++;
+		x++;
+		temp = temp->next;
 	}
-	p[i] = '\0';
-	return (p);
+	return (x);
 }

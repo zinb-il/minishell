@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/11/23 19:58:23 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 17:22:24 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+t_env	*ft_lstlast(t_env *lst)
 {
-	size_t	i;
-	char	*p;
+	t_env	*last;
 
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
+	if (!lst)
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
+	last = lst;
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
 }

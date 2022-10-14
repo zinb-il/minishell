@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:01:41 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/08/23 17:02:15 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:20:23 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str && str[i] != '\0')
 		i++;
 	return (i);
 }

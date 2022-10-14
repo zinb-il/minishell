@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/08/02 14:38:28 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 21:57:14 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+int	ft_env(void)
 {
-	size_t	i;
-	char	*p;
+	t_env	*tmp;
 
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
+	tmp = g_vars.env;
+	while (tmp)
 	{
-		p[i] = s[i];
-		i++;
+		if (tmp->env_val != NULL)
+			printf("%s=%s\n", tmp->env_att, tmp->env_val);
+		tmp = tmp->next;
 	}
-	p[i] = '\0';
-	return (p);
+	return (0);
 }

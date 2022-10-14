@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/11/23 17:19:01 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/06 17:11:56 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+void	ft_lstadd_front(t_env **lst, t_env *new)
 {
-	size_t	i;
-	char	*p;
-
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
+	if (!lst || !new)
+		return ;
+	new -> next = *lst;
+	*lst = new;
 }

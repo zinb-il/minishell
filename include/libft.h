@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 int		ft_isalnum(int c);
+int		ft_isalpha(int x);
 char	*ft_itoa(int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -31,5 +32,11 @@ size_t	ft_strlcat(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strcmp(const char *str1, const char *str2);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
+
+t_env	*ft_lstnew(char *name, char *value);
+int		ft_lstsize(t_env *lst);
+void	ft_lstadd_back(t_env **lst, t_env *new);
+void	ft_lstadd_front(t_env **lst, t_env *new);
+t_env	*ft_lstlast(t_env *lst);
 
 #	endif

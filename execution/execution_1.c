@@ -20,7 +20,8 @@ int	check_execute_builtin(t_ast *ast)
 	if (tmp->type == AST_CMDLINE && !check_inlist_builtin(tmp->line_cmd->value) \
 	&& !tmp->line_cmd->next)
 	{
-		printf("execute bultin in main\n");
+		execute_builtin(check_builtin(tmp->line_cmd->value), \
+						tmp->line_cmd->param);
 		return (0);
 	}
 	return (1);

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/11/23 16:09:19 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/07 22:45:03 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+t_env	*ft_lstnew(char *name, char *value)
 {
-	size_t	i;
-	char	*p;
+	t_env	*newlst;
 
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
+	newlst = (t_env *) malloc(sizeof(t_env));
+	if (!newlst)
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
+	newlst->env_att = name;
+	newlst->env_val = value;
+	newlst->next = NULL;
+	return (newlst);
 }

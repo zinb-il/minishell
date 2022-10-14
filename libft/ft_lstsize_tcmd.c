@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_tcmd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:16:24 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/13 23:58:49 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/09 20:51:55 by ibentour          #+#    #+#             */
+/*   Updated: 2022/10/09 20:54:58 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*ft_strdup(const char *s)
+int	ft_lstsize_tcmd(t_cmd *lst)
 {
-	size_t	i;
-	char	*p;
+	int		i;
 
-	if (!s)
-		return (ft_strdup(""));
-	i = ft_strlen(s);
-	p = NULL;
-	p = (char *)malloc((i + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
+	if (!lst)
+		return (0);
+	while (lst)
 	{
-		p[i] = s[i];
-		i++;
+		++i;
+		lst = lst->next;
 	}
-	p[i] = '\0';
-	return (p);
+	return (i);
 }

@@ -6,19 +6,28 @@ SRCS = main.c \
 	   shell_grammar/*.c \
 	   parsing/*.c \
 	   visitor/*.c \
-	   execution/*.c
+	   execution/*.c \
+	   builtins/export.c \
+	   builtins/export_util.c \
+	   builtins/pwd.c \
+	   builtins/env.c \
+	   builtins/echo.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-#CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+#CFLAGS = -Wall -Wextra -Werror 
 
-LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
+#LDFLAGS = -L /goinfre/$(USER)/.brew/opt/readline/lib
 
-CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
+#CPPFLAGS = -I /goinfre/$(USER)/.brew/opt/readline/include
 
-CFLAGS = -Wall -Wextra -Werror
+LDFLAGS = -L "/Users/$(USER)/.brew/opt/readline/lib"
+CPPFLAGS = -I "/Users/$(USER)/.brew/opt/readline/include"
+
+
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 NAME = minishell
 

@@ -14,7 +14,7 @@
 # define EXECUTION_H
 
 //Util function
-int		ft_lstsize(t_cmd *lst);
+int		ft_lstsizecmd(t_cmd *lst);
 void	ft_error(char *msg, int i);
 int		check_inlist_builtin(char *s);
 int		ft_chekc_inputfile(char *str);
@@ -26,6 +26,10 @@ char	**ft_get_env(void);
 void	ft_exe_cmd(char	*cmd, char **param, char **env);
 char	**add_param(char **p, char	*str);
 void	ft_execute_cmd(t_cmd *line_cmd);
+
+//Bultins execution functions 
+int		check_builtin(char *builtin);
+void	execute_builtin(int x, char **ast_args);
 
 //Util Execute Command
 void	ft_execute_cmd(t_cmd *line_cmd);
