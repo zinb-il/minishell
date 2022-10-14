@@ -6,7 +6,7 @@
 /*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:47 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/14 14:45:48 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:13:39 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,6 @@ int	check_chars(char *arg)
 		ch++;
 	}
 	return (0);
-}
-
-char	**find_first_ecl(char *arg)
-{
-	int		x;
-	char	**str;
-
-	x = 0;
-	str = (char **) malloc (sizeof(char *) * 3);
-	if (!str)
-		return (NULL);
-	while (arg[x] && (arg[x] != '+' && arg[x] != '='))
-		x++;
-	if (arg[x] && (arg[x] == '+' || arg[x] == '='))
-	{
-		str[0] = ft_substr(arg, 0, x);
-		if (arg[x] == '+')
-			str[1] = ft_strdup(arg + x + 2);
-		else
-			str[1] = ft_strdup(arg + x + 1);
-		str[2] = NULL;
-	}
-	else
-	{
-		str[0] = ft_strdup(arg);
-		str[1] = NULL;
-		str[2] = NULL;
-	}
-	return (str);
 }
 
 static int	what_to_do(t_builtins *tl, char *att, char *arg)
