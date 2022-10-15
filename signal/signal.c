@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:19:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 14:43:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:11:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ void	signals(int pro)
 	{
 		signal(SIGINT, handler_sigint_parent);
 		signal(SIGQUIT, SIG_IGN);
+	}
+	else if (pro == 2)
+	{
+		printf("herdoc\n");
+		signal(SIGINT, handler_sigint_child);
+		signal(SIGQUIT, handler_sigquit_child);
 	}
 	else
 	{
