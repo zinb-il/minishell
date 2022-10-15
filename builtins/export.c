@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:47 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/14 16:53:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:45:08 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ int	check_chars(char *arg)
 	int		ch;
 
 	ch = 0;
-	if (!ft_isalpha(arg[0]) && arg[0] != '_')
+	if (arg && !ft_isalpha(arg[0]) && arg[0] != '_')
 	{
-		printf("export: `%s': not a valid identifier\n", arg);
+		printf("export: `%s': not a valid identifier !\n", arg);
+		g_vars.exit_code = 1;
 		return (1);
 	}
-	while (arg[ch] != '\0' && arg[ch] != '=')
+	while (arg && arg[ch] != '\0' && arg[ch] != '=')
 	{
 		if ((!(ft_isalnum(arg[ch])) && arg[ch] != '_' && arg[ch] != '+') \
 			|| (arg[ch] == '+' && arg[ch + 1] != '='))
 		{
-			printf("export: `%s': not a valid identifier\n", arg);
+			printf("export: `%s': not a valid identifier !\n", arg);
+			g_vars.exit_code = 1;
 			return (1);
 		}
 		ch++;
@@ -98,12 +100,11 @@ void	ft_export(char	**arg)
 {
 	int		i;
 
+	g_vars.exit_code = 0;
 	i = -1;
 	if (!arg || arg[0] == '\0')
 		print_export();
 	else
-	{
 		while (arg[++i])
 			export_values(arg[i]);
-	}
 }

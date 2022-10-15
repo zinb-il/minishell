@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:25:25 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/06 21:45:29 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:43:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	ft_echo(char **args)
 	put_args(args, &tl);
 	if (tl.n_line == 0)
 		write(1, "\n", 1);
+	g_vars.exit_code = 0;
 	return (0);
 }

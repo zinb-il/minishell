@@ -3,71 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:06:10 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/07 21:32:57 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:43:26 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	searchch(char *word, char *changed, t_env *env_list)
+static char	*update_pwd(t_builtins *tl)
 {
-	t_env	*current;
+	t_env	*current_env;
+	char	*tmp;
 
-	current = env_list;
-	while (current != NULL)
+	tmp = NULL;
+	current_env = g_vars.env;
+	while (current_env != NULL)
 	{
-		if (ft_strcmp(current->env_val, word) == 0)
+		if (ft_strcmp(current_env->env_att, "PWD") == 0)
 		{
-			free(current->env_val);
-			current->env_val = changed;
-			break ;
+			tl->old_pwd = ft_strdup(current_env->env_val);
+			current_env->env_val = getcwd(tmp, sizeof(tmp));
+			return (tl->old_pwd);
 		}
-		current = current->next;
+		current_env = current_env->next;
 	}
+	return (NULL);
 }
 
-char	*get_home_incd(t_env *env_list)
+static	int	check_chdir(char **arg)
 {
-	t_env	*current;
-	char	*home;
-
-	home = NULL;
-	current = env_list;
-	while (current != NULL)
+	if (!arg || arg[0] == '\0')
 	{
-		if (ft_strcmp(current->env_val, "HOME") == 0)
-		{
-			home = current->env_val;
-			break ;
-		}
-		current = current->next;
-	}
-	return (home);
-}
-
-void	ft_cd(char **args, t_env *env_list)
-{
-	char	*pwd;
-	char	*path;
-	char	*home;
-
-	path = NULL;
-	path = getcwd(path, 0);
-	home = get_home_incd(env_list);
-	pwd = NULL;
-	if (ft_strcmp(".", args[1]) == 0 || args[1] == NULL)
-		args[1] = home;
-	if (chdir(args[1]) != 0)
-	{
-		ft_putstr(2, "Minishell: cd: ");
-		ft_putstr(2, args[1]);
-		ft_putstr(2, ": No such file or directory\n");
+		ft_putstr_fd("Error: Enter cd with only ", 2);
+		ft_putstr_fd("a relative or absolute path !\n", 2);
 		g_vars.exit_code = 1;
+		return (0);
 	}
-	pwd = getcwd(pwd, 0);
-	searchch("PWD", pwd, env_list);
-	searchch("OLDPWD", path, env_list);
+	else if (chdir(arg[0]) != 0)
+	{
+		ft_putstr_fd("cd: No such file or directory: ", 2);
+		ft_putstr_fd(arg[0], 2);
+		ft_putstr_fd("\n", 2);
+		g_vars.exit_code = 1;
+		return (0);
+	}
+	return (1);
+}
+
+void	ft_cd(char	**arg)
+{
+	t_builtins	tl;
+
+	g_vars.exit_code = 0;
+	if (check_chdir(arg))
+	{
+		tl.new_opwd = update_pwd(&tl);
+		if (tl.new_opwd)
+		{
+			tl.tmp_o = ft_strdup("OLDPWD=");
+			tl.to_export[0] = ft_strjoin(tl.tmp_o, tl.new_opwd);
+			tl.to_export[1] = NULL;
+			ft_export(tl.to_export);
+			free (tl.tmp_o);
+		}
+	}
 }

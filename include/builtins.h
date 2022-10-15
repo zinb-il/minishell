@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:36:26 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/14 16:05:13 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:47:28 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ typedef struct s_builtins
 	int			ac;
 	t_env		*tmp;
 	char		*val_p;
+	char		*old_pwd;
+	char		*new_opwd;
+	char		*tmp_o;
+	char		*to_export[2];
 	int			n_line;
-
 }	t_builtins;
-
-//Echo functions
-int			ft_echo(char **args);
 
 //Export functions
 int			check_chars(char *arg);
@@ -37,7 +37,11 @@ void		print_export(void);
 void		export_values(char *arg);
 void		ft_export(char	**arg);
 
-int			ft_env(void);
+int			ft_echo(char **args);
 void		ft_pwd(void);
+int			ft_env(void);
+void		ft_cd(char	**arg);
+void		ft_unset(char **args);
+void		ft_exit(char **args);
 
 #	endif

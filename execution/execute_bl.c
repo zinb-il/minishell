@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_bl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 07:27:44 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/09 22:28:33 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:47:00 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ void	execute_builtin(int x, char **ast_args)
 {
 	if (x == 1)
 		ft_export(ast_args);
-	//else if (x == 2)
-	//	ft_unset();
+	else if (x == 2)
+		ft_unset(ast_args);
 	else if (x == 3)
 		ft_env();
-	//else if (x == 4)
-	//	cd
+	else if (x == 4)
+		ft_cd(ast_args);
 	else if (x == 5)
 		ft_pwd();
 	else if (x == 6)
 		ft_echo(ast_args);
-	//else if (x == 7)
-	//	exit
+	else if (x == 7)
+		ft_exit(ast_args);
 }
 
 int	check_builtin(char *builtin)
