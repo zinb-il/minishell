@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 16:06:01 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:01:09 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SPCL3 "$()<>|\' \"\t"
 
 //Heredoce Nmefile
-# define TMP_FILE "heredoc_tmp_file_"
+# define TMP_FILE "/tmp/heredoc_tmp_file_"
 
 //Elements
 typedef struct s_env

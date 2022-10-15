@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 18:25:08 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:45:59 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int i)
 			execute_builtin(check_builtin(line_cmd->value), line_cmd->param);
 		ft_execute_cmd(line_cmd);
 	}
-	if (fdi != 0)
+	if (fdi != 0 && fdi != 1)
 		close(fdi);
 	close(end[1]);
 	fdi = end[0];

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 19:32:23 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:10:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,17 @@ void	expand_heredoc_variable(char *str, int fd)
 	free(str3);
 }
 
-void	write_inside_heredoc(t_node *node)
+void	write_inside_heredoc(t_node *node, int i)
 {
 	char	*name;
 	int		fd;
 	int		statut;
 	int		pid;
+	char	*str;
 
-	name = ft_strjoin(TMP_FILE, node->param[0]);
+	str = ft_itoa(i);
+	name = ft_strjoin(TMP_FILE, str);
+	free(str);
 	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	add_herdo_name(name);
 	pid = fork_for_herdoc(fd, node);
@@ -92,12 +95,15 @@ void	write_inside_heredoc(t_node *node)
 void	open_heredoc_files(t_node *node)
 {
 	t_node	*tmp;
+	int		i;
 
 	tmp = node;
+	i = 0;
 	while (tmp->type != NODE_EOF)
 	{
 		if (tmp->type == NODE_HEREDOC)
-			write_inside_heredoc(tmp);
+			write_inside_heredoc(tmp, i);
 		tmp = tmp->next;
+		i++;
 	}
 }

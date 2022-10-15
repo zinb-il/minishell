@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 20:23:32 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:49:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_execute_cmd(t_cmd *cmd)
 	char	**path;
 	char	**env;
 
+	if (check_inlist_builtin(cmd->value))
+		exit(0);
 	if (!cmd->value || !ft_strlen(cmd->value))
 	{
 		if (g_vars.exit_code == 1)

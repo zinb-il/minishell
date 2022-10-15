@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:14:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 11:31:41 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:43:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,28 @@ int	check_inlist_builtin(char *s)
 
 int	ft_chekc_inputfile(char *str)
 {
-	int	fd;
+	int		fd;
+	char	*s1;
+	char	*s2;
 
 	if (!str)
 		return (0);
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-		ft_error(ft_strdup(strerror(errno)), 1);
+	{
+		s1 = ft_strjoin(str, ": ");
+		s2 = ft_strjoin(s1, strerror(errno));
+		free(s1);
+		ft_error(s2, 1);
+	}
 	return (fd);
 }
 
 int	ft_chekc_ouputfile(char *str, int app)
 {
-	int	fd;
+	int		fd;
+	char	*s1;
+	char	*s2;
 
 	if (!str)
 		return (0);
@@ -66,6 +75,11 @@ int	ft_chekc_ouputfile(char *str, int app)
 	else
 		fd = open(str, O_CREAT | O_RDWR | O_APPEND, 0644);
 	if (fd < 0)
-		ft_error(ft_strdup(strerror(errno)), 1);
+	{
+		s1 = ft_strjoin(str, ": ");
+		s2 = ft_strjoin(s1, strerror(errno));
+		free(s1);
+		ft_error(s2, 1);
+	}
 	return (fd);
 }
