@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:11:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/06 22:26:31 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:19:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	**ft_get_env(void);
 void	ft_exe_cmd(char	*cmd, char **param, char **env);
 char	**add_param(char **p, char	*str);
 void	ft_execute_cmd(t_cmd *line_cmd);
+void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo);
 
 //Bultins execution functions 
 int		check_builtin(char *builtin);

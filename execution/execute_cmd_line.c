@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/08 00:41:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:17:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 	pid_t	pid;
 	int		fd[2];
 
-	g_vars.sign = 1;
+	signals(1);
 	pid = fork();
 	if (pid == -1)
 		ft_error(ft_strdup(strerror(errno)), 1);
@@ -32,23 +32,20 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 			dup2(fd[1], STDOUT_FILENO);
 		ft_execute_cmd(line_cmd);
 	}
-	signals(1);
 }
 
-int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int fdo)
+int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi)
 {
 	int	pid;
 	int	end[2];
 
+	signals(1);
 	pipe(end);
 	pid = fork();
 	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
-		if (fdo > 0)
-			end[1] = fdo;
-		if (!fdo && !line_cmd->next)
-			end[1] = 1;
+		check_ouin_multcmd(line_cmd, &fdi, &end[1]);
 		dup2(fdi, STDIN_FILENO);
 		dup2(end[1], STDOUT_FILENO);
 		close(end[0]);
@@ -66,18 +63,11 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int fdo)
 void	ft_execute_multiple_cmd(t_cmd *line_cmd)
 {
 	int		fdi;
-	int		fdo;
-	int		f;
 
 	fdi = 0;
-	fdo = 0;
 	while (line_cmd)
 	{
-		f = ft_chekc_inputfile(line_cmd->input);
-		fdo = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
-		if (f)
-			fdi = f;
-		fdi = ft_execute_multiple_cmd_line(line_cmd, fdi, fdo);
+		fdi = ft_execute_multiple_cmd_line(line_cmd, fdi);
 		line_cmd = line_cmd->next;
 	}
 }
@@ -99,5 +89,6 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	}
 	if (WIFEXITED(statut))
 		g_vars.exit_code = WEXITSTATUS(statut);
-	g_vars.sign = 0;
+	printf("exit code %d\n", g_vars.exit_code);
+	signals(0);
 }

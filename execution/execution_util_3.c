@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_util_3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 21:51:55 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:23:32 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ void	ft_execute_cmd(t_cmd *cmd)
 	char	**env;
 
 	if (!cmd->value || !ft_strlen(cmd->value))
+	{
+		if (g_vars.exit_code == 1)
+			exit(1);
 		exit(0);
+	}
 	path = ft_get_path();
 	env = ft_get_env();
 	if (!env || !ft_strsize(env))
@@ -70,4 +74,19 @@ void	ft_execute_cmd(t_cmd *cmd)
 	free_dstr(path);
 	free_dstr(env);
 	ft_error(ft_strjoin(cmd->value, ": command not found"), 127);
+}
+
+void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo)
+{
+	int	f1;
+	int	f2;
+
+	f1 = ft_chekc_inputfile(line_cmd->input);
+	f2 = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
+	if (f1)
+		*fdi = f1;
+	if (f2 > 0)
+		*fdo = f2;
+	if (!f2 && !line_cmd->next)
+		*fdo = 1;
 }

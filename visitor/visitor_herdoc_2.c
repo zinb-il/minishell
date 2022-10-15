@@ -6,13 +6,13 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:46:56 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 14:44:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:32:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	fork_for_herdoc(int fd, t_node *node)
+int	fork_for_herdoc(int fd, t_node *node)
 {
 	char	*str;
 	pid_t	pid;
@@ -22,7 +22,7 @@ void	fork_for_herdoc(int fd, t_node *node)
 		ft_error(ft_strdup(strerror(errno)), 1);
 	if (pid == 0)
 	{
-		signal(SIGINT, SIG_DFL);
+		signals(2);
 		str = readline(PS2);
 		while (str && ft_strcmp(str, node->param[0]))
 		{
@@ -37,4 +37,5 @@ void	fork_for_herdoc(int fd, t_node *node)
 		free(str);
 		exit(0);
 	}
+	return (pid);
 }
