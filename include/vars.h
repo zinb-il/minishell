@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 14:14:54 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:06:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_vars
 {
 	int			exit_code;
 	int			sign;
+	int			*pids;
 	pid_t		process_pid;
 	pid_t		child_process_pid;
 	char		**herdo_files;

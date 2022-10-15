@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/07 14:05:04 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:28:12 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	second_part(t_ast *ast)
 	if (!ast)
 		return ;
 	if (!check_execute_builtin(ast))
-		return ;
+		ast = ast->next;
 	start_execute_cmd_line(&ast);
 }

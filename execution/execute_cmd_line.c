@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 20:17:03 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:25:08 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 			dup2(fd[1], STDOUT_FILENO);
 		ft_execute_cmd(line_cmd);
 	}
+	g_vars.pids[0] = pid;
 }
 
-int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi)
+int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int i)
 {
 	int	pid;
 	int	end[2];
@@ -57,18 +58,22 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi)
 		close(fdi);
 	close(end[1]);
 	fdi = end[0];
+	g_vars.pids[i] = pid;
 	return (fdi);
 }
 
 void	ft_execute_multiple_cmd(t_cmd *line_cmd)
 {
 	int		fdi;
+	int		i;
 
 	fdi = 0;
+	i = 0;
 	while (line_cmd)
 	{
-		fdi = ft_execute_multiple_cmd_line(line_cmd, fdi);
+		fdi = ft_execute_multiple_cmd_line(line_cmd, fdi, i);
 		line_cmd = line_cmd->next;
+		i++;
 	}
 }
 
@@ -76,19 +81,19 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 {
 	int	statut;
 	int	s;
+	int	i;
 
 	s = (int)ft_lstsizecmd(line_cmd);
+	g_vars.pids = (int *)malloc(s * sizeof(int));
 	if (!line_cmd->next)
 		ft_execute_single_cmd(line_cmd);
 	else
 		ft_execute_multiple_cmd(line_cmd);
-	while (s > 0)
-	{
-		waitpid(-1, &statut, 0);
-		s--;
-	}
+	i = -1;
+	while (++i < s)
+		waitpid(g_vars.pids[i], &statut, 0);
+	free(g_vars.pids);
 	if (WIFEXITED(statut))
 		g_vars.exit_code = WEXITSTATUS(statut);
-	printf("exit code %d\n", g_vars.exit_code);
 	signals(0);
 }
