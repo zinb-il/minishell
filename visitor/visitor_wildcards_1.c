@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 22:49:32 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 14:35:31 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	check_inlist_expand(t_node *node)
 char	**expand_wildcards(t_node **node)
 {
 	int				i;
-	char			*s;
 	char			*s1;
 	char			**list;
 
@@ -100,11 +99,7 @@ char	**expand_wildcards(t_node **node)
 		s1 = ft_strrrchr((*node)->param[i], '/');
 		if ((*node)->exd_p[i][0] == '1' && ft_fndc((*node)->param[i], '*') \
 		&& !ft_fndc(s1, '*'))
-		{
-			s = ft_strjoin("./", s1);
-			ft_opendir(node, s, i, &list);
-			free(s);
-		}
+			check_if_added_elemnt(&list, i, s1, node);
 		else
 			list = new_expand_param(list, (*node)->param[i], ft_strdup(""));
 		free(s1);

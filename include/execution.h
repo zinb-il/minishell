@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:11:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/14 20:19:43 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:10:46 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_error(char *msg, int i);
 int		check_inlist_builtin(char *s);
 int		ft_chekc_inputfile(char *str);
 int		ft_chekc_ouputfile(char *str, int app);
+int		check_builtin_letters(char *s);
 char	*ft_check_path_exist(void);
 char	**ft_get_path(void);
 int		ft_en_len(void);
@@ -30,7 +31,7 @@ void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo);
 
 //Bultins execution functions 
 int		check_builtin(char *builtin);
-void	execute_builtin(int x, char **ast_args);
+void	execute_builtin(int x, char **ast_args, int out);
 
 //Util Execute Command
 void	ft_execute_cmd(t_cmd *line_cmd);

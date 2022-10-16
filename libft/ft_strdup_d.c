@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_dup_dstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 14:38:28 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/16 22:49:21 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/16 19:06:48 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/16 19:15:30 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	print_env_line(char *s1, char *s2, int out)
+char	**ft_strdup_d(char	**param)
 {
-	ft_putstr_fd(s1, out);
-	ft_putstr_fd("=", out);
-	ft_putstr_fd(s2, out);
-	ft_putstr_fd("\n", out);
-}
+	char	**dup;
+	int		i;
 
-int	ft_env(int out)
-{
-	t_env	*tmp;
-
-	tmp = g_vars.env;
-	while (tmp)
+	if (!param)
+		return (0);
+	dup = (char **)malloc((ft_strsize(param) + 1) * sizeof(char *));
+	i = 0;
+	while (param[i])
 	{
-		if (tmp && tmp->env_val != 0)
-			print_env_line(tmp->env_att, tmp->env_val, out);
-		tmp = tmp->next;
+		dup[i] = ft_strdup(param[i]);
+		i++;
 	}
-	g_vars.exit_code = 0;
-	return (0);
+	dup[i] = 0;
+	return (dup);
 }

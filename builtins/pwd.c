@@ -6,22 +6,25 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 12:16:26 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/15 15:46:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 22:04:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	ft_pwd(void)
+void	ft_pwd(int out)
 {
 	char	cwd[256];
 
 	g_vars.exit_code = 0;
-	if (getcwd(cwd, sizeof(cwd)) == NULL)
+	if (getcwd(cwd, sizeof(cwd)) == 0)
 	{
 		g_vars.exit_code = 1;
 		perror("Error : ");
 	}
 	else
-		printf("%s\n", cwd);
+	{
+		ft_putstr_fd(cwd, out);
+		ft_putstr_fd("\n", out);
+	}
 }

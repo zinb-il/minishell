@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 23:49:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 00:43:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_execute_cmd_join(t_cmd *c, char **path, char **env)
 	char	*s;
 	int		i;
 
-	if (!path || !ft_strsize(path))
+	if (!env || !ft_strsize(env) || !path || !ft_strsize(path))
 		ft_error(ft_strjoin(c->value, ": No such file or directory"), 127);
 	i = 0;
 	while (path[i])
@@ -58,8 +58,6 @@ void	ft_execute_cmd(t_cmd *cmd)
 	char	**path;
 	char	**env;
 
-	if (check_inlist_builtin(cmd->value))
-		exit(0);
 	if (!cmd->value || !ft_strlen(cmd->value))
 	{
 		if (g_vars.exit_code == 1)
@@ -68,8 +66,6 @@ void	ft_execute_cmd(t_cmd *cmd)
 	}
 	path = ft_get_path();
 	env = ft_get_env();
-	if (!env || !ft_strsize(env))
-		ft_error(ft_strjoin(cmd->value, ": No such file or directory"), 127);
 	if (ft_strrchr(cmd->value, '/') && !access(cmd->value, F_OK | X_OK))
 		ft_exe_cmd(cmd->value, new_expand_param2(cmd->param, cmd->value), env);
 	ft_execute_cmd_join(cmd, path, env);
@@ -91,4 +87,19 @@ void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo)
 		*fdo = f2;
 	if (!f2 && !line_cmd->next)
 		*fdo = 1;
+}
+
+int	check_builtin_letters(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		s[i] = ft_tolower(s[i]);
+		i++;
+	}
+	if (!ft_strcmp(s, "pwd") || !ft_strcmp(s, "env") || !ft_strcmp(s, "echo"))
+		return (0);
+	return (1);
 }

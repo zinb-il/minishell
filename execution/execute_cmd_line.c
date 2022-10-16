@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 23:45:59 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 00:33:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 		fd[0] = ft_chekc_inputfile(line_cmd->input);
 		fd[1] = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
 		if (fd[0])
+		{
 			dup2(fd[0], STDIN_FILENO);
+			close(fd[0]);
+		}
 		if (fd[1])
+		{
 			dup2(fd[1], STDOUT_FILENO);
+			close(fd[1]);
+		}
 		ft_execute_cmd(line_cmd);
 	}
 	g_vars.pids[0] = pid;
 }
 
-int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int i)
+int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 {
 	int	pid;
 	int	end[2];
@@ -46,13 +52,14 @@ int	ft_execute_multiple_cmd_line(t_cmd *line_cmd, int fdi, int i)
 	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
-		check_ouin_multcmd(line_cmd, &fdi, &end[1]);
+		check_ouin_multcmd(cmd, &fdi, &end[1]);
 		dup2(fdi, STDIN_FILENO);
 		dup2(end[1], STDOUT_FILENO);
 		close(end[0]);
-		if (!check_inlist_builtin(line_cmd->value))
-			execute_builtin(check_builtin(line_cmd->value), line_cmd->param);
-		ft_execute_cmd(line_cmd);
+		if (check_inlist_builtin(cmd->value))
+			ft_execute_cmd(cmd);
+		execute_builtin(check_builtin(cmd->value), cmd->param, end[1]);
+		exit(g_vars.exit_code);
 	}
 	if (fdi != 0 && fdi != 1)
 		close(fdi);

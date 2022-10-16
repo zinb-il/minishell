@@ -6,24 +6,24 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:25:25 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/15 15:43:49 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 22:44:10 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	put_args(char **args, t_builtins	*tl)
+static void	put_args(char **args, t_builtins *tl, int out)
 {
 	while (args && args[tl->i])
 	{
-		ft_putstr_fd(args[tl->i], 1);
+		ft_putstr_fd(args[tl->i], out);
 		if (args[tl->i + 1] && args[tl->i][0] != '\0')
-			write(1, " ", 1);
+			write(out, " ", 1);
 		tl->i++;
 	}
 }
 
-int	ft_echo(char **args)
+int	ft_echo(char **args, int out)
 {
 	t_builtins	tl;
 
@@ -41,9 +41,9 @@ int	ft_echo(char **args)
 			tl.n_line++;
 		tl.i++;
 	}
-	put_args(args, &tl);
+	put_args(args, &tl, out);
 	if (tl.n_line == 0)
-		write(1, "\n", 1);
+		write(out, "\n", 1);
 	g_vars.exit_code = 0;
 	return (0);
 }

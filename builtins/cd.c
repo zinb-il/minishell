@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:06:10 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/15 15:43:26 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 22:22:37 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static char	*update_pwd(t_builtins *tl)
 	t_env	*current_env;
 	char	*tmp;
 
-	tmp = NULL;
+	tmp = 0;
 	current_env = g_vars.env;
-	while (current_env != NULL)
+	while (current_env != 0)
 	{
 		if (ft_strcmp(current_env->env_att, "PWD") == 0)
 		{
@@ -29,7 +29,7 @@ static char	*update_pwd(t_builtins *tl)
 		}
 		current_env = current_env->next;
 	}
-	return (NULL);
+	return (0);
 }
 
 static	int	check_chdir(char **arg)
@@ -52,7 +52,7 @@ static	int	check_chdir(char **arg)
 	return (1);
 }
 
-void	ft_cd(char	**arg)
+void	ft_cd(char	**arg, int out)
 {
 	t_builtins	tl;
 
@@ -64,8 +64,8 @@ void	ft_cd(char	**arg)
 		{
 			tl.tmp_o = ft_strdup("OLDPWD=");
 			tl.to_export[0] = ft_strjoin(tl.tmp_o, tl.new_opwd);
-			tl.to_export[1] = NULL;
-			ft_export(tl.to_export);
+			tl.to_export[1] = 0;
+			ft_export(tl.to_export, out);
 			free (tl.tmp_o);
 		}
 	}

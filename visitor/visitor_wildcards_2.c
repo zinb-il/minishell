@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:31:10 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 22:54:43 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 14:35:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,17 @@ char	**new_expand_param(char **param, char *str, char *str1)
 	free(str2);
 	free(str1);
 	return (new);
+}
+
+void	check_if_added_elemnt(char ***list, int i, char *s1, t_node **node)
+{
+	int		size;
+	char	*s;
+
+	size = (int)ft_strsize(*list);
+	s = ft_strjoin("./", s1);
+	ft_opendir(node, s, i, list);
+	if (size == (int)ft_strsize(*list))
+		*list = new_expand_param(*list, (*node)->param[i], ft_strdup(""));
+	free(s);
 }

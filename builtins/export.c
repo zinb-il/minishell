@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:47 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/15 15:45:08 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 22:33:33 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_chars(char *arg)
 	ch = 0;
 	if (arg && !ft_isalpha(arg[0]) && arg[0] != '_')
 	{
-		printf("export: `%s': not a valid identifier !\n", arg);
+		print_export_error(arg);
 		g_vars.exit_code = 1;
 		return (1);
 	}
@@ -28,7 +28,7 @@ int	check_chars(char *arg)
 		if ((!(ft_isalnum(arg[ch])) && arg[ch] != '_' && arg[ch] != '+') \
 			|| (arg[ch] == '+' && arg[ch + 1] != '='))
 		{
-			printf("export: `%s': not a valid identifier !\n", arg);
+			print_export_error(arg);
 			g_vars.exit_code = 1;
 			return (1);
 		}
@@ -42,7 +42,11 @@ static int	what_to_do(t_builtins *tl, char *att, char *arg)
 	if (ft_strcmp(att, tl->tmp->env_att) == 0)
 	{
 		if (arg[tl->i] && arg[tl->i] == '=' && arg[tl->i - 1] != '+')
+		{
+			if (tl->tmp->env_val)
+				free(tl->tmp->env_val);
 			tl->tmp->env_val = ft_strdup(arg + tl->i + 1);
+		}
 		else if (arg[tl->i] && arg[tl->i] == '=' && arg[tl->i - 1] == '+')
 		{
 			tl->val_p = tl->tmp->env_val;
@@ -62,7 +66,7 @@ static	int	w_env_exist(char *att, char *arg, size_t i)
 {
 	t_builtins	tl;
 
-	tl.val_p = NULL;
+	tl.val_p = 0;
 	tl.i = i;
 	tl.tmp = g_vars.env;
 	while (tl.tmp)
@@ -96,14 +100,14 @@ int	env_exists(char *arg)
 	return (0);
 }
 
-void	ft_export(char	**arg)
+void	ft_export(char	**arg, int out)
 {
 	int		i;
 
-	g_vars.exit_code = 0;
 	i = -1;
+	g_vars.exit_code = 0;
 	if (!arg || arg[0] == '\0')
-		print_export();
+		print_export(out);
 	else
 		while (arg[++i])
 			export_values(arg[i]);

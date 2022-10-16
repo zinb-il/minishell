@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:14:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 23:43:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:09:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_inlist_builtin(char *s)
 	if (!ft_strcmp(str, "cd") || !ft_strcmp(str, "pwd") \
 	|| !ft_strcmp(str, "unset") || !ft_strcmp(str, "env") \
 	|| !ft_strcmp(str, "export") || !ft_strcmp(str, "exit") \
-	|| !ft_strcmp(str, "echo"))
+	|| !ft_strcmp(str, "echo") || !check_builtin_letters(str))
 	{
 		free(str);
 		return (0);

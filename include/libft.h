@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:20:51 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 15:55:46 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:04:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 int			ft_isalnum(int c);
+int			ft_tolower(int c);
 int			ft_isalpha(int x);
 char		*ft_itoa(int n);
 void		ft_putchar_fd(char c, int fd);
@@ -21,6 +22,7 @@ void		ft_putstr_fd(char *s, int fd);
 char		*ft_strdup(const char *s);
 size_t		ft_strlen(const char *str);
 size_t		ft_strsize(char **str);
+char		**ft_strdup_d(char	**param);
 int			ft_fndc(char *str, char c);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strrrchr(const char *str, int c);

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:57:50 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 00:40:26 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:26:52 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,19 @@ void	free_env(t_env *env)
 			env = env->next;
 			free(tmp);
 		}
+	}
+}
+
+void	free_single_env(t_env **env)
+{
+	t_env	*tmp;
+
+	if (*env)
+	{
+		tmp = *env;
+		free(tmp->env_att);
+		free(tmp->env_val);
+		*env = (*env)->next;
+		free(tmp);
 	}
 }
