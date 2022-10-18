@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lexer_token_ast_free_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:48:54 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/03 00:44:28 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+void	free_cmd(t_cmd *cmd)
 {
-	while (env)
+	t_cmd	*tmp;
+
+	while (cmd)
 	{
-		printf("%s=========%s \n", env->env_att, env->env_val);
-		env = env->next;
+		tmp = cmd;
+		cmd = cmd->next;
+		if (tmp->value)
+			free(tmp->value);
+		if (tmp->input)
+			free(tmp->input);
+		if (tmp->output)
+			free(tmp->output);
+		if (tmp->param)
+			free_dstr(tmp->param);
+		free(tmp);
 	}
 }
 
-int	main(int ac, char **av, char **env)
+void	free_ast(t_ast *ast)
 {
-	char	*str;
-	int		i;
+	t_ast	*tmp;
 
-	(void)ac;
-	(void)av;
-	init_minishell(env);
-	while (1)
+	while (ast)
 	{
-		str = readline(PS1);
-		i = str_redline(str);
-		if (!i || i == 1)
-			free(str);
-		if (!i)
-			break ;
-		if (i == 1)
-			continue ;
-		add_history(str);
-		first_part(str);
-		unlik_herdo_name();
-		free(str);
+		tmp = ast;
+		ast = ast->next;
+		if (tmp->line_cmd)
+			free_cmd(tmp->line_cmd);
+		free(tmp);
 	}
-	return (0);
 }

@@ -1,48 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   delete_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:48:54 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/14 19:57:50 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/18 20:10:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+void	free_dstr(char	**str)
 {
-	while (env)
+	int	i;
+
+	i = 0;
+	while (str && str[i])
 	{
-		printf("%s=========%s \n", env->env_att, env->env_val);
-		env = env->next;
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	free_env(t_env *env)
+{
+	t_env	*tmp;
+
+	if (env)
+	{
+		while (env)
+		{
+			tmp = env;
+			free(tmp->env_att);
+			free(tmp->env_val);
+			env = env->next;
+			free(tmp);
+		}
 	}
 }
 
-int	main(int ac, char **av, char **env)
+void	free_single_env(t_env **env)
 {
-	char	*str;
-	int		i;
+	t_env	*tmp;
 
-	(void)ac;
-	(void)av;
-	init_minishell(env);
-	while (1)
+	if (*env)
 	{
-		str = readline(PS1);
-		i = str_redline(str);
-		if (!i || i == 1)
-			free(str);
-		if (!i)
-			break ;
-		if (i == 1)
-			continue ;
-		add_history(str);
-		first_part(str);
-		unlik_herdo_name();
-		free(str);
+		tmp = *env;
+		free(tmp->env_att);
+		free(tmp->env_val);
+		*env = (*env)->next;
+		free(tmp);
 	}
-	return (0);
 }

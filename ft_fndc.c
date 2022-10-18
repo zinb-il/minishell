@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_fndc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:48:54 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/30 11:26:11 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/09/30 11:30:14 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+int	ft_fndc(char *str, char c)
 {
-	while (env)
-	{
-		printf("%s=========%s \n", env->env_att, env->env_val);
-		env = env->next;
-	}
-}
+	int	i;
 
-int	main(int ac, char **av, char **env)
-{
-	char	*str;
-	int		i;
-
-	(void)ac;
-	(void)av;
-	init_minishell(env);
-	while (1)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		str = readline(PS1);
-		i = str_redline(str);
-		if (!i || i == 1)
-			free(str);
-		if (!i)
-			break ;
-		if (i == 1)
-			continue ;
-		add_history(str);
-		first_part(str);
-		unlik_herdo_name();
-		free(str);
+		if (str[i] == c)
+			return (1);
+		i++;
 	}
 	return (0);
 }

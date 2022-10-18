@@ -1,48 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:48:54 by ziloughm         ###   ########.fr       */
+/*   Created: 2021/12/02 20:29:13 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+char	*ft_strrchr(const char *str, int c)
 {
-	while (env)
-	{
-		printf("%s=========%s \n", env->env_att, env->env_val);
-		env = env->next;
-	}
-}
-
-int	main(int ac, char **av, char **env)
-{
-	char	*str;
 	int		i;
+	char	*p;
 
-	(void)ac;
-	(void)av;
-	init_minishell(env);
-	while (1)
+	p = (char *)str;
+	c = (char)c;
+	i = ft_strlen(p);
+	while (i >= 0)
 	{
-		str = readline(PS1);
-		i = str_redline(str);
-		if (!i || i == 1)
-			free(str);
-		if (!i)
-			break ;
-		if (i == 1)
-			continue ;
-		add_history(str);
-		first_part(str);
-		unlik_herdo_name();
-		free(str);
+		if (p[i] == c)
+			return (p + i);
+		i--;
 	}
 	return (0);
 }

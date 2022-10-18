@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:48:54 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/09/13 22:10:49 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	while (env)
-	{
-		printf("%s=========%s \n", env->env_att, env->env_val);
-		env = env->next;
-	}
-}
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-int	main(int ac, char **av, char **env)
-{
-	char	*str;
-	int		i;
-
-	(void)ac;
-	(void)av;
-	init_minishell(env);
-	while (1)
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	while ((s1[i] || s2[i]))
 	{
-		str = readline(PS1);
-		i = str_redline(str);
-		if (!i || i == 1)
-			free(str);
-		if (!i)
-			break ;
-		if (i == 1)
-			continue ;
-		add_history(str);
-		first_part(str);
-		unlik_herdo_name();
-		free(str);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
 	return (0);
 }
