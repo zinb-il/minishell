@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_grammar.h                                     :+:      :+:    :+:   */
+/*   execution_util_4.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 22:56:26 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/17 20:04:24 by ziloughm         ###   ########.fr       */
+/*   Created: 2022/10/18 06:31:05 by ziloughm          #+#    #+#             */
+/*   Updated: 2022/10/18 06:46:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef SCAN_GRAMMAR_H
-# define SCAN_GRAMMAR_H
+#include "../include/minishell.h"
 
-int	scann_op(t_token *token, t_token *tokens);
-int	scann_redirec(t_token *token, t_token *tokens);
-int	scann_lparenth(t_token *token, t_token *tokens);
-int	scann_rparenth(t_token *token, t_token *tokens);
-int	scann_grammar(t_token *tokens);
-int	scann_grammar2(t_token *tokens);
+void	ft_dup(int fdi, int fdout)
+{
+	dup2(fdi, STDIN_FILENO);
+	dup2(fdout, STDOUT_FILENO);
+}
 
-#	endif
+void	ft_clode_fd(int end0, int end1)
+{
+	close(end0);
+	(void)(end1);
+}

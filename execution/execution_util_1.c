@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:14:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 23:09:40 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 06:48:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	ft_chekc_ouputfile(char *str, int app)
 
 	if (!str)
 		return (0);
+	if (!str[0])
+		ft_error(ft_strdup(": ambiguous redirect"), 1);
 	if (!app)
 		fd = open(str, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	else
@@ -80,6 +82,33 @@ int	ft_chekc_ouputfile(char *str, int app)
 		s2 = ft_strjoin(s1, strerror(errno));
 		free(s1);
 		ft_error(s2, 1);
+	}
+	return (fd);
+}
+
+int	ft_chekc_ouputfile_herdoc(char *str, int app)
+{
+	int		fd;
+
+	if (!str)
+		return (0);
+	if (!str[0])
+	{
+		get_new_promt(ft_strdup(": ambiguous redirect"));
+		g_vars.exit_code = 1;
+		return (2);
+	}
+	if (!app)
+		fd = open(str, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	else
+		fd = open(str, O_CREAT | O_RDWR | O_APPEND, 0644);
+	if (fd < 0)
+	{
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(strerror(errno), 2);
+		g_vars.exit_code = 1;
+		return (0);
 	}
 	return (fd);
 }

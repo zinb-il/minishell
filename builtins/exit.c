@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:55:39 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/16 15:46:11 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 02:27:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	ft_exit(char **args)
 	}
 	else if (check_exit(args[0]) && ft_strsize(args) > 1)
 	{
-		printf("exit\nbash: exit: %s: too many arguments\n", args[0]);
+		printf("exit\nminishell: exit: %s: too many arguments\n", args[0]);
 		g_vars.exit_code = 1;
 	}
 	else
 	{
-		printf("exit\nbash: exit: %s: numeric argument required\n", args[0]);
+		printf("exit\nminishell: exit: %s: numeric argument required\n", args[0]);
 		g_vars.exit_code = 255;
 		exit (g_vars.exit_code);
 	}

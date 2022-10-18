@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scan_grammar.c                                     :+:      :+:    :+:   */
+/*   scan_grammar_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:01:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 10:36:20 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:06:20 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,7 @@ int	scann_grammar(t_token *tokens)
 		tmp->type == TOKEN_DAND) && !scann_op(tmp, tokens))
 			return (0);
 		if ((tmp->type == TOKEN_GREAT || tmp->type == TOKEN_DGREAT || \
-		tmp->type == TOKEN_LESS || tmp->type == TOKEN_DLESS) \
-		&& !scann_redirec(tmp, tokens))
+		tmp->type == TOKEN_LESS) && !scann_redirec(tmp, tokens))
 			return (0);
 		if (tmp->type == TOKEN_LPARENTH && !scann_lparenth(tmp, tokens))
 			return (0);

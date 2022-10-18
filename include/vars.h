@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 23:01:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:56:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define VARS_H
 
 //Prompt String
-# define PS1 "\033[0;32mminishell-1.0:~$\033[0;37m "
+//# define PS1 "\033[0;32mminishell-1.0:~$\033[0;37m "
+# define PS1 "minishell-1.0:~$ "
 # define PS2 "> "
 # define ERR_SYN "syntax error near unexpected token near "
-# define ERR_EXEC "\033[0;31mminishell:\033[0;37m "
+//# define ERR_EXEC "\033[0;31mminishell:\033[0;37m "
+# define ERR_EXEC "minishell: "
 
 //Special characters
 # define SPCL "&<>$|\'()\"\t "

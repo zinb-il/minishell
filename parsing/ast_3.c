@@ -6,11 +6,39 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:54:01 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/03 19:24:26 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 00:22:30 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	add_cmd_to_cmd(t_cmd **tmp, t_node	**node)
+{
+	char	**param;
+	size_t	size;
+	int		i;
+	int		j;
+
+	size = ft_strsize((*tmp)->param) + ft_strsize((*node)->param) + 2;
+	param = (char **)malloc(sizeof(char *) * size);
+	i = 0;
+	while ((*tmp)->param && (*tmp)->param[i])
+	{
+		param[i] = ft_strdup((*tmp)->param[i]);
+		i++;
+	}
+	param[i] = ft_strdup((*node)->value);
+	j = 0;
+	while ((*node)->param && (*node)->param[j])
+	{
+		param[i + 1] = ft_strdup((*node)->param[j]);
+		i++;
+		j++;
+	}
+	param[size - 1] = 0;
+	free_dstr((*tmp)->param);
+	(*tmp)->param = param;
+}
 
 t_ast	*advs_ast(t_node **node, t_ast *ast)
 {

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 19:14:57 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 00:03:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ void	free_oldin_out(char	**str1, char *str2)
 	*str1 = ft_strdup(str2);
 }
 
+void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node)
+{
+	if (!(*tmp)->value)
+	{
+		(*tmp)->value = ft_strdup((*node)->value);
+		if ((*tmp)->param)
+			free_dstr((*tmp)->param);
+		(*tmp)->param = ft_strdup_d((*node)->param);
+	}
+	else
+		add_cmd_to_cmd(tmp, node);
+}
+
 t_cmd	*get_next_cmd(t_node **node)
 {
 	t_cmd	*tmp;
@@ -38,12 +51,7 @@ t_cmd	*get_next_cmd(t_node **node)
 	while (node && not_other_ast(node) && (*node)->type != NODE_PIPE)
 	{
 		if ((*node)->type == NODE_CMD)
-		{
-			tmp->value = ft_strdup((*node)->value);
-			if (tmp->param)
-				free_dstr(tmp->param);
-			tmp->param = ft_strdup_d((*node)->param);
-		}
+			add_cmd_val_toparam(&tmp, node);
 		if ((*node)->type == NODE_RED_IN || (*node)->type == NODE_HEREDOC)
 			free_oldin_out(&(tmp->input), (*node)->param[0]);
 		if ((*node)->type == NODE_RED_OUT || (*node)->type == NODE_RED_AOUT)

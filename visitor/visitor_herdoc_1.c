@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 23:10:03 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 21:01:17 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	write_inside_heredoc(t_node *node, int i)
 	node->param[0] = name;
 }
 
-void	open_heredoc_files(t_node *node)
+int	open_heredoc_files(t_node *node)
 {
 	t_node	*tmp;
 	int		i;
@@ -102,8 +102,13 @@ void	open_heredoc_files(t_node *node)
 	while (tmp->type != NODE_EOF)
 	{
 		if (tmp->type == NODE_HEREDOC)
+		{
 			write_inside_heredoc(tmp, i);
+			if (g_vars.exit_code == 1)
+				return (1);
+		}
 		tmp = tmp->next;
 		i++;
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/09/27 16:15:46 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:59:31 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_token	*lexer_collect_double_quote(t_lexer *lexer)
 	str2 = ft_strdup("");
 	while (lexer->c != '\0' && lexer->c != '"')
 	{
-		if (lexer->c == '$' && lexer->content[lexer->i - 1] != '\\')
+		if (lexer->c == '$')
 			str1 = lexer_collect_double_quote_env(lexer);
 		else
 			str1 = lexer_collect_double_quote_char(lexer, lexer->c);

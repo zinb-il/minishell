@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:19:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/15 18:51:47 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:56:20 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ void	handler_sigquit_herdoc(int sigid)
 void	handler_sigint_child(int sigid)
 {
 	if (sigid == SIGINT)
-	{
-		write(2, "\n", 1);
 		g_vars.exit_code = 130;
-	}
 }
 
 void	handler_sigquit_child(int sigid)
@@ -63,7 +60,7 @@ void	signals(int pro)
 	else if (pro == 1)
 	{
 		signal(SIGINT, handler_sigint_child);
-		signal(SIGQUIT, handler_sigquit_child);
+		signal(SIGQUIT, SIG_IGN);
 	}
 	else
 	{

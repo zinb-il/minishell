@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 19:14:28 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 23:39:36 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	free_ast(t_ast *ast);
 void	print_ast(t_ast *ast);
 t_ast	*advs_ast(t_node **node, t_ast *ast);
 t_ast	*get_next_ast(t_node **node);
+void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node);
+void	add_cmd_to_cmd(t_cmd **tmp, t_node	**node);
 int		not_other_ast(t_node **node);
 void	free_oldin_out(char	**str1, char *str2);
 t_cmd	*get_next_cmd(t_node **node);

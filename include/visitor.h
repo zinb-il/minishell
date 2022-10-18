@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 14:35:16 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:33:34 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		herdoc_env_val(char *str, int i, char **str3);
 void	expand_heredoc_variable(char *str, int fd);
 int		fork_for_herdoc(int fd, t_node *node);
 void	write_inside_heredoc(t_node *node, int i);
-void	open_heredoc_files(t_node *node);
+int		open_heredoc_files(t_node *node);
 
 //Create output files
 void	creat_output_files(t_node *node);

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/17 00:33:45 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 07:30:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 	g_vars.pids[0] = pid;
 }
 
+void	ft_check_tons_pipes(int pid)
+{
+	if (pid == -1)
+		g_vars.exit_code = 1;
+}
+
 int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 {
 	int	pid;
@@ -49,19 +55,19 @@ int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 	signals(1);
 	pipe(end);
 	pid = fork();
+	ft_check_tons_pipes(pid);
 	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
 		check_ouin_multcmd(cmd, &fdi, &end[1]);
-		dup2(fdi, STDIN_FILENO);
-		dup2(end[1], STDOUT_FILENO);
-		close(end[0]);
+		ft_dup(fdi, end[1]);
+		close (end[0]);
 		if (check_inlist_builtin(cmd->value))
 			ft_execute_cmd(cmd);
 		execute_builtin(check_builtin(cmd->value), cmd->param, end[1]);
 		exit(g_vars.exit_code);
 	}
-	if (fdi != 0 && fdi != 1)
+	if (fdi != 0)
 		close(fdi);
 	close(end[1]);
 	fdi = end[0];
@@ -90,6 +96,8 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	int	s;
 	int	i;
 
+	if (!check_execute_builtin(line_cmd))
+		return ;
 	s = (int)ft_lstsizecmd(line_cmd);
 	g_vars.pids = (int *)malloc(s * sizeof(int));
 	if (!line_cmd->next)
