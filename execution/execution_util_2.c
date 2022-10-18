@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:06:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/05 23:05:44 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:21:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,13 @@ char	**ft_get_env(void)
 
 void	ft_exe_cmd(char	*cmd, char **param, char **env)
 {
-	int	i;
+	int		i;
+	char	*s;
 
 	i = execve(cmd, param, env);
+	s = cmd;
+	cmd = ft_strjoin(cmd, ": ");
+	free(s);
 	if (i == -1)
-		ft_error(ft_strdup(" "), 1);
+		ft_error(ft_strjoin(cmd, strerror(errno)), 1);
 }

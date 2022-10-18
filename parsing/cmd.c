@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:50:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/04 20:11:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:27:36 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_cmd(t_cmd *cmd)
 	tmp = cmd;
 	while (tmp)
 	{
-		printf("val: %s input:%s output:%s append:%d\n", tmp->value, \
+		printf("val: %s input:%s output:%s append:%d \n", tmp->value, \
 		tmp->input, tmp->output, tmp->append);
 		i = 0;
 		while (tmp->param && tmp->param[i])

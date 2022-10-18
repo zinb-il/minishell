@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:06:10 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 02:05:20 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:26:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	int	check_chdir(char **arg)
 		g_vars.exit_code = 1;
 		return (0);
 	}
-	else if (arg[0] == '\0')
+	else if (arg[0] == '\0' || !ft_strlen(arg[0]))
 		return (cd_to_home());
 	else if (chdir(arg[0]) != 0)
 	{

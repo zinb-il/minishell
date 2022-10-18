@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 21:53:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 22:34:31 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:27:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_print_export_line(t_env	*tmp, int out)
 
 void	print_export_error(char	*s)
 {
-	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(s, 2);
 	ft_putstr_fd("': not a valid identifier !\n", 2);
 }

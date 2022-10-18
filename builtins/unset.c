@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:49:36 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/16 21:32:52 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:29:15 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_chars_unset(char *arg)
 	{
 		if ((!ft_isalnum(arg[ch]) && arg[ch] != '_') || ft_isdigit(arg[0]))
 		{
-			printf("unset: `%s': not a valid identifier !\n", arg);
+			printf("minishell: unset: `%s': not a valid identifier !\n", arg);
 			g_vars.exit_code = 1;
 			return (0);
 		}

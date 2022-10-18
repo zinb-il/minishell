@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:40:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/17 20:56:29 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:31:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 //Heredoce Nmefile
 # define TMP_FILE "/tmp/heredoc_tmp_file_"
+# define MAX_HERDOC 16
 
 //Elements
 typedef struct s_env

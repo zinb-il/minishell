@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:19:18 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 03:56:20 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:49:26 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	signals(int pro)
 	else if (pro == 1)
 	{
 		signal(SIGINT, handler_sigint_child);
-		signal(SIGQUIT, SIG_IGN);
+		signal(SIGQUIT, handler_sigquit_child);
 	}
 	else
 	{

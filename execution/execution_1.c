@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 04:14:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:29:56 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	check_execute_builtin(t_cmd *line_cmd)
 			return (0);
 		execute_builtin(check_builtin(line_cmd->value), \
 						line_cmd->param, fd);
-		if (fd > 2)
-			close(fd);
 		return (0);
 	}
 	return (1);

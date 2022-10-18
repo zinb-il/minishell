@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 07:26:55 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:35:16 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo)
 
 	f1 = ft_chekc_inputfile(line_cmd->input);
 	f2 = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
-	close(*fdi);
-	close(*fdi);
 	if (f1)
 		*fdi = f1;
 	if (f2 > 0)

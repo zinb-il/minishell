@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 07:30:21 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:43:29 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_execute_multiple_cmd(t_cmd *line_cmd)
 		line_cmd = line_cmd->next;
 		i++;
 	}
+	close(fdi);
 }
 
 void	ft_execute_cmd_line(t_cmd *line_cmd)
@@ -108,7 +109,7 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	while (++i < s)
 		waitpid(g_vars.pids[i], &statut, 0);
 	free(g_vars.pids);
+	signals(0);
 	if (WIFEXITED(statut))
 		g_vars.exit_code = WEXITSTATUS(statut);
-	signals(0);
 }

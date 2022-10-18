@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:46:56 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/16 14:26:17 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:38:55 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,20 @@ int	fork_for_herdoc(int fd, t_node *node)
 		exit(0);
 	}
 	return (pid);
+}
+
+int	count_herdoc(t_node *node)
+{
+	t_node	*tmp;
+	int		max;
+
+	tmp = node;
+	max = 0;
+	while (tmp->type != NODE_EOF)
+	{
+		if (tmp->type == NODE_HEREDOC)
+			max++;
+		tmp = tmp->next;
+	}
+	return (max);
 }
