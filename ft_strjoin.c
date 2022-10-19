@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:11:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:45:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	i;
 	char	*p;
 
-	if (!s2 || !s1)
+	if (!s2 && !s1)
 		return (0);
 	i = ft_strlen(s1) + ft_strlen(s2) + 1;
 	p = (char *)malloc(i * sizeof(char));

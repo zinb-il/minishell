@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:34:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:55:36 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_env_val(t_env *env, char *var)
 			return (ft_strdup(env->env_val));
 		env = env->next;
 	}
-	return (ft_strdup(""));
+	return (0);
 }
 
 t_env	*ft_getlast_env(t_env *lst)

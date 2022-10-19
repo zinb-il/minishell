@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 23:37:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 17:52:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,48 @@ char	*get_herdoc_str(t_lexer *lexer, char c)
 	while (lexer->c != '\0' && lexer->c != c)
 		lexer_advance(&lexer);
 	str = ft_substr(lexer->content, start, lexer->i - start);
+	lexer_advance(&lexer);
+	return (str);
+}
+
+int	check_in_out_put(t_lexer *lexer)
+{
+	char	*str;
+	int		i;
+
+	str = ft_strdup(lexer->content);
+	i = lexer->i - 1;
+	while (i > 0 && (str[i] == '\t' || str[i] == ' '))
+		i--;
+	if (i >= 0 && (str[i] == '<' || str[i] == '>'))
+	{
+		free(str);
+		return (1);
+	}
+	free(str);
+	return (0);
+}
+
+char	*get_inouput_str(t_lexer *lexer, char c)
+{
+	char	*str;
+	char	*str1;
+	char	link[2];
+	int		start;
+
+	link[1] = 0;
+	link[0] = c;
+	lexer_advance(&lexer);
+	start = lexer->i;
+	while (lexer->c != '\0' && lexer->c != c)
+		lexer_advance(&lexer);
+	str = ft_substr(lexer->content, start, lexer->i - start);
+	str1 = str;
+	str = ft_strjoin(link, str);
+	free(str1);
+	str1 = str;
+	str = ft_strjoin(str, link);
+	free(str1);
 	lexer_advance(&lexer);
 	return (str);
 }

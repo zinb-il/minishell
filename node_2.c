@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:08:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 15:45:38 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_node_param(t_node **node, t_token *token)
 	int		i;
 	int		j;
 
-	if (!token || token->type == TOKEN_EOF)
+	if (!token || token->type == TOKEN_EOF || !token->value)
 		return ;
 	i = (int)ft_strsize((*node)->param) + 1;
 	param = (char **)malloc(sizeof(char *) * (i + 1));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_collect_double_quote_2.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:38:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

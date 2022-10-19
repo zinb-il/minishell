@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 13:22:39 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:56:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	free_tokens(t_token *tokens)
 	{
 		tmp = tokens;
 		tokens = tokens->next;
-		free(tmp->value);
+		if (tmp->value)
+			free(tmp->value);
 		free(tmp);
 	}
 }

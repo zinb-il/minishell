@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:55:39 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	check_exit(char *arg)
 	int		x;
 
 	x = 0;
+	if (arg && (arg[x] == '-' || arg[x] == '+'))
+		x++;
 	while (arg && arg[x])
 	{
 		if (!ft_isdigit(arg[x]))

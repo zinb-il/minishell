@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:06:10 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 20:10:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*update_pwd(t_builtins *tl)
+static char	*update_pwd(t_builtins *tl, int out)
 {
-	t_env	*current_env;
-	char	*tmp;
+	t_env			*current_env;
+	char			*tmp;
+	t_builtins		tp;
 
 	tmp = 0;
 	current_env = g_vars.env;
@@ -30,6 +31,12 @@ static char	*update_pwd(t_builtins *tl)
 		}
 		current_env = current_env->next;
 	}
+	tp.tmp_o = ft_strdup("PWD=");
+	tp.to_export[0] = ft_strjoin(tp.tmp_o, getcwd(tmp, sizeof(tmp)));
+	tp.to_export[1] = 0;
+	ft_export(tp.to_export, out);
+	free (tp.tmp_o);
+	free (tp.to_export[0]);
 	return (0);
 }
 
@@ -80,11 +87,10 @@ void	ft_cd(char	**arg, int out)
 {
 	t_builtins	tl;
 
-	(void) out;
 	g_vars.exit_code = 0;
 	if (check_chdir(arg))
 	{
-		tl.new_opwd = update_pwd(&tl);
+		tl.new_opwd = update_pwd(&tl, out);
 		if (tl.new_opwd)
 		{
 			tl.tmp_o = ft_strdup("OLDPWD=");
@@ -93,7 +99,7 @@ void	ft_cd(char	**arg, int out)
 			ft_export(tl.to_export, out);
 			free (tl.tmp_o);
 			free (tl.new_opwd);
-			free(tl.to_export[0]);
+			free (tl.to_export[0]);
 		}
 	}
 }

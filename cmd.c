@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:50:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:10:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 15:29:09 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	print_cmd(t_cmd *cmd)
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{
-			printf("param %d:%s\n", i, tmp->param[i]);
+			printf("param %d:'%s'\n", i, tmp->param[i]);
 			i++;
 		}
 		tmp = tmp->next;

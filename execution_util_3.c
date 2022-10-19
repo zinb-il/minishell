@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:43:28 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,20 @@ void	ft_execute_cmd(t_cmd *cmd)
 {
 	char	**path;
 	char	**env;
+	DIR		*dp;
 
 	if (!cmd->value || !ft_strlen(cmd->value))
-	{
-		if (g_vars.exit_code == 1)
-			exit(1);
 		exit(0);
-	}
 	path = ft_get_path();
 	env = ft_get_env();
-	if (ft_strrchr(cmd->value, '/') && !access(cmd->value, F_OK | X_OK))
+	if ((ft_fndc(cmd->value, '/') && !access(cmd->value, F_OK | X_OK)) || !path)
+	{
+		dp = opendir(cmd->value);
+		if (dp)
+			ft_error(ft_strjoin(cmd->value, ": is a directory"), 126);
 		ft_exe_cmd(cmd->value, new_expand_param2(cmd->param, cmd->value), env);
+	}
+	check_directry_err(cmd);
 	ft_execute_cmd_join(cmd, path, env);
 	free_dstr(path);
 	free_dstr(env);

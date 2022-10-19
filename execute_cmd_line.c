@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 09:49:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,21 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 	pid_t	pid;
 	int		fd[2];
 
-	signals(1);
+	signals(3);
 	pid = fork();
 	if (pid == -1)
 		ft_error(ft_strdup(strerror(errno)), 1);
 	g_vars.child_process_pid = pid;
 	if (!pid)
 	{
+		signals(1);
 		fd[0] = ft_chekc_inputfile(line_cmd->input);
 		fd[1] = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
 		if (fd[0])
-		{
 			dup2(fd[0], STDIN_FILENO);
-			close(fd[0]);
-		}
 		if (fd[1])
-		{
 			dup2(fd[1], STDOUT_FILENO);
-			close(fd[1]);
-		}
+		ft_clode_fd(fd[0], fd[1]);
 		ft_execute_cmd(line_cmd);
 	}
 	g_vars.pids[0] = pid;
@@ -52,13 +48,14 @@ int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 	int	pid;
 	int	end[2];
 
-	signals(1);
 	pipe(end);
+	signals(3);
 	pid = fork();
 	ft_check_tons_pipes(pid);
 	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
+		signals(1);
 		check_ouin_multcmd(cmd, &fdi, &end[1]);
 		ft_dup(fdi, end[1]);
 		close (end[0]);
@@ -112,4 +109,6 @@ void	ft_execute_cmd_line(t_cmd *line_cmd)
 	signals(0);
 	if (WIFEXITED(statut))
 		g_vars.exit_code = WEXITSTATUS(statut);
+	else if (WIFSIGNALED(statut))
+		g_vars.exit_code = WTERMSIG(statut) + 128;
 }

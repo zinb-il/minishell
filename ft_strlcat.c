@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:53:43 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:07 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:48:42 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlcat(void *dest, const void *src, size_t n)
 	ld = ft_strlen(d);
 	if (n <= 0 || (!dest && !src))
 		return (ft_strlen(s));
-	while (i < n - 1 && s[j])
+	while (i < n - 1 && s && s[j])
 	{
 		d[i] = s[j];
 		i++;

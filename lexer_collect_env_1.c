@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 21:06:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,10 @@ t_token	*lexer_collect_env_str(t_lexer *lexer)
 
 t_token	*lexer_collect_env(t_lexer *lexer)
 {
-	if (check_herdoc(lexer))
+	if (check_in_out_put(lexer))
 		return (lexer_collect_env_herdoc(lexer, "$"));
+	if (check_in_out_put(lexer))
+		return (lexer_collect_env_out_int(lexer, "$"));
 	lexer_advance(&lexer);
 	if (lexer->c == '?' || lexer->c == '$')
 		return (lexer_collect_dollar(lexer));

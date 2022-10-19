@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:11:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:11:02 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 15:29:17 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_nodess(t_node *nodes)
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{
-			printf("param  %s \n", tmp->param[i]);
+			printf("param  '%s' \n", tmp->param[i]);
 			i++;
 		}
 		printf("\n");

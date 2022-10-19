@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:46:56 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:10:39 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 10:11:57 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	fork_for_herdoc(int fd, t_node *node)
 	char	*str;
 	pid_t	pid;
 
+	signals(3);
 	pid = fork();
 	if (pid == -1)
 		ft_error(ft_strdup(strerror(errno)), 1);

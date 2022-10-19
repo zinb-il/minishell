@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:53:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 20:10:39 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/19 10:21:25 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	write_inside_heredoc(t_node *node, int i)
 	add_herdo_name(name);
 	pid = fork_for_herdoc(fd, node);
 	waitpid(pid, &statut, 0);
+	signals(0);
 	if (WIFEXITED(statut))
 		g_vars.exit_code = WEXITSTATUS(statut);
-	signals(0);
 	close(fd);
 	free(node->param[0]);
 	node->param[0] = name;
