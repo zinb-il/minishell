@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_collect_meta.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:06:54 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:44:38 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ t_token	*lexer_collect_and(t_lexer *lexer)
 		return (advs_token(lexer, init_token(TOKEN_WORD, ft_strdup("&"))));
 	token = lexer_get_next_token(lexer);
 	if (token->type == TOKEN_EOF)
+	{
+		if (token->value)
+			free(token->value);
+		free(token);
 		return (init_token(TOKEN_WORD, ft_strdup("&")));
+	}
 	if (token->type != TOKEN_ERR)
 	{
 		s = token->value;

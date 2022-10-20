@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:25:25 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:55:03 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	put_args(char **args, t_builtins *tl, int out)
 	while (args && args[tl->i])
 	{
 		ft_putstr_fd(args[tl->i], out);
-		if (args[tl->i + 1] && args[tl->i][0] != '\0')
+		if (args[tl->i + 1])
 			write(out, " ", 1);
 		tl->i++;
 	}

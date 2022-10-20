@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:34:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 13:55:36 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:19:50 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*get_env_val(t_env *env, char *var)
 {
+	if (!env)
+		return (0);
 	while (env)
 	{
 		if (!ft_strcmp(env->env_att, var))

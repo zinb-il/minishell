@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:31:51 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 21:05:57 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:21:43 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_token	*lexer_collect_env_and(t_lexer *lexer)
 		s = token->value;
 		token->value = ft_strjoin(str, token->value);
 		free(str);
-		if (token->value)
+		if (s)
 			free(s);
 	}
 	return (token);

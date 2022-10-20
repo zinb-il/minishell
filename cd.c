@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:06:10 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:22:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@ static int	cd_to_home(void)
 	char	*home;
 
 	home = get_env_val(g_vars.env, "HOME");
-	if (!home || !*home)
+	if (!home)
 	{
 		ft_putstr_fd(ERR_EXEC, 2);
 		ft_putstr_fd("cd: HOME not set \n", 2);
 		g_vars.exit_code = 1;
-		if (!*home)
-			free(home);
 		return (0);
 	}
 	else
@@ -62,16 +60,11 @@ static int	cd_to_home(void)
 
 static	int	check_chdir(char **arg)
 {
-	if (!arg)
-	{
-		ft_putstr_fd("Error: Enter cd with only ", 2);
-		ft_putstr_fd("a relative or absolute path !\n", 2);
-		g_vars.exit_code = 1;
-		return (0);
-	}
-	else if (arg[0] == '\0' || !ft_strlen(arg[0]))
+	if (!arg || !arg[0])
 		return (cd_to_home());
-	else if (chdir(arg[0]) != 0)
+	else if (!arg[0][0])
+		return (1);
+	else if (chdir(arg[0]))
 	{
 		ft_putstr_fd("cd: ", 2);
 		ft_putstr_fd(arg[0], 2);
