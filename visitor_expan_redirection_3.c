@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:55:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 13:18:15 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:07:57 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,21 @@ void	add_expanded_toparam(t_node **node, char *str)
 	(*node)->param = param;
 }
 
-char	*clean_str(char	*str)
-{
-	int	i;
-	return (0);
-}
-
 char	*test_and_clean(char *str)
 {
-	if (!str || !trim_str(char_redirection(str)) || !test_ambiguous(str))
+	char	*new;
+	char	*new1;
+
+	new = trim_str(char_redirection(str));
+	if (!str || !new)
 		return (0);
-	clean_str(str);
+	if (!test_ambiguous(new))
+	{
+		free(new);
+		return (0);
+	}
+	new1 = clean_the_str(new);
+	return (new1);
 }
 
 void	expanded_rediretions(t_node *node)
@@ -85,8 +89,7 @@ void	expanded_rediretions(t_node *node)
 	{
 		if (tmp->type == NODE_RED_AOUT || tmp->type == NODE_RED_OUT \
 		|| tmp->type == NODE_RED_IN)
-			add_expanded_toparam(&tmp, \
-			trim_str(char_redirection(tmp->param[0])));
+			add_expanded_toparam(&tmp, test_and_clean(tmp->param[0]));
 		tmp = tmp->next;
 	}
 }

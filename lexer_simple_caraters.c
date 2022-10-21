@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_simple_caraters.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:21:42 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:10:23 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_token	*lexer_simple_caraters(t_lexer *lexer)
 
 	if (check_herdoc(lexer))
 		return (lexer_collect_env_herdoc(lexer, ""));
+	if (check_in_out_put(lexer))
+		return (lexer_collect_env_out_int(lexer, ""));
 	str = ft_strdup(lexer->content);
 	s = lexer->i;
 	while (lexer->c != '\0' && !check_spcl_char(SPCL, lexer->c))

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:22:33 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 13:16:44 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:11:51 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,9 @@ static	int	test_input_first(char **str)
 	int	t;
 	int	fd;
 
-	if (!str[1] || !test_ambiguous(str[1]))
+	if (!str[1])
 		return (0);
-	str[1] = clean_str(str[1]);
-	fd = open(str, O_RDONLY);
-	t = 1;
-	if (fd < 0)
-		t = 0;
-	close(fd);
-	return (t);
-}
-
-static	int	test_out_first(char *str)
-{
-	int	t;
-	int	fd;
-
-	fd = open(str, O_RDONLY);
+	fd = open(str[1], O_RDONLY);
 	t = 1;
 	if (fd < 0)
 		t = 0;
@@ -52,14 +38,14 @@ void	creat_output_files(t_node *node)
 	t = 1;
 	while (tmp && tmp->type != NODE_EOF)
 	{
-		if (tmp->type == NODE_RED_IN && tmp->param[0])
+		if (tmp->type == NODE_RED_IN)
 			t = test_input_first(tmp->param);
-		if (tmp->type == NODE_RED_OUT && t)
+		if (tmp->type == NODE_RED_OUT && t && tmp->param[1])
 		{
 			fd = open(tmp->param[0], O_CREAT | O_RDWR | O_TRUNC, 0644);
 			close(fd);
 		}
-		if (tmp->type == NODE_RED_AOUT && t)
+		if (tmp->type == NODE_RED_AOUT && t && tmp->param[1])
 		{
 			fd = open(tmp->param[0], O_CREAT | O_RDWR | O_APPEND, 0644);
 			close(fd);

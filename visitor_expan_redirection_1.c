@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 22:05:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 12:40:43 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:03:14 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	joind_str(char **s1, char *s2)
 	}
 	s = *s1;
 	*s1 = ft_strjoin(*s1, s2);
-	if (s)
-		free(s);
+	free(s);
 }
 
 int	env_redirection(char	*str, char **s1, int i)
@@ -108,11 +107,11 @@ char	*trim_str(char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] && str[i] == ' ' && str[i] == '\t')
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	start = i;
 	i = ft_strlen(str) - 1;
-	while (str[i] && i >= 0 && str[i] == ' ' && str[i] == '\t')
+	while (str[i] && i >= 0 && (str[i] == ' ' || str[i] == '\t'))
 		i--;
 	s = ft_substr(str, start, i - start + 1);
 	free(str);

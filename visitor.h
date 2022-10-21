@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 13:05:00 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:17:01 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_expanded_toparam(t_node **node, char *str);
 void	expanded_rediretions(t_node *node);
 
 //Ambiguous redirections test
-char	*clean_str(char	*str);
+char	*clean_the_str(char	*str);
 int		test_ambiguous(char	*str);
 
 //WildCards matching

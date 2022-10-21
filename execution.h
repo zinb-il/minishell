@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:11:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 13:43:16 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:34:24 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 int		ft_lstsizecmd(t_cmd *lst);
 void	ft_error(char *msg, int i);
 int		check_inlist_builtin(char *s);
-int		ft_chekc_inputfile(char *str);
-int		ft_chekc_ouputfile(char *str, int app);
-int		ft_chekc_ouputfile_herdoc(char *str, int app);
+int		ft_chekc_inputfile(char **str);
+int		ft_chekc_ouputfile(char **str, int app);
+int		ft_chekc_ouputfile_herdoc(char **str, int app);
 void	ft_dup(int fdi, int fdout);
 void	ft_clode_fd(int fdi, int fdout);
 int		check_builtin_letters(char *s);

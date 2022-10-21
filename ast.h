@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 18:27:58 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:24:20 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_cmd
 {
 	char			*value;
 	char			**param;
-	char			*input;
-	char			*output;
+	char			**input;
+	char			**output;
 	int				append;
 	struct s_cmd	*next;
 }t_cmd;
@@ -58,7 +58,7 @@ t_ast	*get_next_ast(t_node **node);
 void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node);
 void	add_cmd_to_cmd(t_cmd **tmp, t_node	**node);
 int		not_other_ast(t_node **node);
-void	free_oldin_out(char	**str1, char *str2);
+void	free_oldin_out(char	***str1, char **str2);
 t_cmd	*get_next_cmd(t_node **node);
 t_cmd	*get_cmd_line(t_node **node);
 t_ast	*get_ast(t_node *node);

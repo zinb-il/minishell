@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:50:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 16:17:10 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:25:32 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_cmd	*init_cmd(void)
 
 	cmd = (t_cmd *)malloc(1 * sizeof(t_cmd));
 	cmd->value = (void *)0;
-	cmd->input = (void *)0;
-	cmd->output = (void *)0;
+	cmd->input = (char **)malloc(sizeof(char *));
+	cmd->output = (char **)malloc(sizeof(char *));
 	cmd->append = 0;
 	cmd->param = (char **)malloc(sizeof(char *));
 	cmd->param[0] = 0;
@@ -61,8 +61,19 @@ void	print_cmd(t_cmd *cmd)
 	tmp = cmd;
 	while (tmp)
 	{
-		printf("val: %s input:%s output:%s append:%d \n", tmp->value, \
-		tmp->input, tmp->output, tmp->append);
+		printf("val: %s append:%d \n", tmp->value, tmp->append);
+		i = 0;
+		while (tmp->output && tmp->output[i])
+		{
+			printf("out %d:'%s'\n", i, tmp->output[i]);
+			i++;
+		}
+		i = 0;
+		while (tmp->input && tmp->input[i])
+		{
+			printf("out %d:'%s'\n", i, tmp->input[i]);
+			i++;
+		}
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{

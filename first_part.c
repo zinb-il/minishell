@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 12:45:26 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:39:02 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ void	first_part(char *s)
 		return ;
 	}
 	node = get_nodes(token);
-	/*if (sub_first_part(&node, &token))
-		return ;*/
-	expanded_rediretions(node);
+	if (sub_first_part(&node, &token))
+		return ;
 	ast = get_ast(node);
+	print_nodess(node);
 	free_nodes(node);
 	free_tokens(token);
+	print_ast(ast);
 	//second_part(ast);
 	free_ast(ast);
 }

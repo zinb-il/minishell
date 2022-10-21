@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 09:10:12 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:23:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	not_other_ast(t_node **node)
 	return (0);
 }
 
-void	free_oldin_out(char	**str1, char *str2)
+void	free_oldin_out(char	***str1, char **str2)
 {
-	if (str1 && *str1 && ft_strlen(*str1) > 0)
-		free(*str1);
-	*str1 = ft_strdup(str2);
+	if (str1 && *str1)
+		free_dstr(*str1);
+	*str1 = ft_strdup_d(str2);
 }
 
 void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node)
@@ -53,9 +53,9 @@ t_cmd	*get_next_cmd(t_node **node)
 		if ((*node)->type == NODE_CMD)
 			add_cmd_val_toparam(&tmp, node);
 		if ((*node)->type == NODE_RED_IN || (*node)->type == NODE_HEREDOC)
-			free_oldin_out(&(tmp->input), (*node)->param[0]);
+			free_oldin_out(&(tmp->input), (*node)->param);
 		if ((*node)->type == NODE_RED_OUT || (*node)->type == NODE_RED_AOUT)
-			free_oldin_out(&(tmp->output), (*node)->param[0]);
+			free_oldin_out(&(tmp->output), (*node)->param);
 		if ((*node)->type == NODE_RED_OUT)
 			tmp->append = 0;
 		if ((*node)->type == NODE_RED_AOUT)
