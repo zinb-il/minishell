@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:34:37 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 16:19:50 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:59:16 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,5 @@ void	get_env(char **env)
 	}
 	g_vars.exit_code = 0;
 	g_vars.sign = 0;
-	g_vars.process_pid = 0;
-	g_vars.child_process_pid = 0;
 	g_vars.herdo_files = 0;
 }

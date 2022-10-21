@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 20:20:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:16:20 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		check_close_quote(char *str, char c, int i);
 void	get_new_str(char *str);
 int		check_close_parenthesis(char *str);
 int		check_spcl_char(char *str, char c);
-int		check_herdoc(t_lexer *lexer);
 char	*get_herdoc_str(t_lexer *lexer, char c);
 char	*get_inouput_str(t_lexer *lexer, char c);
 char	*lexer_after_single_and(t_lexer *lexer, char *str1);
@@ -55,6 +54,7 @@ t_token	*lexer_collect_double_quote_after(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_double_quote_fafter(t_lexer *lexer, char *str2);
 t_token	*lexer_collect_quote_herdoc_quotes(t_lexer *lexer, char c);
 t_token	*lexer_collect_quote_inouput_quotes(t_lexer *lexer, char c);
+t_token	*check_before_heroutin(t_lexer *lexer);
 t_token	*lexer_collect_quotes_ouinput(t_lexer *lexer, char c);
 t_token	*lexer_collect_quotes_herdoc(t_lexer *lexer, char c);
 char	*lexer_collect_double_quote_char(t_lexer *lexer, char c);
@@ -72,6 +72,7 @@ t_token	*lexer_collect_env_parenth_after(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_env_parenth_io_after(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_env_parenth_her_after(t_lexer *lexer, char *str, char c);
 t_token	*lexer_collect_env_parenth(t_lexer *lexer);
+t_token	*lexer_collect_env_onedol_quotes(t_lexer *lexer, char *str);
 t_token	*lexer_collect_env_parenth_herdoc(t_lexer *lexer);
 t_token	*lexer_collect_env_parenth_inout(t_lexer *lexer);
 t_token	*lexer_collect_env_out_int(t_lexer *lexer, char	*s);

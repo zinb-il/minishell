@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:13:17 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 17:45:11 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 22:44:11 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_token	*lexer_collect_quotes_ouinput(t_lexer *lexer, char c)
 	else if (lexer->c == '\'')
 		token = lexer_collect_quote_inouput_quotes(lexer, '\'');
 	else if (!check_spcl_char(SPCL, lexer->c))
-		token = lexer_collect_env_herdoc(lexer, "");
+		token = lexer_collect_env_out_int(lexer, "");
 	else
 		token = init_token(TOKEN_WORD_EX, ft_strdup(""));
 	if (token->type != TOKEN_ERR)
@@ -65,7 +65,9 @@ t_token	*lexer_collect_env_inout_quotes(t_lexer *lexer, char *str, char c)
 			token = init_token(TOKEN_ERR, ft_strjoin("Unclosed quote near ", \
 			lexer->content + lexer->i));
 		else
+		{
 			token = lexer_collect_quotes_ouinput(lexer, lexer->c);
+		}
 	}
 	if (token->type != TOKEN_ERR)
 	{

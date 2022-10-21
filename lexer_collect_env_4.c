@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:02:57 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 21:01:46 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:53:19 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_token	*lexer_collect_env_parenth_io_after(t_lexer *lexer, char *str, char c)
 	t_token	*token;
 	char	*str1;
 
-	printf("ggggggg\n");
 	if (lexer->c == '$')
 		token = lexer_collect_env_parenth_inout(lexer);
 	else if (lexer->c == '\'')
@@ -29,7 +28,6 @@ t_token	*lexer_collect_env_parenth_io_after(t_lexer *lexer, char *str, char c)
 	if (token->type != TOKEN_ERR)
 	{
 		str1 = token->value;
-		printf("str %s val %s\n", str, str1);
 		if (c != '$')
 			token->type = TOKEN_WORD_EX;
 		token->value = ft_strjoin(str, token->value);
@@ -121,4 +119,25 @@ t_token	*lexer_collect_env_parenth_herdoc(t_lexer *lexer)
 	if (lexer->c == '\'' || lexer->c == '"' || lexer->c == '$')
 		return (lexer_collect_env_parenth_her_after(lexer, str1, lexer->c));
 	return (init_token(TOKEN_WORD, str1));
+}
+
+t_token	*lexer_collect_env_onedol_quotes(t_lexer *lexer, char *str)
+{
+	t_token	*token;
+	char	*str1;
+
+	if (lexer->c == '\'')
+		token = lexer_collect_single_quote(lexer);
+	else if (lexer->c == '"')
+		token = lexer_collect_double_quote(lexer);
+	else
+		token = init_token(TOKEN_WORD, ft_strdup(""));
+	if (token->type != TOKEN_ERR)
+	{
+		str1 = token->value;
+		token->value = ft_strjoin(str, token->value);
+		free(str1);
+	}
+	free(str);
+	return (token);
 }

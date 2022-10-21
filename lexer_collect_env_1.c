@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 14:11:14 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:49:10 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_token	*lexer_collect_env_str(t_lexer *lexer)
 
 t_token	*lexer_collect_env(t_lexer *lexer)
 {
-	if (check_in_out_put(lexer))
+	if (check_herdoc(lexer))
 		return (lexer_collect_env_herdoc(lexer, "$"));
 	if (check_in_out_put(lexer))
 		return (lexer_collect_env_out_int(lexer, "$"));
@@ -102,6 +102,8 @@ t_token	*lexer_collect_env(t_lexer *lexer)
 		return (lexer_collect_env_and(lexer));
 	else if (lexer->c == '(')
 		return (lexer_collect_env_parenth(lexer));
+	else if (lexer->c == '"' || lexer->c == '\'')
+		return (lexer_collect_env_onedol_quotes(lexer, ft_strdup("$")));
 	else if (check_spcl_char(SPCL, lexer->c))
 		return (init_token(TOKEN_WORD, ft_strdup("$")));
 	else if (lexer->c != '\0')

@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:45:52 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 16:15:11 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:45:26 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	sub_first_part(t_node **node, t_token **token)
 		ft_putstr_fd("minishell: maximum here-document count exceeded\n", 2);
 		exit(2);
 	}
+	expanded_rediretions(*node);
 	if (open_heredoc_files(*node))
 	{
 		free_nodes(*node);
@@ -51,14 +52,12 @@ void	first_part(char *s)
 		return ;
 	}
 	node = get_nodes(token);
-	//if (sub_first_part(&node, &token))
-	//	return ;
+	/*if (sub_first_part(&node, &token))
+		return ;*/
+	expanded_rediretions(node);
 	ast = get_ast(node);
-	//print_tokens(token);
-	//print_nodess(node);
-	//print_ast(ast);
 	free_nodes(node);
 	free_tokens(token);
-	second_part(ast);
+	//second_part(ast);
 	free_ast(ast);
 }

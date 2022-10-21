@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 09:49:43 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:58:32 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 	pid = fork();
 	if (pid == -1)
 		ft_error(ft_strdup(strerror(errno)), 1);
-	g_vars.child_process_pid = pid;
 	if (!pid)
 	{
 		signals(1);
@@ -52,7 +51,6 @@ int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 	signals(3);
 	pid = fork();
 	ft_check_tons_pipes(pid);
-	g_vars.child_process_pid = pid;
 	if (pid == 0)
 	{
 		signals(1);

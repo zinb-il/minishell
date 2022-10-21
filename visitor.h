@@ -6,12 +6,26 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 15:20:30 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:05:00 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef VISITOR_H
 # define VISITOR_H
+
+//Expand redirections
+void	joind_str(char **s1, char *s2);
+int		env_redirection(char	*str, char **s1, int i);
+int		d_quotes_redirection(char	*str, char **s1, int i);
+int		s_quotes_redirection(char	*str, char **s1, int i);
+char	*trim_str(char *str);
+char	*char_redirection(char	*str);
+void	add_expanded_toparam(t_node **node, char *str);
+void	expanded_rediretions(t_node *node);
+
+//Ambiguous redirections test
+char	*clean_str(char	*str);
+int		test_ambiguous(char	*str);
 
 //WildCards matching
 void	free_mat(int **mat, int m);
