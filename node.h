@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:54:19 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/23 20:39:25 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:18:27 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	add_last_node(t_node **nodes, t_node *node);
 void	print_nodess(t_node *nodes);
 void	free_nodes(t_node *nodes);
 void	get_node_value(t_node **node, t_token *token);
+void	get_node_param_heredoc(t_node **node, t_token *token);
 void	get_node_param(t_node **node, t_token *token);
 void	get_node_param_ex(t_node **node, t_token *token);
 void	check_if_expand_cmd(t_node **node, t_token *token);

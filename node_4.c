@@ -6,11 +6,34 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:37:23 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/23 21:16:09 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:17:54 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	get_node_param_heredoc(t_node **node, t_token *token)
+{
+	char	**param;
+	int		i;
+	int		j;
+
+	if (!token || token->type == TOKEN_EOF || !token->value)
+		return ;
+	i = (int)ft_strsize((*node)->param) + 1;
+	param = (char **)malloc(sizeof(char *) * (i + 2));
+	j = 0;
+	while ((*node)->param && (*node)->param[j])
+	{
+		param[j] = ft_strdup((*node)->param[j]);
+		j++;
+	}
+	free_dstr((*node)->param);
+	param[j] = ft_strdup(token->value);
+	param[j + 1] = ft_strdup(token->value);
+	param[j + 2] = 0;
+	(*node)->param = param;
+}
 
 void	get_node_param_ex(t_node **node, t_token *token)
 {

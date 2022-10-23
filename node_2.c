@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:08:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/23 21:13:13 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:19:40 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_node	*get_node_wored_herdoc(t_token **token)
 	(*token) = (*token)->next;
 	if ((*token)->type == TOKEN_WORD || (*token)->type == TOKEN_WORD_EX)
 	{
-		get_node_param(&node, *token);
+		get_node_param_heredoc(&node, *token);
 		check_if_expand(&node, *token);
 		(*token) = (*token)->next;
 	}
