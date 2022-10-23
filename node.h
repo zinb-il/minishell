@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:54:19 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/02 21:18:42 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 20:39:25 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_node
 	char			*value;
 	char			**param;
 	char			**exd_p;
+	char			*ambg;
+	char			*nfound;
+	char			*files;
 	struct s_node	*prev;
 	struct s_node	*next;
 }t_node;
@@ -45,7 +48,10 @@ t_node	*get_last_node(t_node *node);
 void	add_last_node(t_node **nodes, t_node *node);
 void	print_nodess(t_node *nodes);
 void	free_nodes(t_node *nodes);
+void	get_node_value(t_node **node, t_token *token);
 void	get_node_param(t_node **node, t_token *token);
+void	get_node_param_ex(t_node **node, t_token *token);
+void	check_if_expand_cmd(t_node **node, t_token *token);
 void	check_if_expand(t_node **node, t_token *token);
 t_node	*advs_node(t_token **token, t_node *node);
 t_node	*get_node_wored_cmd(t_token **token);

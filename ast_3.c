@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ast_3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:54:01 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:33:06 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	add_to_files(t_cmd **tmp, char *str)
+{
+	char	**files;
+	size_t	size;
+	int		i;
+
+	if (!str)
+		return ;
+	size = ft_strsize((*tmp)->files) + 2;
+	files = (char **)malloc(sizeof(char *) * size);
+	i = 0;
+	while ((*tmp)->files && (*tmp)->files[i])
+	{
+		files[i] = ft_strdup((*tmp)->files[i]);
+		i++;
+	}
+	files[i] = ft_strdup(str);
+	files[size - 1] = 0;
+	free_dstr((*tmp)->files);
+	(*tmp)->files = files;
+}
 
 void	add_cmd_to_cmd(t_cmd **tmp, t_node	**node)
 {

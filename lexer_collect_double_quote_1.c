@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:17:25 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 19:28:45 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:16:21 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*lexer_collect_double_quote_env_dollar(t_lexer *lexer)
 	str = 0;
 	if (lexer->c == '?')
 	{
-		str = ft_itoa(g_vars.exit_code);
+		str = ft_itoa(env_expand_exit_code(lexer->i, lexer->content));
 		lexer_advance(&lexer);
 	}
 	else if (lexer->c == '$')

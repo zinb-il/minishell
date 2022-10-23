@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:28:22 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:24:20 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:32:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_cmd
 	char			**input;
 	char			**output;
 	int				append;
+	char			*ambg;
+	char			*nfound;
+	char			**files;
 	struct s_cmd	*next;
 }t_cmd;
 
@@ -55,6 +58,7 @@ void	free_ast(t_ast *ast);
 void	print_ast(t_ast *ast);
 t_ast	*advs_ast(t_node **node, t_ast *ast);
 t_ast	*get_next_ast(t_node **node);
+void	add_to_files(t_cmd **tmp, char *str);
 void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node);
 void	add_cmd_to_cmd(t_cmd **tmp, t_node	**node);
 int		not_other_ast(t_node **node);

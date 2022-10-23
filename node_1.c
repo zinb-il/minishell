@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:11:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 15:29:17 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 21:07:07 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ t_node	*init_node(int type, char *value)
 	node->exd_p = (char **)malloc(sizeof(char *));
 	node->param[0] = 0;
 	node->exd_p[0] = 0;
+	node->files = (void *)0;
+	node->ambg = (void *)0;
+	node->nfound = (void *)0;
 	node->next = (void *)0;
 	node->prev = (void *)0;
 	return (node);
@@ -65,11 +68,18 @@ void	print_nodess(t_node *nodes)
 	tmp = nodes;
 	while (tmp)
 	{
-		printf("node type %d val {{%s}}\n", tmp->type, tmp->value);
+		printf("node type %d val {{%s}} amg %s notf %s files %s\n", \
+		tmp->type, tmp->value, tmp->ambg, tmp->nfound, tmp->files);
 		i = 0;
 		while (tmp->param && tmp->param[i])
 		{
-			printf("param  '%s' \n", tmp->param[i]);
+			printf("param node  '%s' \n", tmp->param[i]);
+			i++;
+		}
+		i = 0;
+		while (tmp->exd_p && tmp->exd_p[i])
+		{
+			printf("exp node  '%s' \n", tmp->exd_p[i]);
 			i++;
 		}
 		printf("\n");

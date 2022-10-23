@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:11:11 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:34:24 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:40:25 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		ft_en_len(void);
 char	**ft_get_env(void);
 void	ft_exe_cmd(char	*cmd, char **param, char **env);
 char	**add_param(char **p, char	*str);
+int		check_files_herdoc(t_cmd *cmd);
+void	check_files(t_cmd *cmd);
 void	ft_execute_cmd(t_cmd *line_cmd);
 void	check_ouin_multcmd(t_cmd *line_cmd, int *fdi, int *fdo);
 

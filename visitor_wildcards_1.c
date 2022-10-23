@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visitor_wildcards_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 23:13:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/23 21:06:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	**expand_wildcards(t_node **node)
 
 	i = 0;
 	list = 0;
-	while ((*node)->param[i] != 0)
+	while ((*node)->param && (*node)->param[i] != 0)
 	{
 		s1 = ft_strrrchr((*node)->param[i], '/');
 		if ((*node)->exd_p[i][0] == '1' && ft_fndc((*node)->param[i], '*') \
@@ -116,7 +116,7 @@ void	wild_card(t_node *node)
 	tmp = node;
 	while (tmp->type != NODE_EOF)
 	{
-		if (tmp->type == NODE_CMD && check_inlist_expand(tmp))
+		if (tmp->value && tmp->type == NODE_CMD && check_inlist_expand(tmp))
 		{
 			list = expand_wildcards(&tmp);
 			free_dstr(tmp->param);

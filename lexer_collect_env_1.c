@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:44:16 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 19:49:10 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:15:53 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_token	*lexer_collect_dollar(t_lexer *lexer)
 	char	*str;
 
 	if (lexer->c == '?')
-		str = ft_itoa(g_vars.exit_code);
+		str = ft_itoa(env_expand_exit_code(lexer->i, lexer->content));
 	if (lexer->c == '$')
 		str = ft_strdup("$$");
 	lexer_advance(&lexer);

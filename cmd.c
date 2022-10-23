@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:50:47 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:25:32 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/22 23:00:45 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ t_cmd	*init_cmd(void)
 	cmd->value = (void *)0;
 	cmd->input = (char **)malloc(sizeof(char *));
 	cmd->output = (char **)malloc(sizeof(char *));
+	cmd->input[0] = 0;
+	cmd->output[0] = 0;
 	cmd->append = 0;
+	cmd->ambg = (void *)0;
+	cmd->nfound = (void *)0;
 	cmd->param = (char **)malloc(sizeof(char *));
 	cmd->param[0] = 0;
+	cmd->files = (char **)malloc(sizeof(char *));
+	cmd->files[0] = 0;
 	cmd->next = (void *)0;
 	return (cmd);
 }
@@ -53,33 +59,31 @@ void	add_cmd(t_cmd **cmd, t_cmd *new_cmd)
 		*cmd = new_cmd;
 }
 
+void	print_dstr(char **str, char *s)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		printf("%s %d:'%s'\n", s, i, str[i]);
+		i++;
+	}
+}
+
 void	print_cmd(t_cmd *cmd)
 {
 	t_cmd	*tmp;
-	int		i;
 
 	tmp = cmd;
 	while (tmp)
 	{
-		printf("val: %s append:%d \n", tmp->value, tmp->append);
-		i = 0;
-		while (tmp->output && tmp->output[i])
-		{
-			printf("out %d:'%s'\n", i, tmp->output[i]);
-			i++;
-		}
-		i = 0;
-		while (tmp->input && tmp->input[i])
-		{
-			printf("out %d:'%s'\n", i, tmp->input[i]);
-			i++;
-		}
-		i = 0;
-		while (tmp->param && tmp->param[i])
-		{
-			printf("param %d:'%s'\n", i, tmp->param[i]);
-			i++;
-		}
+		printf("cmd val: %s append:%d amg %s notf %s\n\n", tmp->value, \
+		tmp->append, tmp->ambg, tmp->nfound);
+		print_dstr(tmp->output, "out");
+		print_dstr(tmp->input, "in");
+		print_dstr(tmp->param, "param");
+		print_dstr(tmp->files, "files");
 		tmp = tmp->next;
 	}
 }

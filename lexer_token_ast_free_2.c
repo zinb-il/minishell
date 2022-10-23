@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_token_ast_free_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:44:28 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:27:23 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ void	free_cmd(t_cmd *cmd)
 		if (tmp->value)
 			free(tmp->value);
 		if (tmp->input)
-			free(tmp->input);
+			free_dstr(tmp->input);
 		if (tmp->output)
-			free(tmp->output);
+			free_dstr(tmp->output);
 		if (tmp->param)
 			free_dstr(tmp->param);
+		if (tmp->ambg)
+			free(tmp->ambg);
+		if (tmp->nfound)
+			free(tmp->nfound);
+		if (tmp->files)
+			free_dstr(tmp->files);
 		free(tmp);
 	}
 }

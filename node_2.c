@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:08:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 15:45:38 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 21:13:13 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	check_if_expand(t_node **node, t_token *token)
 	int		i;
 	int		j;
 
-	if (!token || token->type == TOKEN_EOF)
-		return ;
 	i = (int)ft_strsize((*node)->exd_p) + 1;
 	exd_p = (char **)malloc(sizeof(char *) * (i + 1));
 	j = 0;
@@ -70,12 +68,22 @@ t_node	*get_node_wored_cmd(t_token **token)
 {
 	t_node	*node;
 
-	node = init_node(NODE_CMD, ft_strdup((*token)->value));
+	node = init_node(NODE_CMD, 0);
+	get_node_value(&node, *token);
+	check_if_expand_cmd(&node, *token);
 	(*token) = (*token)->next;
 	while ((*token)->type == TOKEN_WORD || (*token)->type == TOKEN_WORD_EX)
 	{
-		get_node_param(&node, *token);
-		check_if_expand(&node, *token);
+		if ((*token)->type == TOKEN_WORD_EX)
+		{
+			get_node_param(&node, *token);
+			check_if_expand(&node, *token);
+		}
+		if ((*token)->type == TOKEN_WORD)
+		{
+			get_node_param_ex(&node, *token);
+			check_if_expand_cmd(&node, *token);
+		}
 		(*token) = (*token)->next;
 	}
 	return (node);

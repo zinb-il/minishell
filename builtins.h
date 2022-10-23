@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:36:26 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 18:27:48 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 14:41:30 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_export(char	**arg, int out);
 
 int			ft_echo(char **args, int out);
 void		ft_pwd(int out);
-int			ft_env(int out);
+int			ft_env(int out, char **ast_args);
 void		ft_cd(char	**arg, int out);
 void		ft_unset(char **args);
 void		ft_exit(char **args);

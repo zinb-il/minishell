@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:48:07 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/19 13:43:28 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:16:15 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ void	ft_execute_cmd(t_cmd *cmd)
 	char	**env;
 	DIR		*dp;
 
-	if (!cmd->value || !ft_strlen(cmd->value))
+	if (!cmd->value)
 		exit(0);
+	if (!ft_strlen(cmd->value))
+		ft_error(ft_strjoin(cmd->value, ": command not found"), 127);
 	path = ft_get_path();
 	env = ft_get_env();
 	if ((ft_fndc(cmd->value, '/') && !access(cmd->value, F_OK | X_OK)) || !path)

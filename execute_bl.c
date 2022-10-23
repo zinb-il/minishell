@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_bl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 07:27:44 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/23 14:40:57 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	execute_builtin(int x, char **ast_args, int out)
 	else if (x == 2)
 		ft_unset(ast_args);
 	else if (x == 3)
-		ft_env(out);
+		ft_env(out, ast_args);
 	else if (x == 4)
 		ft_cd(ast_args, out);
 	else if (x == 5)

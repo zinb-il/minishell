@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:52:08 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:27:55 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/22 23:04:04 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_execute_single_cmd(t_cmd *line_cmd)
 	if (!pid)
 	{
 		signals(1);
+		check_files(line_cmd);
 		fd[0] = ft_chekc_inputfile(line_cmd->input);
 		fd[1] = ft_chekc_ouputfile(line_cmd->output, line_cmd->append);
 		if (fd[0])
@@ -54,6 +55,7 @@ int	ft_execute_multiple_cmd_line(t_cmd *cmd, int fdi, int i)
 	if (pid == 0)
 	{
 		signals(1);
+		check_files(cmd);
 		check_ouin_multcmd(cmd, &fdi, &end[1]);
 		ft_dup(fdi, end[1]);
 		close (end[0]);

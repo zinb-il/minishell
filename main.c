@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:38:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:05:59 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/22 15:57:57 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	main(int ac, char **av, char **env)
 		unlik_herdo_name();
 		free(str);
 	}
+	free_env(g_vars.env);
 	return (g_vars.exit_code);
 }

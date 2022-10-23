@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 23:59:40 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 15:17:01 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:30:36 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	write_inside_heredoc(t_node *node, int i);
 int		open_heredoc_files(t_node *node);
 
 //Create output files
-void	creat_output_files(t_node *node);
+char	*join_three_str(char *s1, char	*s2, char *s3);
+int		test_in_first(t_node **t, int *d);
+void	unset_param(char **str);
+int		test_ou_first(t_node **t, int *d);
+void	creat_output_files(t_node **node);
 
 #	endif

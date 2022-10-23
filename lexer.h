@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:17:32 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/20 19:16:20 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:28:25 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*get_inouput_str(t_lexer *lexer, char c);
 char	*lexer_after_single_and(t_lexer *lexer, char *str1);
 int		check_herdoc(t_lexer *lexer);
 int		check_in_out_put(t_lexer *lexer);
+int		env_expand_exit_code(int start, char *str);
 t_token	*lexer_get_next_token(t_lexer *lexer);
 t_token	*lexer_collect_pipe(t_lexer *lexer);
 t_token	*lexer_collect_and(t_lexer *lexer);

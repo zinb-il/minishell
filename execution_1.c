@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:12:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:47:13 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_execute_builtin(t_cmd *line_cmd)
 
 	if (!check_inlist_builtin(line_cmd->value) && !line_cmd->next)
 	{
+		if (check_files_herdoc(line_cmd) == 2)
+			return (0);
 		fd = ft_chekc_ouputfile_herdoc(line_cmd->output, line_cmd->append);
 		if (!fd)
 			fd = 1;

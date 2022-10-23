@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibentour <ibentour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:38:28 by ibentour          #+#    #+#             */
-/*   Updated: 2022/10/18 22:07:19 by ibentour         ###   ########.fr       */
+/*   Updated: 2022/10/23 14:48:49 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@ static void	print_env_line(char *s1, char *s2, int out)
 	ft_putstr_fd("\n", out);
 }
 
-int	ft_env(int out)
+int	ft_env(int out, char **ast_args)
 {
 	t_env	*tmp;
 
+	if (ast_args && ft_strsize(ast_args))
+	{
+		g_vars.exit_code = 127;
+		ft_putstr_fd("minishell : env: ", 2);
+		ft_putstr_fd(ast_args[0], 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+		return (0);
+	}
 	tmp = g_vars.env;
 	while (tmp)
 	{

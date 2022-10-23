@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:30:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:23:53 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:08:28 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	add_cmd_val_toparam(t_cmd **tmp, t_node	**node)
 {
 	if (!(*tmp)->value)
 	{
-		(*tmp)->value = ft_strdup((*node)->value);
+		if ((*node)->value)
+			(*tmp)->value = ft_strdup((*node)->value);
 		if ((*tmp)->param)
 			free_dstr((*tmp)->param);
 		(*tmp)->param = ft_strdup_d((*node)->param);
@@ -60,6 +61,11 @@ t_cmd	*get_next_cmd(t_node **node)
 			tmp->append = 0;
 		if ((*node)->type == NODE_RED_AOUT)
 			tmp->append = 1;
+		if (!tmp->ambg && (*node)->ambg)
+			tmp->ambg = ft_strdup((*node)->ambg);
+		if (!tmp->nfound && (*node)->nfound)
+			tmp->nfound = ft_strdup((*node)->nfound);
+		add_to_files(&tmp, (*node)->files);
 		(*node) = (*node)->next;
 	}
 	return (tmp);

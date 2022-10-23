@@ -6,7 +6,7 @@
 /*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:14:21 by ziloughm          #+#    #+#             */
-/*   Updated: 2022/10/21 19:35:17 by ziloughm         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:41:11 by ziloughm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ int	ft_chekc_inputfile(char **str)
 	char	*s1;
 	char	*s2;
 
-	if (!str)
+	if (!str || !ft_strsize(str))
 		return (0);
-	if (!str[1])
-		ft_error(ft_strjoin(str[0], ": ambiguous redirect"), 1);
 	fd = open(str[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -70,10 +68,8 @@ int	ft_chekc_ouputfile(char **str, int app)
 	char	*s1;
 	char	*s2;
 
-	if (!str)
+	if (!str || !ft_strsize(str))
 		return (0);
-	if (!str[1])
-		ft_error(ft_strjoin(str[0], ": ambiguous redirect"), 1);
 	if (!app)
 		fd = open(str[1], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	else
@@ -92,9 +88,9 @@ int	ft_chekc_ouputfile_herdoc(char **str, int app)
 {
 	int		fd;
 
-	if (!str)
+	if (!str || !ft_strsize(str))
 		return (0);
-	if (!str[1])
+	if (ft_strsize(str) == 1)
 	{
 		get_new_promt(ft_strjoin(str[0], ": ambiguous redirect"));
 		g_vars.exit_code = 1;
@@ -106,6 +102,7 @@ int	ft_chekc_ouputfile_herdoc(char **str, int app)
 		fd = open(str[1], O_CREAT | O_RDWR | O_APPEND, 0644);
 	if (fd < 0)
 	{
+		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(str[1], 2);
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(strerror(errno), 2);
